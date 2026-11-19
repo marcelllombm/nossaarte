@@ -1,780 +1,841 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0a1142">
-    <meta name="description" content="Sua marca merece ser vista. Conheça as soluções da Nossa Arte em fachadas, impressão digital, adesivação e sinalização. Peça seu orçamento pelo WhatsApp.">
-    <meta property="og:title" content="Nossa Arte — Sua marca em outra dimensão">
-    <meta property="og:description" content="Comunicação visual, impressão digital e soluções gráficas que fazem sua marca acontecer.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="pt_BR">
-    <title>Nossa Arte — Comunicação Visual & Impressão Digital</title>
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js">
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js">
-    </script>
-    <script defer src="js/config.js">
-    </script>
-    <script defer src="js/main.js">
-    </script>
-    <script defer src="js/scene.js">
-    </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <!-- Reusable, local icons: no external icon dependency. -->
-    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <symbol id="i-whatsapp" viewBox="0 0 24 24">
-          <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z"/>
-          <path d="M8.1 7.2c.5-.5 1-.1 1.2.4l.8 1.7c.2.4-.3.9-.7 1.2.6 1.4 1.7 2.5 3.1 3.1.4-.4.8-1 1.2-.8l1.8.8c.5.2.8.6.5 1.2-.6 1.3-2.1 1.4-3.6.8-2.4-1-4.8-3.4-5.4-5.7-.3-1.2.3-2.3 1.1-2.7Z"/>
-        </symbol>
-        <symbol id="i-plus" viewBox="0 0 24 24">
-          <path d="M12 5v14M5 12h14"/>
-        </symbol>
-        <symbol id="i-close" viewBox="0 0 24 24">
-          <path d="m6 6 12 12M6 18 18 6"/>
-        </symbol>
-        <symbol id="i-check" viewBox="0 0 24 24">
-          <path d="m5 12 4 4L19 6"/>
-        </symbol>
-        <symbol id="i-store" viewBox="0 0 24 24">
-          <path d="M3 10V5h18v5M4 10v10h16V10M8 20v-7h8v7M2 10h20M8 5v5m8-5v5"/>
-          <path d="M5 2h14"/>
-        </symbol>
-        <symbol id="i-print" viewBox="0 0 24 24">
-          <path d="M6 8V3h12v5M6 17H3V8h18v9h-3M6 14h12v7H6zM17 11h1"/>
-        </symbol>
-        <symbol id="i-layers" viewBox="0 0 24 24">
-          <path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5"/>
-        </symbol>
-        <symbol id="i-sign" viewBox="0 0 24 24">
-          <path d="M12 2v20M3 5h15l3 3-3 3H3V5Zm18 9H6l-3 3 3 3h15v-6Z"/>
-        </symbol>
-        <symbol id="i-display" viewBox="0 0 24 24">
-          <path d="M4 3h16v13H4zM8 21l4-5 4 5M12 3V1M7 12l3-3 3 2 4-5"/>
-        </symbol>
-        <symbol id="i-spark" viewBox="0 0 24 24">
-          <path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3ZM20 2v4m-2-2h4"/>
-        </symbol>
-        <symbol id="i-target" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="8"/>
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M12 1v4m0 14v4M1 12h4m14 0h4"/>
-        </symbol>
-        <symbol id="i-team" viewBox="0 0 24 24">
-          <circle cx="9" cy="7" r="3"/>
-          <path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4v3"/>
-        </symbol>
-        <symbol id="i-clock" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M12 7v5l3 2"/>
-        </symbol>
-        <symbol id="i-shield" viewBox="0 0 24 24">
-          <path d="m12 2 8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5l8-3Z"/>
-          <path d="m8 12 3 3 5-6"/>
-        </symbol>
-        <symbol id="i-pin" viewBox="0 0 24 24">
-          <path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 1 1 14 0Z"/>
-          <circle cx="12" cy="10" r="2.5"/>
-        </symbol>
-        <symbol id="i-cursor" viewBox="0 0 24 24">
-          <path d="m5 3 14 9-7 1-3 7L5 3Z"/>
-        </symbol>
-        <symbol id="i-pause" viewBox="0 0 24 24">
-          <path d="M8 5v14M16 5v14"/>
-        </symbol>
-        <symbol id="i-play" viewBox="0 0 24 24">
-          <path d="m8 4 12 8-12 8V4Z"/>
-        </symbol>
-        <symbol id="i-expand" viewBox="0 0 24 24">
-          <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>
-        </symbol>
-        <symbol id="i-instagram" viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M17.5 6.5h.01"/>
-        </symbol>
-      </defs>
-    </svg>
 
-    <header class="site-header" id="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#inicio" aria-label="Nossa Arte, início">
-          <img src="img/logo-nossa-arte.png" alt="Nossa Arte" width="180" height="55" fetchpriority="high">
-        </a>
-        <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-          <a href="#inicio" aria-current="page">Início</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#diferenciais">Diferenciais</a>
-          <a href="#portfolio">Portfólio</a>
-          <a href="#contato">Contato</a>
-        </nav>
-        <a class="button button-primary header-cta" href="#contato">Solicitar orçamento<svg class="icon" aria-hidden="true">
-            <use href="#i-whatsapp"/>
-          </svg>
-        </a>
-        <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
-          <span>
-          </span>
-          <span>
-          </span>
-        </button>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1142">
+  <meta name="description"
+    content="Sua marca merece ser vista. Conheça as soluções da Nossa Arte em fachadas, impressão digital, adesivação e sinalização. Peça seu orçamento pelo WhatsApp.">
+  <meta property="og:title" content="Nossa Arte — Sua marca em outra dimensão">
+  <meta property="og:description"
+    content="Comunicação visual, impressão digital e soluções gráficas que fazem sua marca acontecer.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <title>Nossa Arte — Comunicação Visual & Impressão Digital</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js">
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js">
+  </script>
+  <script defer src="js/config.js">
+  </script>
+  <script defer src="js/main.js">
+  </script>
+  <script defer src="js/scene.js">
+  </script>
+</head>
 
-    <main id="conteudo">
-      <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <div class="hero-badge">
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-spark"/>
-              </svg>
-              <span>Comunicação visual & impressão de alta performance</span>
-            </div>
-            <h1 id="hero-title">
-              <span>O sucesso do</span>
-              <span>seu negócio</span>
-              <span class="headline-last">começa aqui.<svg viewBox="0 0 420 18" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="M3 12C110 1 260 2 415 8"/>
-                </svg>
-              </span>
-            </h1>
-            <p class="hero-description">Transformamos a identidade da sua empresa com projetos de comunicação visual, fachadas, impressão digital em grandes formatos e sinalização sob medida.</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#contato">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-whatsapp"/>
-                </svg>Fazer orçamento rápido</a>
-              <a class="button button-outline" href="#servicos">Conhecer serviços</a>
-            </div>
-            <div class="hero-proof">
-              <div>
-                <strong>+10 <span>anos</span>
-                </strong>
-                <span>de experiência</span>
-              </div>
-              <div>
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-check"/>
-                </svg>
-                <span>Entrega ágil<br>Acabamento premium</span>
-              </div>
-            </div>
-          </div>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <!-- Reusable, local icons: no external icon dependency. -->
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z" />
+        <path
+          d="M8.1 7.2c.5-.5 1-.1 1.2.4l.8 1.7c.2.4-.3.9-.7 1.2.6 1.4 1.7 2.5 3.1 3.1.4-.4.8-1 1.2-.8l1.8.8c.5.2.8.6.5 1.2-.6 1.3-2.1 1.4-3.6.8-2.4-1-4.8-3.4-5.4-5.7-.3-1.2.3-2.3 1.1-2.7Z" />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M6 18 18 6" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="i-store" viewBox="0 0 24 24">
+        <path d="M3 10V5h18v5M4 10v10h16V10M8 20v-7h8v7M2 10h20M8 5v5m8-5v5" />
+        <path d="M5 2h14" />
+      </symbol>
+      <symbol id="i-print" viewBox="0 0 24 24">
+        <path d="M6 8V3h12v5M6 17H3V8h18v9h-3M6 14h12v7H6zM17 11h1" />
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24">
+        <path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5" />
+      </symbol>
+      <symbol id="i-sign" viewBox="0 0 24 24">
+        <path d="M12 2v20M3 5h15l3 3-3 3H3V5Zm18 9H6l-3 3 3 3h15v-6Z" />
+      </symbol>
+      <symbol id="i-display" viewBox="0 0 24 24">
+        <path d="M4 3h16v13H4zM8 21l4-5 4 5M12 3V1M7 12l3-3 3 2 4-5" />
+      </symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24">
+        <path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3ZM20 2v4m-2-2h4" />
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v4m0 14v4M1 12h4m14 0h4" />
+      </symbol>
+      <symbol id="i-team" viewBox="0 0 24 24">
+        <circle cx="9" cy="7" r="3" />
+        <path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4v3" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="m12 2 8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5l8-3Z" />
+        <path d="m8 12 3 3 5-6" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 1 1 14 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </symbol>
+      <symbol id="i-cursor" viewBox="0 0 24 24">
+        <path d="m5 3 14 9-7 1-3 7L5 3Z" />
+      </symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24">
+        <path d="M8 5v14M16 5v14" />
+      </symbol>
+      <symbol id="i-play" viewBox="0 0 24 24">
+        <path d="m8 4 12 8-12 8V4Z" />
+      </symbol>
+      <symbol id="i-expand" viewBox="0 0 24 24">
+        <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+      </symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <path d="M17.5 6.5h.01" />
+      </symbol>
+    </defs>
+  </svg>
 
-          <div class="hero-visual" id="hero-visual">
-            <div class="visual-grid" aria-hidden="true">
-            </div>
-            <div class="scene-label">
-              <span class="small-spark" aria-hidden="true">✳</span> Sua ideia ganha dimensão.</div>
-            <div class="scene-wrap" id="scene-wrap" role="img" aria-label="Composição tridimensional de placas de impressão em azul-marinho, laranja e acrílico">
-              <div class="scene-fallback" aria-hidden="true">
-                <div class="fallback-orbit">
-                </div>
-                <div class="fallback-sheet sheet-back">
-                </div>
-                <div class="fallback-sheet sheet-middle">
-                </div>
-                <div class="fallback-sheet sheet-front">
-                  <span class="print-symbol">n<span>a</span>
-                  </span>
-                  <span>Sua marca.<br>Em outra<br>dimensão.</span>
-                  <small>Ideias que se tornam presença.</small>
-                  <div class="print-swatches">
-                    <i>
-                    </i>
-                    <i>
-                    </i>
-                    <i>
-                    </i>
-                    <i>
-                    </i>
-                  </div>
-                </div>
-                <div class="fallback-sphere">
-                </div>
-              </div>
-            </div>
-            <div class="visual-note">
-              <span class="note-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-layers"/>
-                </svg>
-              </span>
-              <span>
-                <strong>Do conceito ao acabamento.</strong>
-                <small>Cuidado em cada camada.</small>
-              </span>
-            </div>
-            <div class="scene-controls" hidden>
-              <span>
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-cursor"/>
-                </svg> Explore com o cursor</span>
-              <button id="motion-toggle" class="icon-button" aria-label="Pausar animação 3D" aria-pressed="false">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-pause"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="expertise-strip">
-          <div class="container">
-            <span>Da primeira impressão à presença que fica.</span>
-            <div>
-              <span>Estratégia</span>
-              <i aria-hidden="true">
-              </i>
-              <span>Criatividade</span>
-              <i aria-hidden="true">
-              </i>
-              <span>Precisão</span>
-              <i aria-hidden="true">
-              </i>
-              <span>Impacto</span>
-            </div>
-          </div>
-        </div>
-      </section>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Nossa Arte, início">
+        <img src="img/logo-nossa-arte.png" alt="Nossa Arte" width="180" height="55" fetchpriority="high">
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <a href="#inicio" aria-current="page">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="button button-primary header-cta" href="#contato">Solicitar orçamento<svg class="icon"
+          aria-hidden="true">
+          <use href="#i-whatsapp" />
+        </svg>
+      </a>
+      <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+        <span>
+        </span>
+        <span>
+        </span>
+      </button>
+    </div>
+  </header>
 
-      <section class="section services" id="servicos" aria-labelledby="services-title">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div>
-              <p class="eyebrow">
-                <span>
-                </span>O que fazemos</p>
-              <h2 id="services-title">Sua marca em todos<br>os lugares certos.</h2>
-            </div>
-            <p>Do pequeno detalhe ao grande formato.<br>Soluções completas para a sua empresa<br>ser vista, lembrada e reconhecida.</p>
-          </div>
-          <div class="services-grid">
-            <article class="service-card reveal">
-              <div class="service-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-store"/>
-                </svg>
-              </div>
-              <h3>Fachadas e letreiros</h3>
-              <p>A primeira impressão que fica. Fachadas em ACM, letras-caixa em aço, acrílico ou PVC e iluminação em LED.</p>
-              <a href="#contato" data-service="Fachadas e letreiros">Quero destacar minha fachada<svg class="icon" aria-hidden="true">
-                  <use href="#i-plus"/>
-                </svg>
-              </a>
-              <div class="service-tags">
-                <span>ACM</span>
-                <span>Letras-caixa</span>
-                <span>LED</span>
-              </div>
-            </article>
-            <article class="service-card reveal">
-              <div class="service-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-print"/>
-                </svg>
-              </div>
-              <h3>Impressão digital</h3>
-              <p>Ideias grandes merecem alta definição. Lonas, banners, faixas e painéis com cores vivas e acabamento preciso.</p>
-              <a href="#contato" data-service="Impressão digital">Quero imprimir minha ideia<svg class="icon" aria-hidden="true">
-                  <use href="#i-plus"/>
-                </svg>
-              </a>
-              <div class="service-tags">
-                <span>Grandes formatos</span>
-                <span>Alta definição</span>
-              </div>
-            </article>
-            <article class="service-card reveal">
-              <div class="service-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-layers"/>
-                </svg>
-              </div>
-              <h3>Adesivação e envelopamento</h3>
-              <p>Superfícies que comunicam. Adesivos personalizados para vitrines, ambientes corporativos e envelopamento de frotas.</p>
-              <a href="#contato" data-service="Adesivação e envelopamento">Quero transformar um espaço<svg class="icon" aria-hidden="true">
-                  <use href="#i-plus"/>
-                </svg>
-              </a>
-              <div class="service-tags">
-                <span>Vitrines</span>
-                <span>Ambientes</span>
-                <span>Frotas</span>
-              </div>
-            </article>
-            <article class="service-card reveal">
-              <div class="service-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-sign"/>
-                </svg>
-              </div>
-              <h3>Sinalização</h3>
-              <p>Direção com identidade. Placas, totens e sinalização interna e externa que orientam e valorizam a sua marca.</p>
-              <a href="#contato" data-service="Sinalização">Quero sinalizar meu negócio<svg class="icon" aria-hidden="true">
-                  <use href="#i-plus"/>
-                </svg>
-              </a>
-              <div class="service-tags">
-                <span>Placas</span>
-                <span>Totens</span>
-                <span>Identificação</span>
-              </div>
-            </article>
-            <article class="service-card reveal">
-              <div class="service-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-display"/>
-                </svg>
-              </div>
-              <h3>Displays e PDV</h3>
-              <p>Presença no momento da decisão. Expositores, wobblers e estruturas para pontos de venda, feiras e eventos.</p>
-              <a href="#contato" data-service="Displays e PDV">Quero valorizar meu produto<svg class="icon" aria-hidden="true">
-                  <use href="#i-plus"/>
-                </svg>
-              </a>
-              <div class="service-tags">
-                <span>Expositores</span>
-                <span>Eventos</span>
-                <span>PDV</span>
-              </div>
-            </article>
-            <article class="service-card reveal">
-              <div class="service-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-spark"/>
-                </svg>
-              </div>
-              <h3>Projetos especiais</h3>
-              <p>Sua ideia não cabe em uma categoria? Criamos peças em acrílico, corte a laser e soluções exclusivas sob medida.</p>
-              <a href="#contato" data-service="Projetos especiais">Quero tirar uma ideia do papel<svg class="icon" aria-hidden="true">
-                  <use href="#i-plus"/>
-                </svg>
-              </a>
-              <div class="service-tags">
-                <span>Corte a laser</span>
-                <span>Sob medida</span>
-              </div>
-            </article>
-          </div>
-          <p class="services-help">Ainda não sabe qual solução escolher? <a href="#contato" data-service="Preciso de orientação">A gente ajuda você a encontrar.</a>
-          </p>
-        </div>
-      </section>
-
-      <section class="difference section" id="diferenciais" aria-labelledby="difference-title">
-        <div class="container difference-grid">
-          <div class="difference-intro reveal">
-            <p class="eyebrow">
-              <span>
-              </span>O jeito Nossa Arte</p>
-            <h2 id="difference-title">Não é só sobre<br>ser visto.<br>É sobre marcar.</h2>
-            <p>Por trás de cada entrega, existe uma equipe que entende a importância da sua marca. E cuida dela como se fosse nossa.</p>
-            <a class="button button-primary" href="#contato">Vamos criar algo juntos<svg class="icon" aria-hidden="true">
-                <use href="#i-spark"/>
-              </svg>
-            </a>
-            <div class="difference-seal" aria-hidden="true">
-              <svg viewBox="0 0 100 100">
-                <path d="m50 4 8 29 23-20-13 28 30 4-29 10 23 20-30-7-6 30-10-29-24 19 14-27-31-6 29-8L13 24l30 10Z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="advantages">
-            <article class="advantage reveal">
-              <span class="advantage-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-target"/>
-                </svg>
-              </span>
-              <div>
-                <h3>Tecnologia de ponta</h3>
-                <p>Impressão de alta definição e corte de precisão para transformar boas ideias em resultados à altura.</p>
-              </div>
-            </article>
-            <article class="advantage reveal">
-              <span class="advantage-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-team"/>
-                </svg>
-              </span>
-              <div>
-                <h3>Gente que entende do assunto</h3>
-                <p>Uma equipe especializada ao seu lado, do projeto técnico ao último detalhe da instalação.</p>
-              </div>
-            </article>
-            <article class="advantage reveal">
-              <span class="advantage-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-clock"/>
-                </svg>
-              </span>
-              <div>
-                <h3>Seu prazo é nosso compromisso</h3>
-                <p>Planejamento, agilidade e pontualidade para a sua inauguração, campanha ou evento acontecer.</p>
-              </div>
-            </article>
-            <article class="advantage reveal">
-              <span class="advantage-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-shield"/>
-                </svg>
-              </span>
-              <div>
-                <h3>Qualidade que permanece</h3>
-                <p>Materiais selecionados, resistência UV e acabamento premium. Bonito hoje. Resistente amanhã.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div>
-              <p class="eyebrow">
-                <span>
-                </span>Possibilidades na prática</p>
-              <h2 id="portfolio-title">Imagine sua marca<br>no próximo projeto.</h2>
-            </div>
-            <p>Materiais, cores e ideias que ganham vida.<br>Explore estudos visuais das nossas soluções.</p>
-          </div>
-          <div class="portfolio-filters" role="group" aria-label="Filtrar projetos por categoria">
-            <button class="filter-button active" data-filter="todos" aria-pressed="true">Todos <span>4</span>
-            </button>
-            <button class="filter-button" data-filter="fachadas" aria-pressed="false">Fachadas</button>
-            <button class="filter-button" data-filter="impressao" aria-pressed="false">Impressão digital</button>
-            <button class="filter-button" data-filter="adesivacao" aria-pressed="false">Adesivação</button>
-            <button class="filter-button" data-filter="sinalizacao" aria-pressed="false">Sinalização</button>
-          </div>
-          <p id="filter-status" class="sr-only" aria-live="polite">4 estudos visuais disponíveis.</p>
-          <div class="portfolio-grid" id="portfolio-grid">
-            <article class="project-card" data-category="fachadas">
-              <button class="project-open" data-project="fachada" aria-label="Ampliar estudo visual: Uma fachada que convida">
-                <div class="project-image">
-                  <img src="img/projeto-fachada.svg" alt="Estudo de fachada verde com letras-caixa Raízes, vitrine e vegetação" width="800" height="600" loading="lazy">
-                  <span class="project-category">Fachadas & letreiros</span>
-                  <span class="project-expand">
-                    <svg class="icon" aria-hidden="true">
-                      <use href="#i-expand"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="project-caption">
-                  <div>
-                    <h3>Uma fachada que convida.</h3>
-                    <p>ACM, letras-caixa e personalidade.</p>
-                  </div>
-                  <span>Ver estudo<svg class="icon" aria-hidden="true">
-                      <use href="#i-plus"/>
-                    </svg>
-                  </span>
-                </div>
-              </button>
-            </article>
-            <article class="project-card" data-category="impressao">
-              <button class="project-open" data-project="impressao" aria-label="Ampliar estudo visual: Ideias em grande formato">
-                <div class="project-image">
-                  <img src="img/projeto-impressao.svg" alt="Estudo de cartazes coloridos em laranja, azul e lilás com tipografia expressiva" width="800" height="600" loading="lazy">
-                  <span class="project-category">Impressão digital</span>
-                  <span class="project-expand">
-                    <svg class="icon" aria-hidden="true">
-                      <use href="#i-expand"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="project-caption">
-                  <div>
-                    <h3>Ideias em grande formato.</h3>
-                    <p>Cor que chama. Qualidade que fica.</p>
-                  </div>
-                  <span>Ver estudo<svg class="icon" aria-hidden="true">
-                      <use href="#i-plus"/>
-                    </svg>
-                  </span>
-                </div>
-              </button>
-            </article>
-            <article class="project-card" data-category="adesivacao">
-              <button class="project-open" data-project="adesivacao" aria-label="Ampliar estudo visual: Sua marca em movimento">
-                <div class="project-image">
-                  <img src="img/projeto-adesivacao.svg" alt="Estudo de envelopamento de van branca com identidade azul e laranja" width="800" height="600" loading="lazy">
-                  <span class="project-category">Adesivação & envelopamento</span>
-                  <span class="project-expand">
-                    <svg class="icon" aria-hidden="true">
-                      <use href="#i-expand"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="project-caption">
-                  <div>
-                    <h3>Sua marca em movimento.</h3>
-                    <p>Cada trajeto, uma nova conexão.</p>
-                  </div>
-                  <span>Ver estudo<svg class="icon" aria-hidden="true">
-                      <use href="#i-plus"/>
-                    </svg>
-                  </span>
-                </div>
-              </button>
-            </article>
-            <article class="project-card" data-category="sinalizacao">
-              <button class="project-open" data-project="sinalizacao" aria-label="Ampliar estudo visual: Design que dá direção">
-                <div class="project-image">
-                  <img src="img/projeto-sinalizacao.svg" alt="Estudo de placas direcionais em verde-oliva em ambiente arquitetônico claro" width="800" height="600" loading="lazy">
-                  <span class="project-category">Sinalização</span>
-                  <span class="project-expand">
-                    <svg class="icon" aria-hidden="true">
-                      <use href="#i-expand"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="project-caption">
-                  <div>
-                    <h3>Design que dá direção.</h3>
-                    <p>Funcionalidade em cada detalhe.</p>
-                  </div>
-                  <span>Ver estudo<svg class="icon" aria-hidden="true">
-                      <use href="#i-plus"/>
-                    </svg>
-                  </span>
-                </div>
-              </button>
-            </article>
-          </div>
-          <p class="portfolio-disclaimer">Conceitos ilustrativos para apresentar possibilidades de aplicação. Não representam trabalhos executados.</p>
-        </div>
-      </section>
-
-      <section class="process" aria-labelledby="process-title">
-        <div class="container process-inner">
-          <div class="process-heading">
-            <p class="eyebrow">
-              <span>
-              </span>Simples, do início ao fim</p>
-            <h2 id="process-title">Você imagina.<br>A gente faz acontecer.</h2>
-          </div>
-          <ol class="process-steps">
-            <li>
-              <span>01</span>
-              <h3>Conte sua ideia</h3>
-              <p>Compartilhe o que sua marca precisa.</p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>Alinhamos os detalhes</h3>
-              <p>Materiais, medidas, orçamento e prazo.</p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>Hora de ganhar vida</h3>
-              <p>Produção e instalação com todo o cuidado.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="section contact" id="contato" aria-labelledby="contact-title">
-        <div class="container contact-grid">
-          <div class="contact-copy reveal">
-            <p class="eyebrow">
-              <span>
-              </span>O próximo passo é seu</p>
-            <h2 id="contact-title">Pronto para<br>destacar a<br>sua marca?</h2>
-            <p>Uma boa conversa é o começo de um grande projeto. Conte sua ideia e vamos encontrar a solução ideal para você.</p>
-            <a class="button button-primary" data-whatsapp href="https://wa.me/5582999655907" target="_blank" rel="noopener noreferrer">
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-whatsapp"/>
-              </svg>Conversar pelo WhatsApp</a>
-            <div class="contact-details">
-              <div>
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-whatsapp"/>
-                </svg>
-                <span>
-                  <small>Fale com a Nossa Arte</small>
-                  <a data-phone-link href="tel:+5582999655907">(82) 99965-5907</a>
-                </span>
-              </div>
-              <div>
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-clock"/>
-                </svg>
-                <span>
-                  <small>Horário de atendimento</small>
-                  <span data-hours>Segunda a sexta, das 9h às 18h</span>
-                </span>
-              </div>
-              <div id="location-detail">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-pin"/>
-                </svg>
-                <span>
-                  <small>Vamos até o seu projeto</small>
-                  <span data-address>Consulte nossa região de atendimento.</span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <form class="quote-form" id="quote-form" novalidate>
-            <div class="form-heading">
-              <span class="form-icon">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-spark"/>
-                </svg>
-              </span>
-              <div>
-                <h3>Vamos tirar sua ideia do papel.</h3>
-                <p>Preencha abaixo. É rápido e sem compromisso.</p>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="field">
-                <label for="name">Seu nome <span>*</span>
-                </label>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required maxlength="100" aria-describedby="name-error">
-                <span class="field-error" id="name-error">
-                </span>
-              </div>
-              <div class="field">
-                <label for="company">Empresa <span class="optional">(opcional)</span>
-                </label>
-                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Nome da sua empresa" maxlength="120">
-              </div>
-            </div>
-            <div class="field">
-              <label for="phone">WhatsApp <span>*</span>
-              </label>
-              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required maxlength="20" aria-describedby="phone-error">
-              <span class="field-error" id="phone-error">
-              </span>
-            </div>
-            <div class="field">
-              <label for="service">Qual solução você procura? <span>*</span>
-              </label>
-              <div class="select-wrap">
-                <select id="service" name="service" required aria-describedby="service-error">
-                  <option value="">Selecione um serviço</option>
-                  <option>Fachadas e letreiros</option>
-                  <option>Impressão digital</option>
-                  <option>Adesivação e envelopamento</option>
-                  <option>Sinalização</option>
-                  <option>Displays e PDV</option>
-                  <option>Projetos especiais</option>
-                  <option>Preciso de orientação</option>
-                </select>
-              </div>
-              <span class="field-error" id="service-error">
-              </span>
-            </div>
-            <div class="field">
-              <label for="message">Conte um pouco sobre sua ideia <span class="optional">(opcional)</span>
-              </label>
-              <textarea id="message" name="message" rows="3" placeholder="Medidas, quantidades, prazos... O que você já tem em mente?" maxlength="2000">
-              </textarea>
-            </div>
-            <button class="button button-primary form-submit" type="submit" disabled>
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-whatsapp"/>
-              </svg>Preparar meu orçamento</button>
-            <p class="form-privacy">
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-shield"/>
-              </svg>Você revisa a mensagem e envia pelo WhatsApp.<br>Seus dados não ficam armazenados neste site.</p>
-            <div class="form-feedback" id="form-feedback" role="status" hidden>
-              <strong>Sua mensagem está pronta!</strong>
-              <p>Continue no WhatsApp para revisar e enviar seu pedido à Nossa Arte.</p>
-              <a id="quote-whatsapp" class="button button-navy" href="https://wa.me/5582999655907" target="_blank" rel="noopener noreferrer">Continuar no WhatsApp<svg class="icon" aria-hidden="true">
-                  <use href="#i-whatsapp"/>
-                </svg>
-              </a>
-            </div>
-            <noscript>
-              <p class="noscript-note">Para preparar a mensagem, ative o JavaScript ou <a href="https://wa.me/5582999655907" target="_blank" rel="noopener noreferrer">peça seu orçamento diretamente pelo WhatsApp</a>.</p>
-            </noscript>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <a class="footer-logo" href="#inicio" aria-label="Nossa Arte, início">
-              <img src="img/logo-nossa-arte.png" alt="Nossa Arte" width="190" height="58" loading="lazy">
-            </a>
-            <p>Ideias que ganham forma.<br>Marcas que ganham o mundo.</p>
-            <a class="footer-social" id="instagram-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" hidden>
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-instagram"/>
-              </svg>
-              <span>Nosso Instagram</span>
-            </a>
-          </div>
-          <div class="footer-links">
-            <h3>Explore</h3>
-            <a href="#inicio">Início</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#diferenciais">Diferenciais</a>
-            <a href="#portfolio">Portfólio</a>
-          </div>
-          <div class="footer-links">
-            <h3>Vamos conversar</h3>
-            <a data-phone-link href="tel:+5582999655907">(82) 99965-5907</a>
-            <span data-hours>Segunda a sexta, das 9h às 18h</span>
-            <a href="#contato">Solicitar orçamento</a>
-          </div>
-          <div class="footer-message">
-            <span>Sua ideia.<br>Nossa arte.</span>
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-badge">
             <svg class="icon" aria-hidden="true">
-              <use href="#i-spark"/>
+              <use href="#i-spark" />
+            </svg>
+            <span>Comunicação visual & impressão de alta performance</span>
+          </div>
+          <h1 id="hero-title">
+            <span>O sucesso do</span>
+            <span>seu negócio</span>
+            <span class="headline-last">começa aqui.<svg viewBox="0 0 420 18" preserveAspectRatio="none"
+                aria-hidden="true">
+                <path d="M3 12C110 1 260 2 415 8" />
+              </svg>
+            </span>
+          </h1>
+          <p class="hero-description">Transformamos a identidade da sua empresa com projetos de comunicação visual,
+            fachadas, impressão digital em grandes formatos e sinalização sob medida.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contato">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-whatsapp" />
+              </svg>Fazer orçamento rápido</a>
+            <a class="button button-outline" href="#servicos">Conhecer serviços</a>
+          </div>
+          <div class="hero-proof">
+            <div>
+              <strong>+10 <span>anos</span>
+              </strong>
+              <span>de experiência</span>
+            </div>
+            <div>
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-check" />
+              </svg>
+              <span>Entrega ágil<br>Acabamento premium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="hero-visual">
+          <div class="visual-grid" aria-hidden="true">
+          </div>
+          <div class="scene-label">
+            <span class="small-spark" aria-hidden="true">✳</span> Sua ideia ganha dimensão.
+          </div>
+          <div class="scene-wrap" id="scene-wrap" role="img"
+            aria-label="Composição tridimensional de placas de impressão em azul-marinho, laranja e acrílico">
+            <div class="scene-fallback" aria-hidden="true">
+              <div class="fallback-orbit">
+              </div>
+              <div class="fallback-sheet sheet-back">
+              </div>
+              <div class="fallback-sheet sheet-middle">
+              </div>
+              <div class="fallback-sheet sheet-front">
+                <span class="print-symbol">n<span>a</span>
+                </span>
+                <span>Sua marca.<br>Em outra<br>dimensão.</span>
+                <small>Ideias que se tornam presença.</small>
+                <div class="print-swatches">
+                  <i>
+                  </i>
+                  <i>
+                  </i>
+                  <i>
+                  </i>
+                  <i>
+                  </i>
+                </div>
+              </div>
+              <div class="fallback-sphere">
+              </div>
+            </div>
+          </div>
+          <div class="visual-note">
+            <span class="note-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-layers" />
+              </svg>
+            </span>
+            <span>
+              <strong>Do conceito ao acabamento.</strong>
+              <small>Cuidado em cada camada.</small>
+            </span>
+          </div>
+          <div class="scene-controls" hidden>
+            <span>
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-cursor" />
+              </svg> Explore com o cursor</span>
+            <button id="motion-toggle" class="icon-button" aria-label="Pausar animação 3D" aria-pressed="false">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-pause" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="expertise-strip">
+        <div class="container">
+          <span>Da primeira impressão à presença que fica.</span>
+          <div>
+            <span>Estratégia</span>
+            <i aria-hidden="true">
+            </i>
+            <span>Criatividade</span>
+            <i aria-hidden="true">
+            </i>
+            <span>Precisão</span>
+            <i aria-hidden="true">
+            </i>
+            <span>Impacto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicos" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">
+              <span>
+              </span>O que fazemos
+            </p>
+            <h2 id="services-title">Sua marca em todos<br>os lugares certos.</h2>
+          </div>
+          <p>Do pequeno detalhe ao grande formato.<br>Soluções completas para a sua empresa<br>ser vista, lembrada e
+            reconhecida.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-store" />
+              </svg>
+            </div>
+            <h3>Fachadas e letreiros</h3>
+            <p>A primeira impressão que fica. Fachadas em ACM, letras-caixa em aço, acrílico ou PVC e iluminação em LED.
+            </p>
+            <a href="#contato" data-service="Fachadas e letreiros">Quero destacar minha fachada<svg class="icon"
+                aria-hidden="true">
+                <use href="#i-plus" />
+              </svg>
+            </a>
+            <div class="service-tags">
+              <span>ACM</span>
+              <span>Letras-caixa</span>
+              <span>LED</span>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-print" />
+              </svg>
+            </div>
+            <h3>Impressão digital</h3>
+            <p>Ideias grandes merecem alta definição. Lonas, banners, faixas e painéis com cores vivas e acabamento
+              preciso.</p>
+            <a href="#contato" data-service="Impressão digital">Quero imprimir minha ideia<svg class="icon"
+                aria-hidden="true">
+                <use href="#i-plus" />
+              </svg>
+            </a>
+            <div class="service-tags">
+              <span>Grandes formatos</span>
+              <span>Alta definição</span>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-layers" />
+              </svg>
+            </div>
+            <h3>Adesivação e envelopamento</h3>
+            <p>Superfícies que comunicam. Adesivos personalizados para vitrines, ambientes corporativos e envelopamento
+              de frotas.</p>
+            <a href="#contato" data-service="Adesivação e envelopamento">Quero transformar um espaço<svg class="icon"
+                aria-hidden="true">
+                <use href="#i-plus" />
+              </svg>
+            </a>
+            <div class="service-tags">
+              <span>Vitrines</span>
+              <span>Ambientes</span>
+              <span>Frotas</span>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-sign" />
+              </svg>
+            </div>
+            <h3>Sinalização</h3>
+            <p>Direção com identidade. Placas, totens e sinalização interna e externa que orientam e valorizam a sua
+              marca.</p>
+            <a href="#contato" data-service="Sinalização">Quero sinalizar meu negócio<svg class="icon"
+                aria-hidden="true">
+                <use href="#i-plus" />
+              </svg>
+            </a>
+            <div class="service-tags">
+              <span>Placas</span>
+              <span>Totens</span>
+              <span>Identificação</span>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-display" />
+              </svg>
+            </div>
+            <h3>Displays e PDV</h3>
+            <p>Presença no momento da decisão. Expositores, wobblers e estruturas para pontos de venda, feiras e
+              eventos.</p>
+            <a href="#contato" data-service="Displays e PDV">Quero valorizar meu produto<svg class="icon"
+                aria-hidden="true">
+                <use href="#i-plus" />
+              </svg>
+            </a>
+            <div class="service-tags">
+              <span>Expositores</span>
+              <span>Eventos</span>
+              <span>PDV</span>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-spark" />
+              </svg>
+            </div>
+            <h3>Projetos especiais</h3>
+            <p>Sua ideia não cabe em uma categoria? Criamos peças em acrílico, corte a laser e soluções exclusivas sob
+              medida.</p>
+            <a href="#contato" data-service="Projetos especiais">Quero tirar uma ideia do papel<svg class="icon"
+                aria-hidden="true">
+                <use href="#i-plus" />
+              </svg>
+            </a>
+            <div class="service-tags">
+              <span>Corte a laser</span>
+              <span>Sob medida</span>
+            </div>
+          </article>
+        </div>
+        <p class="services-help">Ainda não sabe qual solução escolher? <a href="#contato"
+            data-service="Preciso de orientação">A gente ajuda você a encontrar.</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="difference section" id="diferenciais" aria-labelledby="difference-title">
+      <div class="container difference-grid">
+        <div class="difference-intro reveal">
+          <p class="eyebrow">
+            <span>
+            </span>O jeito Nossa Arte
+          </p>
+          <h2 id="difference-title">Não é só sobre<br>ser visto.<br>É sobre marcar.</h2>
+          <p>Por trás de cada entrega, existe uma equipe que entende a importância da sua marca. E cuida dela como se
+            fosse nossa.</p>
+          <a class="button button-primary" href="#contato">Vamos criar algo juntos<svg class="icon" aria-hidden="true">
+              <use href="#i-spark" />
+            </svg>
+          </a>
+          <div class="difference-seal" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <path d="m50 4 8 29 23-20-13 28 30 4-29 10 23 20-30-7-6 30-10-29-24 19 14-27-31-6 29-8L13 24l30 10Z" />
             </svg>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>© <span id="year">2026</span> Nossa Arte. Todos os direitos reservados.</p>
-          <span>Comunicação visual feita com propósito.</span>
-          <a href="#inicio">Voltar ao início</a>
+        <div class="advantages">
+          <article class="advantage reveal">
+            <span class="advantage-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-target" />
+              </svg>
+            </span>
+            <div>
+              <h3>Tecnologia de ponta</h3>
+              <p>Impressão de alta definição e corte de precisão para transformar boas ideias em resultados à altura.
+              </p>
+            </div>
+          </article>
+          <article class="advantage reveal">
+            <span class="advantage-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-team" />
+              </svg>
+            </span>
+            <div>
+              <h3>Gente que entende do assunto</h3>
+              <p>Uma equipe especializada ao seu lado, do projeto técnico ao último detalhe da instalação.</p>
+            </div>
+          </article>
+          <article class="advantage reveal">
+            <span class="advantage-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-clock" />
+              </svg>
+            </span>
+            <div>
+              <h3>Seu prazo é nosso compromisso</h3>
+              <p>Planejamento, agilidade e pontualidade para a sua inauguração, campanha ou evento acontecer.</p>
+            </div>
+          </article>
+          <article class="advantage reveal">
+            <span class="advantage-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-shield" />
+              </svg>
+            </span>
+            <div>
+              <h3>Qualidade que permanece</h3>
+              <p>Materiais selecionados, resistência UV e acabamento premium. Bonito hoje. Resistente amanhã.</p>
+            </div>
+          </article>
         </div>
       </div>
-    </footer>
-    <a class="floating-whatsapp" data-whatsapp href="https://wa.me/5582999655907" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Nossa Arte no WhatsApp">
-      <svg class="icon" aria-hidden="true">
-        <use href="#i-whatsapp"/>
-      </svg>
-      <span>Vamos conversar?</span>
-    </a>
+    </section>
 
-    <dialog class="project-modal" id="project-modal" aria-labelledby="modal-title" aria-describedby="modal-description">
-      <button class="modal-close icon-button" aria-label="Fechar visualização">
-        <svg class="icon" aria-hidden="true">
-          <use href="#i-close"/>
-        </svg>
-      </button>
-      <img id="modal-image" src="img/projeto-fachada.svg" alt="" width="800" height="600">
-      <div class="modal-content">
-        <span class="modal-tag" id="modal-category">
-        </span>
-        <h2 id="modal-title">
-        </h2>
-        <p id="modal-description">
-        </p>
-        <p class="modal-note">Estudo visual ilustrativo. Materiais e acabamentos são definidos conforme cada projeto.</p>
-        <a class="button button-primary" id="modal-cta" href="#contato">Quero um projeto assim<svg class="icon" aria-hidden="true">
-            <use href="#i-plus"/>
-          </svg>
-        </a>
+    <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">
+              <span>
+              </span>Possibilidades na prática
+            </p>
+            <h2 id="portfolio-title">Imagine sua marca<br>no próximo projeto.</h2>
+          </div>
+          <p>Materiais, cores e ideias que ganham vida.<br>Explore estudos visuais das nossas soluções.</p>
+        </div>
+        <div class="portfolio-filters" role="group" aria-label="Filtrar projetos por categoria">
+          <button class="filter-button active" data-filter="todos" aria-pressed="true">Todos <span>4</span>
+          </button>
+          <button class="filter-button" data-filter="fachadas" aria-pressed="false">Fachadas</button>
+          <button class="filter-button" data-filter="impressao" aria-pressed="false">Impressão digital</button>
+          <button class="filter-button" data-filter="adesivacao" aria-pressed="false">Adesivação</button>
+          <button class="filter-button" data-filter="sinalizacao" aria-pressed="false">Sinalização</button>
+        </div>
+        <p id="filter-status" class="sr-only" aria-live="polite">4 estudos visuais disponíveis.</p>
+        <div class="portfolio-grid" id="portfolio-grid">
+          <article class="project-card" data-category="fachadas">
+            <button class="project-open" data-project="fachada"
+              aria-label="Ampliar estudo visual: Uma fachada que convida">
+              <div class="project-image">
+                <img src="img/projeto-fachada.svg"
+                  alt="Estudo de fachada verde com letras-caixa Raízes, vitrine e vegetação" width="800" height="600"
+                  loading="lazy">
+                <span class="project-category">Fachadas & letreiros</span>
+                <span class="project-expand">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" />
+                  </svg>
+                </span>
+              </div>
+              <div class="project-caption">
+                <div>
+                  <h3>Uma fachada que convida.</h3>
+                  <p>ACM, letras-caixa e personalidade.</p>
+                </div>
+                <span>Ver estudo<svg class="icon" aria-hidden="true">
+                    <use href="#i-plus" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+          </article>
+          <article class="project-card" data-category="impressao">
+            <button class="project-open" data-project="impressao"
+              aria-label="Ampliar estudo visual: Ideias em grande formato">
+              <div class="project-image">
+                <img src="img/projeto-impressao.svg"
+                  alt="Estudo de cartazes coloridos em laranja, azul e lilás com tipografia expressiva" width="800"
+                  height="600" loading="lazy">
+                <span class="project-category">Impressão digital</span>
+                <span class="project-expand">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" />
+                  </svg>
+                </span>
+              </div>
+              <div class="project-caption">
+                <div>
+                  <h3>Ideias em grande formato.</h3>
+                  <p>Cor que chama. Qualidade que fica.</p>
+                </div>
+                <span>Ver estudo<svg class="icon" aria-hidden="true">
+                    <use href="#i-plus" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+          </article>
+          <article class="project-card" data-category="adesivacao">
+            <button class="project-open" data-project="adesivacao"
+              aria-label="Ampliar estudo visual: Sua marca em movimento">
+              <div class="project-image">
+                <img src="img/projeto-adesivacao.svg"
+                  alt="Estudo de envelopamento de van branca com identidade azul e laranja" width="800" height="600"
+                  loading="lazy">
+                <span class="project-category">Adesivação & envelopamento</span>
+                <span class="project-expand">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" />
+                  </svg>
+                </span>
+              </div>
+              <div class="project-caption">
+                <div>
+                  <h3>Sua marca em movimento.</h3>
+                  <p>Cada trajeto, uma nova conexão.</p>
+                </div>
+                <span>Ver estudo<svg class="icon" aria-hidden="true">
+                    <use href="#i-plus" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+          </article>
+          <article class="project-card" data-category="sinalizacao">
+            <button class="project-open" data-project="sinalizacao"
+              aria-label="Ampliar estudo visual: Design que dá direção">
+              <div class="project-image">
+                <img src="img/projeto-sinalizacao.svg"
+                  alt="Estudo de placas direcionais em verde-oliva em ambiente arquitetônico claro" width="800"
+                  height="600" loading="lazy">
+                <span class="project-category">Sinalização</span>
+                <span class="project-expand">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" />
+                  </svg>
+                </span>
+              </div>
+              <div class="project-caption">
+                <div>
+                  <h3>Design que dá direção.</h3>
+                  <p>Funcionalidade em cada detalhe.</p>
+                </div>
+                <span>Ver estudo<svg class="icon" aria-hidden="true">
+                    <use href="#i-plus" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+          </article>
+        </div>
+        <p class="portfolio-disclaimer">Conceitos ilustrativos para apresentar possibilidades de aplicação. Não
+          representam trabalhos executados.</p>
       </div>
-    </dialog>
-  </body>
+    </section>
+
+    <section class="process" aria-labelledby="process-title">
+      <div class="container process-inner">
+        <div class="process-heading">
+          <p class="eyebrow">
+            <span>
+            </span>Simples, do início ao fim
+          </p>
+          <h2 id="process-title">Você imagina.<br>A gente faz acontecer.</h2>
+        </div>
+        <ol class="process-steps">
+          <li>
+            <span>01</span>
+            <h3>Conte sua ideia</h3>
+            <p>Compartilhe o que sua marca precisa.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Alinhamos os detalhes</h3>
+            <p>Materiais, medidas, orçamento e prazo.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Hora de ganhar vida</h3>
+            <p>Produção e instalação com todo o cuidado.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section contact" id="contato" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">
+            <span>
+            </span>O próximo passo é seu
+          </p>
+          <h2 id="contact-title">Pronto para<br>destacar a<br>sua marca?</h2>
+          <p>Uma boa conversa é o começo de um grande projeto. Conte sua ideia e vamos encontrar a solução ideal para
+            você.</p>
+          <a class="button button-primary" data-whatsapp href="https://wa.me/5582999655907" target="_blank"
+            rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-whatsapp" />
+            </svg>Conversar pelo WhatsApp</a>
+          <div class="contact-details">
+            <div>
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-whatsapp" />
+              </svg>
+              <span>
+                <small>Fale com a Nossa Arte</small>
+                <a data-phone-link href="tel:+5582999655907">(82) 99965-5907</a>
+              </span>
+            </div>
+            <div>
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-clock" />
+              </svg>
+              <span>
+                <small>Horário de atendimento</small>
+                <span data-hours>Segunda a sexta, das 9h às 18h</span>
+              </span>
+            </div>
+            <div id="location-detail">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-pin" />
+              </svg>
+              <span>
+                <small>Vamos até o seu projeto</small>
+                <span data-address>Consulte nossa região de atendimento.</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <form class="quote-form" id="quote-form" novalidate>
+          <div class="form-heading">
+            <span class="form-icon">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-spark" />
+              </svg>
+            </span>
+            <div>
+              <h3>Vamos tirar sua ideia do papel.</h3>
+              <p>Preencha abaixo. É rápido e sem compromisso.</p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Seu nome <span>*</span>
+              </label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?"
+                required maxlength="100" aria-describedby="name-error">
+              <span class="field-error" id="name-error">
+              </span>
+            </div>
+            <div class="field">
+              <label for="company">Empresa <span class="optional">(opcional)</span>
+              </label>
+              <input id="company" name="company" type="text" autocomplete="organization"
+                placeholder="Nome da sua empresa" maxlength="120">
+            </div>
+          </div>
+          <div class="field">
+            <label for="phone">WhatsApp <span>*</span>
+            </label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000"
+              required maxlength="20" aria-describedby="phone-error">
+            <span class="field-error" id="phone-error">
+            </span>
+          </div>
+          <div class="field">
+            <label for="service">Qual solução você procura? <span>*</span>
+            </label>
+            <div class="select-wrap">
+              <select id="service" name="service" required aria-describedby="service-error">
+                <option value="">Selecione um serviço</option>
+                <option>Fachadas e letreiros</option>
+                <option>Impressão digital</option>
+                <option>Adesivação e envelopamento</option>
+                <option>Sinalização</option>
+                <option>Displays e PDV</option>
+                <option>Projetos especiais</option>
+                <option>Preciso de orientação</option>
+              </select>
+            </div>
+            <span class="field-error" id="service-error">
+            </span>
+          </div>
+          <div class="field">
+            <label for="message">Conte um pouco sobre sua ideia <span class="optional">(opcional)</span>
+            </label>
+            <textarea id="message" name="message" rows="3"
+              placeholder="Medidas, quantidades, prazos... O que você já tem em mente?" maxlength="2000">
+              </textarea>
+          </div>
+          <button class="button button-primary form-submit" type="submit" disabled>
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-whatsapp" />
+            </svg>Preparar meu orçamento</button>
+          <p class="form-privacy">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-shield" />
+            </svg>Você revisa a mensagem e envia pelo WhatsApp.<br>Seus dados não ficam armazenados neste site.
+          </p>
+          <div class="form-feedback" id="form-feedback" role="status" hidden>
+            <strong>Sua mensagem está pronta!</strong>
+            <p>Continue no WhatsApp para revisar e enviar seu pedido à Nossa Arte.</p>
+            <a id="quote-whatsapp" class="button button-navy" href="https://wa.me/5582999655907" target="_blank"
+              rel="noopener noreferrer">Continuar no WhatsApp<svg class="icon" aria-hidden="true">
+                <use href="#i-whatsapp" />
+              </svg>
+            </a>
+          </div>
+          <noscript>
+            <p class="noscript-note">Para preparar a mensagem, ative o JavaScript ou <a
+                href="https://wa.me/5582999655907" target="_blank" rel="noopener noreferrer">peça seu orçamento
+                diretamente pelo WhatsApp</a>.</p>
+          </noscript>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="footer-logo" href="#inicio" aria-label="Nossa Arte, início">
+            <img src="img/logo-nossa-arte.png" alt="Nossa Arte" width="190" height="58" loading="lazy">
+          </a>
+          <p>Ideias que ganham forma.<br>Marcas que ganham o mundo.</p>
+          <a class="footer-social" id="instagram-link" href="https://www.instagram.com/" target="_blank"
+            rel="noopener noreferrer" hidden>
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-instagram" />
+            </svg>
+            <span>Nosso Instagram</span>
+          </a>
+        </div>
+        <div class="footer-links">
+          <h3>Explore</h3>
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#diferenciais">Diferenciais</a>
+          <a href="#portfolio">Portfólio</a>
+        </div>
+        <div class="footer-links">
+          <h3>Vamos conversar</h3>
+          <a data-phone-link href="tel:+5582999655907">(82) 99965-5907</a>
+          <span data-hours>Segunda a sexta, das 9h às 18h</span>
+          <a href="#contato">Solicitar orçamento</a>
+        </div>
+        <div class="footer-message">
+          <span>Sua ideia.<br>Nossa arte.</span>
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-spark" />
+          </svg>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> <strong>Nossa Arte</strong>. Todos os direitos reservados. | Desenvolvido por
+          <a href="https://instagram.com/marcelllombm" target="_blank" rel="noopener noreferrer"><strong>&lt;MBM
+              /&gt;</strong></a></p>
+        <a href="#inicio">Voltar ao início</a>
+      </div>
+    </div>
+  </footer>
+  <a class="floating-whatsapp" data-whatsapp href="https://wa.me/5582999655907" target="_blank"
+    rel="noopener noreferrer" aria-label="Falar com a Nossa Arte no WhatsApp">
+    <svg class="icon" aria-hidden="true">
+      <use href="#i-whatsapp" />
+    </svg>
+    <span>Vamos conversar?</span>
+  </a>
+
+  <dialog class="project-modal" id="project-modal" aria-labelledby="modal-title" aria-describedby="modal-description">
+    <button class="modal-close icon-button" aria-label="Fechar visualização">
+      <svg class="icon" aria-hidden="true">
+        <use href="#i-close" />
+      </svg>
+    </button>
+    <img id="modal-image" src="img/projeto-fachada.svg" alt="" width="800" height="600">
+    <div class="modal-content">
+      <span class="modal-tag" id="modal-category">
+      </span>
+      <h2 id="modal-title">
+      </h2>
+      <p id="modal-description">
+      </p>
+      <p class="modal-note">Estudo visual ilustrativo. Materiais e acabamentos são definidos conforme cada projeto.</p>
+      <a class="button button-primary" id="modal-cta" href="#contato">Quero um projeto assim<svg class="icon"
+          aria-hidden="true">
+          <use href="#i-plus" />
+        </svg>
+      </a>
+    </div>
+  </dialog>
+</body>
+
 </html>

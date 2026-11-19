@@ -1654,6 +1654,17 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
   color: inherit;
 }
 
+.footer-bottom p a {
+  color: var(--white);
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-bottom p a:hover {
+  color: var(--orange);
+}
+
 .footer-bottom>a {
   white-space: nowrap;
 }
