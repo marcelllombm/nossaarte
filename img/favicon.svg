@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#0a1142"/><path d="M15 45V21h8v4c3-5 15-7 18 2 1 4 0 13 1 18h-9V30c0-5-10-5-10 2v13Z" fill="#ff6600"/><circle cx="48" cy="18" r="6" fill="#ffd700"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416 416">
+  <defs>
+    <linearGradient id="rim" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ffe600"/>
+      <stop offset="50%" stop-color="#ff6600"/>
+      <stop offset="100%" stop-color="#ffe600"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="84%" r="74%" fx="50%" fy="88%">
+      <stop offset="0%" stop-color="#ffff00"/>
+      <stop offset="42%" stop-color="#ffc400"/>
+      <stop offset="78%" stop-color="#ff8a00"/>
+      <stop offset="100%" stop-color="#ff6e00"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffff00"/>
+      <stop offset="55%" stop-color="#ffec00" stop-opacity=".92"/>
+      <stop offset="100%" stop-color="#ffcf00" stop-opacity=".42"/>
+    </linearGradient>
+    <clipPath id="disc">
+      <circle cx="208" cy="202.5" r="176"/>
+    </clipPath>
+  </defs>
+  <circle cx="208" cy="208" r="208" fill="#000066"/>
+  <circle cx="208" cy="208" r="190" fill="url(#rim)"/>
+  <circle cx="208" cy="202.5" r="176" fill="url(#core)"/>
+  <path d="M48 156C70 75 120 28 208 28c88 0 149 60 163 128 21 79-21 51-79 39-68-18-116-16-170-2-62 18-82 10-74-37Z" fill="url(#sheen)" clip-path="url(#disc)"/>
+  <path d="M120 108v7c29-5 33 5 25 33-11 40-26 79-37 108l44-10c8-30 36-85 70-113 15-13 26-7 20 6l-19 49c-24 8-49 26-60 38 18-8 34-13 51-15l-19 59c-9 31 9 39 28 31 19-6 34-20 46-33l-6-6c-18 18-33 19-24-6l15-45c15 1 30 4 44 6l10-31c-14-3-29-2-43-2l18-49c16-50-35-44-76-1-11 11-22 25-30 38l-4-1 24-70-6-4-18 7c-20-1-35 0-53 4Z" fill="#000066"/>
+</svg>
