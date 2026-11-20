@@ -1636,23 +1636,23 @@ textarea:focus-visible {
   justify-content: center;
   gap: 10px;
   border: 1px solid #ffffff70;
-  background: var(--navy);
-  color: white;
-  width: 54px;
-  height: 54px;
+  background: var(--orange);
+  color: var(--navy-deep);
+  width: 64px;
+  height: 64px;
   box-shadow: 0 5px 20px #0a114225;
   border-radius: 50%;
   transition: background .2s, transform .2s;
 }
 
 .floating-whatsapp>.icon {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
 }
 
 .floating-whatsapp>span {
   position: absolute;
-  right: 65px;
+  right: calc(100% + 12px);
   padding: 9px 14px;
   white-space: nowrap;
   background: white;
@@ -1668,7 +1668,7 @@ textarea:focus-visible {
 }
 
 .floating-whatsapp:hover {
-  background: #1b295f;
+  background: var(--orange-hover);
   transform: translateY(-2px);
 }
 
@@ -2681,8 +2681,8 @@ textarea:focus-visible {
   .floating-whatsapp {
     right: 17px;
     bottom: 17px;
-    width: 51px;
-    height: 51px;
+    width: 60px;
+    height: 60px;
   }
 
   .modal-content {
