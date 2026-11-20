@@ -4,7 +4,7 @@ Atualização da hero em 20/11/2026, com Chrome headless. Resultados e capturas 
 
 - Logo inicia em quatro camadas separadas, com **Remontar logo** ativo.
 - Timeline GSAP de 550 ms, com defasagem de 30 ms entre camadas; saída e interrupções rápidas revertem sem deslocamento acumulado.
-- Enter, Escape, toque, pausa manual e movimento reduzido funcionam.
+- Enter, Escape, toque e movimento reduzido funcionam.
 - Canvas transparente, responsivo a mudanças do container, DPR limitado a 2.
 - Timeline e renderização param fora da tela e retornam quando visíveis; o ticker também retoma ao desativar movimento reduzido.
 - Falta de WebGL, falha do CDN e perda de contexto restauram o logo estático; PNG atrasado não bloqueia a geometria.

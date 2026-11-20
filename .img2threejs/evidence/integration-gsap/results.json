@@ -12,7 +12,7 @@
     "passed": true
   },
   {
-    "maxProjectedExtent": 0.7927777615808607
+    "maxProjectedExtent": 0.792777015482284
   },
   {
     "name": "Hover interpolates, separates all four layers, keeps geometry inside canvas",
@@ -24,10 +24,6 @@
   },
   {
     "name": "Keyboard Enter toggles layers and Escape closes them",
-    "passed": true
-  },
-  {
-    "name": "Pause stops frames but keeps layer controls usable",
     "passed": true
   },
   {

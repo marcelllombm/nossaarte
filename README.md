@@ -19,7 +19,7 @@ Acesse `http://localhost:8080`. Internet é necessária para as fontes, Three.js
 - `js/config.js`: WhatsApp, telefone, horário e campos opcionais de endereço e Instagram.
 - `js/main.js`: filtros, modal, formulário, menu e animações GSAP/ScrollTrigger.
 - `js/logo-model.js`: geometria procedural do logo, monograma em curvas extrudadas, materiais e iluminação; quatro peças com pivôs independentes.
-- `js/scene.js`: canvas da hero, timeline GSAP reversível de 550 ms, paralaxe, teclado/toque, pausa, descarte de recursos e fallback.
+- `js/scene.js`: canvas da hero, timeline GSAP reversível de 550 ms, paralaxe, teclado/toque, movimento reduzido, descarte de recursos e fallback.
 - `img/`: logo original, favicon e quatro estudos visuais SVG originais.
 - `docs/design.md`: decisões de design e limites editoriais.
 
@@ -40,7 +40,7 @@ Os quatro projetos são **conceitos ilustrativos**, identificados na página e n
 - Navegação por teclado, link para pular conteúdo, foco visível e labels permanentes.
 - Modal nativo com Escape, foco contido e retorno ao botão que o abriu.
 - Formulário com erros associados aos campos e feedback acessível.
-- `prefers-reduced-motion` respeitado em CSS, GSAP e Three.js; pausa manual na cena.
+- `prefers-reduced-motion` respeitado em CSS, GSAP e Three.js.
 - Renderização interrompida fora da tela e com a aba oculta; pixel ratio limitado.
 - Logo original quando WebGL ou a biblioteca 3D não estiverem disponíveis; emblema CSS enquanto o PNG carrega. O modelo 3D não depende do carregamento da imagem.
 - Imagens locais, dimensões reservadas e carregamento tardio do portfólio.
@@ -50,7 +50,7 @@ Referências técnicas: [Three.js WebGLRenderer](https://threejs.org/docs/pages/
 
 ## Logo interativo
 
-O logo inicia com as camadas separadas e **Remontar logo** ativo. Passe o cursor sobre a hero para explorar os anéis, o núcleo dourado e o monograma; retire-o para remontar. O botão alterna entre **Explorar camadas** e **Remontar logo** e funciona por toque e teclado; **Escape** remonta. O botão de pausa interrompe o movimento contínuo. Com movimento reduzido, a troca entre montado/desmontado é imediata e não há rotação automática.
+O logo inicia com as camadas separadas e **Remontar logo** ativo. Passe o cursor sobre a hero para explorar os anéis, o núcleo dourado e o monograma; retire-o para remontar. O botão alterna entre **Explorar camadas** e **Remontar logo** e funciona por toque e teclado; **Escape** remonta. Com movimento reduzido, a troca entre montado/desmontado é imediata e não há rotação automática.
 
 A animação usa uma timeline GSAP com `power2.inOut` e 30 ms de defasagem entre camadas, totalizando 550 ms. A remontagem percorre a mesma timeline ao contrário. O canvas acompanha o ticker do GSAP e suspende a animação fora da tela; `gsap.matchMedia()` acompanha a preferência de movimento reduzido. Se o GSAP não carregar, a interpolação nativa mantém os controles funcionais.
 

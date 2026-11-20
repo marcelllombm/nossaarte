@@ -8,7 +8,7 @@ O tema é a transformação de ideias em materiais físicos. A peça central é 
 - Reflexos e acentos: amarelo `#FFD700`.
 - Tipografia: Manrope em títulos; DM Sans em textos e controles.
 - Layout: conteúdo alinhado à esquerda; hero dividido entre texto e objeto 3D; serviços em três colunas; diferenciais escuros; portfólio em duas colunas; contato dividido.
-- Movimento: entrada coordenada, revelações leves, reação ao cursor e parallax discreto. Movimento reduzido respeitado e pausa explícita na cena.
+- Movimento: entrada coordenada, revelações leves, reação ao cursor e parallax discreto. Movimento reduzido respeitado.
 
 Revisão antes da implementação: a busca de UI/UX sugeriu sistemas escuros e aplicações genéricas. A paleta sugerida foi descartada para preservar a logo e o briefing claro. A peça 3D representa impressão e materiais, em vez de um objeto sem relação com a empresa. O restante usa recomendações gerais de acessibilidade, responsividade e performance. A skill de reconstrução por imagem não se aplica ao objeto abstrato original: não há referência 3D a reconstruir.
 

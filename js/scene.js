@@ -7,7 +7,6 @@
   const fallback = container.querySelector('.logo-fallback');
   const controls = container.querySelector('.scene-controls');
   const layersButton = document.getElementById('layers-toggle');
-  const pauseButton = document.getElementById('motion-toggle');
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const TRANSITION_MS = 550;
   let renderer, gl, model, lights, layerTimeline, motionMedia;
@@ -58,7 +57,7 @@
     const gsap = window.gsap;
     let disposed = false, visible = true, frame = 0, previous = 0, elapsed = 0;
     let tickerAttached = false;
-    let userPaused = false, hovered = false, manual = null;
+    let hovered = false, manual = null;
     // Start with the layers already exposed, as the hero's default presentation.
     // GSAP records the assembled origin, then seeks to the exposed initial presentation.
     const motion = { amount: gsap ? 0 : 1 };
@@ -67,7 +66,6 @@
     let bounds = container.getBoundingClientRect();
     const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const removers = [];
-    const paused = () => userPaused || preference.matches;
     const listen = (element, name, handler, options) => {
       element.addEventListener(name, handler, options);
       removers.push(() => element.removeEventListener(name, handler, options));
@@ -90,7 +88,7 @@
     }
 
     function syncTransition() {
-      if (paused()) {
+      if (preference.matches) {
         layerTimeline?.pause().progress(target);
         motion.amount = target;
         layerMotion.forEach(layer => { layer.amount = target; });
@@ -118,7 +116,7 @@
       previous = 0;
     }
     function pose(delta) {
-      const still = paused();
+      const still = preference.matches;
       const amount = motion.amount;
       const follow = still ? 1 : 1 - Math.exp(-9 * delta);
       pointer.x += ((still ? 0 : pointer.targetX) - pointer.x) * follow;
@@ -137,9 +135,8 @@
       if (disposed || !visible || document.hidden) { suspend(); return; }
       const delta = previous ? Math.min((time - previous) / 1000, .05) : 1 / 60;
       previous = time;
-      // Reconcile controls with the current preference even before its change event arrives.
-      pauseButton.hidden = preference.matches;
-      if (paused()) syncTransition();
+      // Respect the current motion preference even before its change event arrives.
+      if (preference.matches) syncTransition();
       else {
         elapsed += delta;
         // A blocked GSAP CDN still leaves a working, reversible Three.js scene.
@@ -151,7 +148,7 @@
       }
       pose(delta);
       renderer.render(scene, camera);
-      if (!paused()) requestFrame();
+      if (!preference.matches) requestFrame();
       else suspend();
     }
     function sync() { suspend(); syncTransition(); requestFrame(); }
@@ -167,13 +164,6 @@
       syncTransition();
       requestFrame();
     }
-    function updatePause() {
-      pauseButton.hidden = preference.matches;
-      pauseButton.setAttribute('aria-pressed', String(userPaused));
-      pauseButton.setAttribute('aria-label', userPaused ? 'Retomar animação 3D' : 'Pausar animação 3D');
-      pauseButton.querySelector('use').setAttribute('href', userPaused ? '#i-play' : '#i-pause');
-      sync();
-    }
     function reset() {
       hovered = false;
       manual = null;
@@ -187,7 +177,7 @@
       if (manual === null) setExpanded(true);
     }
     function move(event) {
-      if (event.pointerType === 'touch' || paused() || !bounds.width || !bounds.height) return;
+      if (event.pointerType === 'touch' || preference.matches || !bounds.width || !bounds.height) return;
       pointer.targetX = THREE.MathUtils.clamp((event.clientX - bounds.left) / bounds.width * 2 - 1, -1, 1);
       pointer.targetY = THREE.MathUtils.clamp(1 - (event.clientY - bounds.top) / bounds.height * 2, -1, 1);
       requestFrame();
@@ -216,10 +206,9 @@
     listen(container, 'pointerleave', leave, { passive: true });
     listen(container, 'pointercancel', reset, { passive: true });
     listen(layersButton, 'click', toggleLayers);
-    listen(pauseButton, 'click', () => { userPaused = !userPaused; updatePause(); });
     listen(container, 'keydown', event => { if (event.key === 'Escape') reset(); });
     listen(container, 'focusout', event => { if (!container.contains(event.relatedTarget) && !hovered) reset(); });
-    if (!gsap) listen(preference, 'change', () => { pointer.targetX = pointer.targetY = 0; updatePause(); });
+    if (!gsap) listen(preference, 'change', () => { pointer.targetX = pointer.targetY = 0; sync(); });
     listen(document, 'visibilitychange', sync);
     listen(window, 'resize', resize, { passive: true });
     listen(window, 'scroll', () => { bounds = container.getBoundingClientRect(); }, { passive: true });
@@ -263,7 +252,7 @@
         allowMotion: '(prefers-reduced-motion: no-preference)'
       }, () => {
         pointer.targetX = pointer.targetY = 0;
-        updatePause();
+        sync();
         return () => layerTimeline.pause();
       });
     }
@@ -277,7 +266,7 @@
     canvas.removeAttribute('aria-hidden');
     fallback.setAttribute('aria-hidden', 'true');
     controls.hidden = false;
-    updatePause();
+    sync();
     container.dispatchEvent(new CustomEvent('logo:ready', { detail: { model, renderer, scene, camera, dispose, animation: layerTimeline } }));
   }
 

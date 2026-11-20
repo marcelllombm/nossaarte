@@ -54,11 +54,6 @@ try {
     await page.focus('#layers-toggle');await page.keyboard.press('Enter');await delay(650);assert(!isRest(await offsets(page)));
     await page.keyboard.press('Escape');await delay(650);assert(isRest(await offsets(page)));
   });
-  await check('Pause stops frames but keeps layer controls usable',async()=>{
-    await page.$eval('#motion-toggle',e=>e.click());await delay(100);const n=await page.evaluate(()=>logoFrameCount);await delay(180);assert.equal(await page.evaluate(()=>logoFrameCount),n);
-    await page.$eval('#layers-toggle',e=>e.click());await delay(100);assert(!isRest(await offsets(page)));
-    await page.$eval('#layers-toggle',e=>e.click());await page.$eval('#motion-toggle',e=>e.click());
-  });
   await check('Rendering suspends offscreen and resumes when visible',async()=>{
     await page.evaluate(()=>{document.activeElement.blur();window.scrollTo(0,document.body.scrollHeight);});await delay(300);
     const n=await page.evaluate(()=>logoFrameCount);await delay(200);assert.equal(await page.evaluate(()=>logoFrameCount),n);
@@ -67,15 +62,14 @@ try {
   });
   await check('Reduced motion disables idle and uses instant layer changes',async()=>{
     await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);await delay(300);
-    await page.waitForFunction(()=>document.querySelector('#motion-toggle').hidden,{timeout:5000});
+    await page.waitForFunction(()=>matchMedia('(prefers-reduced-motion: reduce)').matches && logo.animation.paused(),{timeout:5000});
     const n=await page.evaluate(()=>logoFrameCount);await delay(200);assert.equal(await page.evaluate(()=>logoFrameCount),n);
-    assert(await page.$eval('#motion-toggle',e=>e.hidden));await page.$eval('#layers-toggle',e=>e.click());await delay(80);
+    await page.$eval('#layers-toggle',e=>e.click());await delay(80);
     assert.equal((await offsets(page))[3][2],1.3);
   });
   await check('Returning to normal motion resumes the ticker and reversible timeline',async()=>{
     await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'no-preference'}]);await delay(250);
     const n=await page.evaluate(()=>logoFrameCount);await delay(150);assert(await page.evaluate(()=>logoFrameCount)>n);
-    assert.equal(await page.$eval('#motion-toggle',e=>e.hidden),false);
     await page.$eval('#layers-toggle',e=>e.click());await delay(650);assert(isRest(await offsets(page)));
   });
   await check('Context loss restores readable fallback and hides inactive controls',async()=>{

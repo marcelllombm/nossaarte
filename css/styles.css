@@ -585,13 +585,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
   background: #fff4e5;
 }
 .layers-toggle .icon { width: 17px; height: 17px; }
-.hero-visual .scene-controls .icon-button {
-  width: 44px;
-  height: 44px;
-  background: #ffffffd9;
-  border-color: #dfe3eb;
-}
-.hero-visual .scene-controls .icon-button .icon { width: 15px; height: 15px; }
 @media (prefers-reduced-motion: reduce) {
   .hero-visual > canvas, .logo-fallback { transition: none; }
 }
