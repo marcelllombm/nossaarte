@@ -182,6 +182,44 @@
     window.ScrollTrigger?.refresh();
   });
 
+  // Decorative background: reuse two tweens for smooth, bounded mouse movement.
+  const hero = $('.hero');
+  const heroBackground = $('.hero-background img', hero);
+  if (window.gsap && heroBackground) {
+    const { gsap } = window;
+    const backgroundMedia = gsap.matchMedia();
+    backgroundMedia.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+      gsap.set(heroBackground, { x: 0, y: 0 });
+      const moveX = gsap.quickTo(heroBackground, 'x', { duration: .8, ease: 'power3.out' });
+      const moveY = gsap.quickTo(heroBackground, 'y', { duration: .8, ease: 'power3.out' });
+
+      function moveBackground(event) {
+        if (event.pointerType !== 'mouse') return;
+        const bounds = hero.getBoundingClientRect();
+        const x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / bounds.width * 2 - 1));
+        const y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / bounds.height * 2 - 1));
+        moveX(x * 28);
+        moveY(y * 18);
+      }
+
+      function resetBackground() {
+        moveX(0);
+        moveY(0);
+      }
+
+      hero.addEventListener('pointermove', moveBackground, { passive: true });
+      hero.addEventListener('pointerleave', resetBackground);
+      hero.addEventListener('pointercancel', resetBackground);
+      window.addEventListener('blur', resetBackground);
+      return () => {
+        hero.removeEventListener('pointermove', moveBackground);
+        hero.removeEventListener('pointerleave', resetBackground);
+        hero.removeEventListener('pointercancel', resetBackground);
+        window.removeEventListener('blur', resetBackground);
+      };
+    });
+  }
+
   // Content is visible by default. CDN failure never blocks reading or conversion.
   if (window.gsap && window.ScrollTrigger) {
     const { gsap, ScrollTrigger } = window;

@@ -384,11 +384,57 @@ textarea:focus-visible {
   display: none;
 }
 
-/* Hero: sculptural print layers on a quiet drafting surface. */
+/* Hero: the real facade under navy ink, with the gold logo in the foreground. */
 .hero {
+  --hero-copy: #d9e2f5;
+  --hero-muted: #bccbe5;
+  --hero-border: #a9bfe540;
+  position: relative;
+  isolation: isolate;
   padding-top: var(--header-height);
   overflow: hidden;
-  background: linear-gradient(120deg, #fff 34%, #f8f9fc 100%);
+  background: var(--navy-deep);
+  color: var(--white);
+}
+
+.hero-background {
+  position: absolute;
+  inset: var(--header-height) 0 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-background img {
+  position: absolute;
+  /* Extra coverage keeps the image edges outside the hero during parallax. */
+  inset: -32px;
+  width: calc(100% + 64px);
+  height: calc(100% + 64px);
+  max-width: none;
+  object-fit: cover;
+  object-position: center 24%;
+  filter: saturate(1.12) contrast(1.08);
+}
+
+.hero-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Directional ink keeps the copy readable while the facade retains its color. */
+  background:
+    linear-gradient(0deg, var(--navy-deep) 0%, #070e35b3 16%, #070e3500 58%),
+    linear-gradient(90deg, #070e35fa 0%, #070e35ed 25%, #070e35cc 43%, #0a114273 63%, #0a114233 100%);
+}
+
+.hero :focus-visible {
+  outline-color: var(--gold);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-background img {
+    will-change: transform;
+  }
 }
 
 .hero-grid {
@@ -413,7 +459,7 @@ textarea:focus-visible {
   margin-bottom: 27px;
   font-size: 12px;
   font-weight: 550;
-  color: #5e6072;
+  color: var(--hero-copy);
 }
 
 .hero-badge .icon {
@@ -453,6 +499,7 @@ textarea:focus-visible {
 
 .hero-description {
   max-width: 480px;
+  color: var(--hero-copy);
   font-size: 16px;
   line-height: 1.85;
   margin-bottom: 29px;
@@ -469,6 +516,21 @@ textarea:focus-visible {
   padding-inline: 19px;
 }
 
+.hero-actions .button-primary {
+  box-shadow: 0 8px 30px #ff66002e;
+}
+
+.hero-actions .button-outline {
+  color: var(--white);
+  background: #0a114266;
+  border-color: #a9bfe580;
+}
+
+.hero-actions .button-outline:hover {
+  background: #203064;
+  border-color: var(--hero-copy);
+}
+
 .hero-proof {
   display: flex;
   align-items: center;
@@ -481,7 +543,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 10px;
   padding-right: 25px;
-  border-right: 1px solid #d8dce6;
+  border-right: 1px solid var(--hero-border);
 }
 
 .hero-proof strong {
@@ -503,7 +565,7 @@ textarea:focus-visible {
   font-size: 12px;
   max-width: 65px;
   line-height: 1.45;
-  color: var(--ink-soft);
+  color: var(--hero-muted);
 }
 
 .hero-proof>div:last-child {
@@ -512,14 +574,14 @@ textarea:focus-visible {
   gap: 10px;
   font-size: 12px;
   line-height: 1.7;
-  color: var(--ink-soft);
+  color: var(--hero-muted);
 }
 
 .hero-proof .icon {
   width: 19px;
   height: 19px;
-  background: #fff0e5;
-  color: #a44200;
+  background: #ff660029;
+  color: #ffb277;
   border-radius: 50%;
   padding: 3px;
 }
@@ -609,10 +671,10 @@ textarea:focus-visible {
   gap: 8px;
   min-height: 44px;
   padding: 9px 15px;
-  border: 1px solid #dfe3eb;
+  border: 1px solid var(--hero-border);
   border-radius: 999px;
-  background: #ffffffd9;
-  color: var(--navy);
+  background: #070e35e6;
+  color: var(--hero-copy);
   font: 500 12px var(--font-body);
   cursor: pointer;
   transition: border-color .2s, background-color .2s;
@@ -620,8 +682,8 @@ textarea:focus-visible {
 
 .layers-toggle:hover,
 .layers-toggle[aria-pressed="true"] {
-  border-color: #e8a65c;
-  background: #fff4e5;
+  border-color: #ffb27799;
+  background: #34243a;
 }
 
 .layers-toggle .icon {
@@ -638,10 +700,9 @@ textarea:focus-visible {
 }
 
 .expertise-strip {
-  border-block: 1px solid var(--line);
-  background: #0b1142;
+  border-top: 1px solid var(--hero-border);
+  background: var(--orange-hover);
   color: white;
-
 }
 
 .expertise-strip>.container {
@@ -2025,6 +2086,23 @@ textarea:focus-visible {
 
 /* Mobile: all content remains available, including controls and validation. */
 @media(max-width:650px) {
+  .hero-background img {
+    top: auto;
+    height: 72%;
+    object-position: 45% top;
+    mask-image: linear-gradient(180deg, transparent, #000 22%);
+  }
+
+  .hero-background::after {
+    background: linear-gradient(180deg,
+        var(--navy-deep) 0%,
+        #070e35f5 28%,
+        #070e35d9 46%,
+        #070e354d 65%,
+        #070e3580 83%,
+        var(--navy-deep) 100%);
+  }
+
   :root {
     --header-height: 74px;
     --section-space: 70px;
