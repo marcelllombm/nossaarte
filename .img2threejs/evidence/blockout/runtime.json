@@ -1,0 +1,43 @@
+{
+  "triangles": 4668,
+  "drawCalls": 4,
+  "parts": [
+    {
+      "name": "outer-ring",
+      "kind": "part",
+      "position": [
+        0,
+        0,
+        -0.2
+      ]
+    },
+    {
+      "name": "amber-ring",
+      "kind": "part",
+      "position": [
+        0,
+        0,
+        -0.1
+      ]
+    },
+    {
+      "name": "gold-core",
+      "kind": "part",
+      "position": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "monogram",
+      "kind": "part",
+      "position": [
+        0,
+        0,
+        0.245
+      ]
+    }
+  ],
+  "unnamedMeshes": 0
+}

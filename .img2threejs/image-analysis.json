@@ -1,0 +1,26 @@
+{
+  "reference": "img/logo.png",
+  "classification": {"primaryDomain": "object", "primaryType": "layered circular emblem", "confidence": 1},
+  "suitability": {"verdict": "pass", "reason": "Complete frontal silhouette and unobscured monogram; requested relief is an explicitly stylized reconstruction of a flat logo."},
+  "observation": {
+    "silhouette": "416 by 416 circular emblem; navy outside radius 208, inner radius 189, amber inset, gold face radius about 177.",
+    "hierarchy": ["emblem/outer-navy-ring/bevel", "emblem/amber-ring/bevel", "emblem/gold-core/gradient-and-lacquer", "emblem/monogram/calligraphic-profile-and-bevel"],
+    "relationships": ["amber ring nests inside navy ring", "gold core nests inside amber ring", "monogram sits forward of gold core"],
+    "materials": "Opaque flat navy ink, saturated orange border, yellow/orange gradient core with a broad curved upper highlight. No physical roughness or metalness can be measured from this illustration.",
+    "identity": ["circular silhouette", "navy rim thickness", "thin upper amber border", "gold gradient", "upper curved gloss boundary", "inclined calligraphic monogram", "upper left serif", "inner curved negative space", "right crossbar", "lower curved terminal"]
+  },
+  "inference": {
+    "geometry": "Four closed beveled extrusions, facing +Z, +Y up; authored outline from visible monogram; inferred back faces.",
+    "finish": "User-requested satin/gloss coated solids, navy dielectric, amber dielectric, warm gold with clearcoat.",
+    "depth": "Inferred depth, bevels and nesting from requested layered assembly; not manufacturing dimensions.",
+    "projection": "Not applicable: abstract flat-color vector-style logo is reconstructed as shape geometry; gradient and broad highlight are procedural. Source pixels are only the loading/WebGL fallback.",
+    "unknowns": ["back geometry", "physical layer thickness", "physical finish"],
+    "resolution": "Interpret hidden surfaces as closed, clean planar backs; use user-authorized stylized relief."
+  },
+  "qualityContract": {
+    "definitionOfDone": "Recognizable calligraphic logo in four independent closed solids, assembled initially, separated on hover in 550ms, responsive transparent canvas, keyboard/touch and reduced-motion support, static fallback.",
+    "blockers": ["generic letter replacing monogram", "missing layer", "unintended hole or detached assembled layer", "clipped hover state", "unreadable frontal mark", "WebGL failure hides fallback"],
+    "views": ["front", "right", "rear", "left", "hover oblique", "mobile"],
+    "budget": {"maxTriangles": 20000, "maxDPR": 2, "maxDrawCalls": 12}
+  }
+}

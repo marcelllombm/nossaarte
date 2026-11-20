@@ -197,9 +197,6 @@
         gsap.from(element, { autoAlpha: 0, y: 22, duration: .7, ease: 'power2.out', scrollTrigger: { trigger: element, start: 'top 93%', once: true } });
       });
     });
-    media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
-      gsap.to('#scene-wrap', { y: 38, ease: 'none', scrollTrigger: { trigger: '#inicio', start: 'top top', end: 'bottom top', scrub: .8 } });
-    });
     document.fonts?.ready.then(() => ScrollTrigger.refresh());
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
   }

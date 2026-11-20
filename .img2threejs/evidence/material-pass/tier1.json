@@ -1,0 +1,41 @@
+STATUS pass=material-pass completed=3 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.9813,
+    "aspectRatioDelta": 0.0,
+    "scaleDelta": 0.0089,
+    "bilateralSymmetryError": 0.0083,
+    "colorDelta": {
+      "checked": 5,
+      "maxDeltaE": 9.16,
+      "perComponent": [
+        {
+          "componentId": null,
+          "deltaE": 9.16
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.16
+        },
+        {
+          "componentId": null,
+          "deltaE": 6.74
+        },
+        {
+          "componentId": null,
+          "deltaE": 5.24
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.16
+        }
+      ],
+      "gated": true
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "f80925f3559c5aa5",
+  "passId": "material-pass"
+}

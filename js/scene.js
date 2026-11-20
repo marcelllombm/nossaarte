@@ -1,262 +1,290 @@
-/* A lightweight, procedural print sculpture. The CSS composition is always the fallback. */
+/* Hero controller: reversible GSAP choreography, loading/fallback and GPU lifecycle. */
 (() => {
   'use strict';
-  const container = document.getElementById('scene-wrap');
-  const controls = document.querySelector('.scene-controls');
+  const container = document.querySelector('.hero-visual');
+  if (!container) return;
+  const canvas = container.querySelector('canvas');
+  const fallback = container.querySelector('.logo-fallback');
+  const controls = container.querySelector('.scene-controls');
+  const layersButton = document.getElementById('layers-toggle');
   const pauseButton = document.getElementById('motion-toggle');
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let renderer;
-  let cleanup = () => {};
+  const TRANSITION_MS = 550;
+  let renderer, gl, model, lights, layerTimeline, motionMedia;
+  let resourcesReleased = false;
+  function releaseResources() {
+    if (resourcesReleased) return;
+    resourcesReleased = true;
+    motionMedia?.revert();
+    layerTimeline?.kill();
+    model?.dispose();
+    lights?.key.shadow.dispose();
+    renderer?.dispose();
+  }
+  let dispose = releaseResources;
+  container.dataset.logoState = 'loading';
+
+  function showFallback() {
+    container.classList.remove('is-loaded');
+    container.dataset.logoState = 'fallback';
+    canvas.setAttribute('aria-hidden', 'true');
+    fallback.removeAttribute('aria-hidden');
+    controls.hidden = true;
+  }
 
   async function init() {
-    // Probe before loading the library; unsupported devices keep the finished CSS artwork.
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
-    if (!gl) return;
-    const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js');
-    await Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise(resolve => setTimeout(resolve, 1500))]);
+    // The logo stays visible during a slow CDN; CSS fills in if the PNG is late.
+    gl = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
+    if (!gl || !window.NossaArteLogo) { showFallback(); return; }
+    let timeout;
+    const THREE = await Promise.race([
+      import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js'),
+      new Promise((_, reject) => { timeout = setTimeout(() => reject(new Error('Three.js loading timed out')), 12000); })
+    ]).finally(() => clearTimeout(timeout));
 
     renderer = new THREE.WebGLRenderer({ canvas, context: gl, alpha: true, antialias: true, powerPreference: 'low-power' });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.35;
     renderer.setClearColor(0x000000, 0);
-    canvas.setAttribute('aria-hidden', 'true');
-    container.appendChild(canvas);
-
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.NoToneMapping;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-4, 4, 4, -4, .1, 100);
-    camera.position.set(0, 0, 15);
-    const root = new THREE.Group();
-    root.position.set(.1, .05, 0);
-    scene.add(root);
+    const camera = new THREE.OrthographicCamera(-3, 3, 3, -3, .1, 40);
+    camera.position.set(0, 0, 12);
+    model = window.NossaArteLogo.create(THREE);
+    scene.add(model.root);
+    lights = window.NossaArteLogo.light(THREE, scene);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 2.0));
-    const key = new THREE.DirectionalLight(0xffffff, 4.5);
-    key.position.set(-4, 7, 8);
-    scene.add(key);
-    const fill = new THREE.DirectionalLight(0xc8dbff, 2.0);
-    fill.position.set(5, 0, 3);
-    scene.add(fill);
-    const rim = new THREE.DirectionalLight(0xffd7a2, 2.8);
-    rim.position.set(1, 4, -4);
-    scene.add(rim);
-
-    const materials = {
-      navy: new THREE.MeshStandardMaterial({ color: 0x080f45, roughness: .28, metalness: .22 }),
-      orange: new THREE.MeshStandardMaterial({ color: 0xff6500, roughness: .25, metalness: .1 }),
-      gold: new THREE.MeshStandardMaterial({ color: 0xffc400, roughness: .22, metalness: .3 }),
-      white: new THREE.MeshStandardMaterial({ color: 0xfafaff, roughness: .46, metalness: .05 }),
-      acrylic: new THREE.MeshPhysicalMaterial({ color: 0xd3dff5, transparent: true, opacity: .32, roughness: .12, metalness: .05, clearcoat: 1, side: THREE.DoubleSide, depthWrite: false })
+    const gsap = window.gsap;
+    let disposed = false, visible = true, frame = 0, previous = 0, elapsed = 0;
+    let tickerAttached = false;
+    let userPaused = false, hovered = false, manual = null;
+    // Start with the layers already exposed, as the hero's default presentation.
+    // GSAP records the assembled origin, then seeks to the exposed initial presentation.
+    const motion = { amount: gsap ? 0 : 1 };
+    const layerMotion = model.parts.map(() => ({ amount: gsap ? 0 : 1 }));
+    let target = 1, from = 1, transitionStart = 0;
+    let bounds = container.getBoundingClientRect();
+    const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    const removers = [];
+    const paused = () => userPaused || preference.matches;
+    const listen = (element, name, handler, options) => {
+      element.addEventListener(name, handler, options);
+      removers.push(() => element.removeEventListener(name, handler, options));
     };
 
-    function roundedPanel(width, height, depth, radius, material) {
-      const shape = new THREE.Shape();
-      const x = -width / 2, y = -height / 2;
-      shape.moveTo(x + radius, y);
-      shape.lineTo(x + width - radius, y);
-      shape.quadraticCurveTo(x + width, y, x + width, y + radius);
-      shape.lineTo(x + width, y + height - radius);
-      shape.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-      shape.lineTo(x + radius, y + height);
-      shape.quadraticCurveTo(x, y + height, x, y + height - radius);
-      shape.lineTo(x, y + radius);
-      shape.quadraticCurveTo(x, y, x + radius, y);
-      const geometry = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelSize: .025, bevelThickness: .025, bevelSegments: 2, steps: 1, curveSegments: 6 });
-      geometry.translate(0, 0, -depth / 2);
-      return new THREE.Mesh(geometry, material);
+    if (gsap) {
+      const duration = TRANSITION_MS / 1000;
+      const stagger = .03;
+      // One reusable timeline reverses from its current playhead on rapid enter/leave.
+      // Animate plain state objects; Three.js owns all mesh transforms and rendering.
+      layerTimeline = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' } })
+        .addLabel('assembled', 0)
+        .to(motion, { amount: 1, duration }, 0)
+        .to(layerMotion, {
+          amount: 1, duration: duration - stagger * (layerMotion.length - 1),
+          stagger
+        }, 0)
+        .addLabel('exploded', duration)
+        .progress(1).pause();
     }
 
-    const stack = new THREE.Group();
-    stack.rotation.set(-.08, -.32, -.19);
-    stack.position.set(-.1, .08, .2);
-    root.add(stack);
-    const layers = [
-      { material: materials.acrylic, x: .86, y: .38, z: -1.04 },
-      { material: materials.navy, x: .58, y: .26, z: -.69 },
-      { material: materials.orange, x: .29, y: .13, z: -.32 },
-      { material: materials.white, x: 0, y: 0, z: .14 }
-    ];
-    layers.forEach(({ material, x, y, z }) => {
-      const panel = roundedPanel(2.8, 3.65, .13, .095, material);
-      panel.position.set(x, y, z);
-      stack.add(panel);
-    });
-
-    // High-resolution canvas type stays sharp without loading a font mesh or extra textures.
-    const artwork = document.createElement('canvas');
-    artwork.width = 896;
-    artwork.height = 1168;
-    const ctx = artwork.getContext('2d');
-    ctx.fillStyle = '#fcfcff';
-    ctx.fillRect(0, 0, artwork.width, artwork.height);
-    ctx.fillStyle = '#0a1142';
-    ctx.font = '800 116px Manrope, Arial, sans-serif';
-    ctx.fillText('n', 82, 173);
-    ctx.fillStyle = '#ff6600';
-    ctx.fillText('a', 154, 173);
-    ctx.fillStyle = '#0a1142';
-    ctx.font = '750 103px Manrope, Arial, sans-serif';
-    ['Sua marca.', 'Em outra', 'dimensão.'].forEach((line, index) => ctx.fillText(line, 75, 440 + index * 122));
-    ctx.strokeStyle = '#ff6600';
-    ctx.lineWidth = 10;
-    ctx.beginPath(); ctx.moveTo(77, 721); ctx.quadraticCurveTo(340, 694, 708, 711); ctx.stroke();
-    ctx.fillStyle = '#6b7187';
-    ctx.font = '400 25px "DM Sans", Arial, sans-serif';
-    ctx.fillText('Ideias que se tornam presença.', 82, 935);
-    ['#0a1142', '#ff6600', '#ffcf00', '#d5dbe8'].forEach((color, i) => { ctx.fillStyle = color; ctx.fillRect(82 + i * 70, 1020, 58, 14); });
-    ctx.strokeStyle = '#b3b7c6'; ctx.lineWidth = 2;
-    [[40, 40], [856, 40], [40, 1128], [856, 1128]].forEach(([x, y]) => {
-      ctx.beginPath(); ctx.moveTo(x - 10, y); ctx.lineTo(x + 10, y); ctx.moveTo(x, y - 10); ctx.lineTo(x, y + 10); ctx.stroke();
-    });
-    const texture = new THREE.CanvasTexture(artwork);
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
-    const printedFace = new THREE.Mesh(new THREE.PlaneGeometry(2.76, 3.61), new THREE.MeshBasicMaterial({ map: texture, toneMapped: false }));
-    printedFace.position.set(0, 0, .234);
-    stack.add(printedFace);
-
-    const orbit = new THREE.Mesh(new THREE.TorusGeometry(2.26, .175, 14, 100), materials.orange);
-    orbit.rotation.set(.94, -.42, -.5);
-    orbit.position.set(.1, -.03, -.1);
-    orbit.scale.set(1.05, 1.12, 1);
-    root.add(orbit);
-    const sphere = new THREE.Mesh(new THREE.SphereGeometry(.23, 24, 16), materials.gold);
-    sphere.position.set(-2.12, 1.78, .4);
-    root.add(sphere);
-    const cube = roundedPanel(.46, .46, .46, .07, materials.navy);
-    cube.position.set(1.83, -1.95, .15);
-    cube.rotation.set(.4, .5, .3);
-    root.add(cube);
-
-    const shadowCanvas = document.createElement('canvas');
-    shadowCanvas.width = shadowCanvas.height = 128;
-    const shadowCtx = shadowCanvas.getContext('2d');
-    const gradient = shadowCtx.createRadialGradient(64, 64, 0, 64, 64, 64);
-    gradient.addColorStop(0, 'rgba(10,17,66,0.21)');
-    gradient.addColorStop(1, 'rgba(10,17,66,0)');
-    shadowCtx.fillStyle = gradient;
-    shadowCtx.fillRect(0, 0, 128, 128);
-    const shadowTexture = new THREE.CanvasTexture(shadowCanvas);
-    const shadow = new THREE.Mesh(new THREE.PlaneGeometry(5.6, 1.1), new THREE.MeshBasicMaterial({ map: shadowTexture, transparent: true, depthWrite: false }));
-    shadow.position.set(.28, -2.36, -2);
-    scene.add(shadow);
-
-    let pointer = { x: 0, y: 0 };
-    let paused = preference.matches;
-    let visible = true;
-    let frame = 0;
-    let elapsed = 0;
-    let previous = 0;
-    let stopped = false;
-    function render() { renderer.render(scene, camera); }
-    function resize() {
-      const { width, height } = container.getBoundingClientRect();
-      if (!width || !height) return;
-      const ratio = width / height;
-      const viewHeight = Math.max(5.65, 5.5 / ratio);
-      camera.left = -viewHeight * ratio / 2;
-      camera.right = viewHeight * ratio / 2;
-      camera.top = viewHeight / 2;
-      camera.bottom = -viewHeight / 2;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height, false);
-      render();
+    function syncTransition() {
+      if (paused()) {
+        layerTimeline?.pause().progress(target);
+        motion.amount = target;
+        layerMotion.forEach(layer => { layer.amount = target; });
+      } else if (!visible || document.hidden || disposed) layerTimeline?.pause();
+      else if (target) layerTimeline?.play();
+      else layerTimeline?.reverse();
+    }
+    function gsapTick(time) { tick(time * 1000); }
+    function requestFrame() {
+      if (disposed || !visible || document.hidden) return;
+      if (gsap) {
+        // Subscribe after GSAP's update so the canvas uses this tick's interpolated values.
+        if (!tickerAttached) {
+          tickerAttached = true;
+          gsap.ticker.add(gsapTick);
+        }
+      } else if (!frame) frame = requestAnimationFrame(tick);
+    }
+    function suspend() {
+      cancelAnimationFrame(frame);
+      if (tickerAttached) gsap.ticker.remove(gsapTick);
+      tickerAttached = false;
+      layerTimeline?.pause();
+      frame = 0;
+      previous = 0;
+    }
+    function pose(delta) {
+      const still = paused();
+      const amount = motion.amount;
+      const follow = still ? 1 : 1 - Math.exp(-9 * delta);
+      pointer.x += ((still ? 0 : pointer.targetX) - pointer.x) * follow;
+      pointer.y += ((still ? 0 : pointer.targetY) - pointer.y) * follow;
+      // The oblique angle reveals depth while preserving the mark's front readability.
+      model.root.rotation.set(
+        -.035 - amount * .12 - pointer.y * .05 + (still ? 0 : Math.sin(elapsed * .55) * .02),
+        .045 + amount * .48 + pointer.x * .08 + (still ? 0 : Math.sin(elapsed * .42) * .035),
+        still ? 0 : Math.sin(elapsed * .32) * .008
+      );
+      model.root.position.y = still ? 0 : Math.sin(elapsed * .65) * .035;
+      model.setExplode(layerMotion, pointer.x, pointer.y);
     }
     function tick(time) {
       frame = 0;
-      if (stopped || paused || !visible || document.hidden) { previous = 0; return; }
-      const delta = previous ? Math.min((time - previous) / 1000, .05) : 0;
+      if (disposed || !visible || document.hidden) { suspend(); return; }
+      const delta = previous ? Math.min((time - previous) / 1000, .05) : 1 / 60;
       previous = time;
-      elapsed += delta;
-      const follow = 1 - Math.exp(-4 * delta);
-      root.rotation.y += (pointer.x * .14 - root.rotation.y) * follow;
-      root.rotation.x += (-pointer.y * .08 - root.rotation.x) * follow;
-      root.position.y = .05 + Math.sin(elapsed * .65) * .07;
-      sphere.position.y = 1.78 + Math.sin(elapsed * .9 + 1) * .09;
-      cube.rotation.z = .3 + Math.sin(elapsed * .55) * .08;
-      render();
-      frame = requestAnimationFrame(tick);
+      // Reconcile controls with the current preference even before its change event arrives.
+      pauseButton.hidden = preference.matches;
+      if (paused()) syncTransition();
+      else {
+        elapsed += delta;
+        // A blocked GSAP CDN still leaves a working, reversible Three.js scene.
+        if (!gsap) {
+          const t = Math.min(1, Math.max(0, (time - transitionStart) / TRANSITION_MS));
+          motion.amount = from + (target - from) * t * t * (3 - 2 * t);
+          layerMotion.forEach(layer => { layer.amount = motion.amount; });
+        }
+      }
+      pose(delta);
+      renderer.render(scene, camera);
+      if (!paused()) requestFrame();
+      else suspend();
     }
-    function sync() {
-      if (frame) cancelAnimationFrame(frame);
-      frame = 0;
-      previous = 0;
-      if (!stopped && !paused && visible && !document.hidden) frame = requestAnimationFrame(tick);
+    function sync() { suspend(); syncTransition(); requestFrame(); }
+    function setExpanded(expanded) {
+      const next = expanded ? 1 : 0;
+      if (next === target) return;
+      from = motion.amount;
+      target = next;
+      transitionStart = performance.now();
+      layersButton.setAttribute('aria-pressed', String(expanded));
+      layersButton.querySelector('span').textContent = expanded ? 'Remontar logo' : 'Explorar camadas';
+      container.dataset.logoExpanded = String(expanded);
+      syncTransition();
+      requestFrame();
     }
-    function onPointer(event) {
-      if (paused || event.pointerType === 'touch') return;
-      const rect = container.getBoundingClientRect();
-      pointer = { x: (event.clientX - rect.left) / rect.width * 2 - 1, y: (event.clientY - rect.top) / rect.height * 2 - 1 };
-    }
-    function resetPointer() { pointer = { x: 0, y: 0 }; }
     function updatePause() {
-      pauseButton.setAttribute('aria-pressed', String(paused));
-      pauseButton.setAttribute('aria-label', paused ? 'Retomar animação 3D' : 'Pausar animação 3D');
-      pauseButton.querySelector('use').setAttribute('href', paused ? '#i-play' : '#i-pause');
+      pauseButton.hidden = preference.matches;
+      pauseButton.setAttribute('aria-pressed', String(userPaused));
+      pauseButton.setAttribute('aria-label', userPaused ? 'Retomar animação 3D' : 'Pausar animação 3D');
+      pauseButton.querySelector('use').setAttribute('href', userPaused ? '#i-play' : '#i-pause');
       sync();
     }
-    function togglePause() { paused = !paused; updatePause(); }
-    function preferenceChanged() {
-      paused = preference.matches;
-      pointer = { x: 0, y: 0 };
-      root.rotation.set(0, 0, 0);
-      root.position.y = .05;
-      render();
-      updatePause();
+    function reset() {
+      hovered = false;
+      manual = null;
+      pointer.targetX = pointer.targetY = 0;
+      setExpanded(false);
     }
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(container);
-    const intersectionObserver = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { threshold: .01 });
-    intersectionObserver.observe(container);
-    container.addEventListener('pointermove', onPointer, { passive: true });
-    container.addEventListener('pointerleave', resetPointer, { passive: true });
-    document.addEventListener('visibilitychange', sync);
-    preference.addEventListener('change', preferenceChanged);
-    pauseButton.addEventListener('click', togglePause);
-    function contextLost(event) {
-      event.preventDefault();
-      cleanup();
-      container.classList.remove('is-loaded');
-      controls.hidden = true;
+    function enter(event) {
+      if (event.pointerType === 'touch') return;
+      bounds = container.getBoundingClientRect();
+      hovered = true;
+      if (manual === null) setExpanded(true);
     }
-    canvas.addEventListener('webglcontextlost', contextLost, false);
-    cleanup = () => {
-      if (stopped) return;
-      stopped = true;
-      if (frame) cancelAnimationFrame(frame);
-      resizeObserver.disconnect();
-      intersectionObserver.disconnect();
-      document.removeEventListener('visibilitychange', sync);
-      preference.removeEventListener('change', preferenceChanged);
-      container.removeEventListener('pointermove', onPointer);
-      container.removeEventListener('pointerleave', resetPointer);
-      pauseButton.removeEventListener('click', togglePause);
-      canvas.removeEventListener('webglcontextlost', contextLost);
-      const geometries = new Set(), usedMaterials = new Set();
-      scene.traverse(object => {
-        if (object.geometry) geometries.add(object.geometry);
-        if (object.material) usedMaterials.add(object.material);
-      });
-      geometries.forEach(geometry => geometry.dispose());
-      usedMaterials.forEach(material => material.dispose());
-      texture.dispose();
-      shadowTexture.dispose();
-      renderer.dispose();
+    function move(event) {
+      if (event.pointerType === 'touch' || paused() || !bounds.width || !bounds.height) return;
+      pointer.targetX = THREE.MathUtils.clamp((event.clientX - bounds.left) / bounds.width * 2 - 1, -1, 1);
+      pointer.targetY = THREE.MathUtils.clamp(1 - (event.clientY - bounds.top) / bounds.height * 2, -1, 1);
+      requestFrame();
+    }
+    function leave(event) { if (event.pointerType !== 'touch') reset(); }
+    function toggleLayers() { manual = !target; setExpanded(manual); }
+    function resize() {
+      bounds = container.getBoundingClientRect();
+      const { width, height } = bounds;
+      if (!width || !height) return;
+      const aspect = width / height;
+      // Keep both assembled and exploded poses inside the same responsive frame.
+      const viewHeight = Math.max(5.8, 5.8 / aspect);
+      camera.left = -viewHeight * aspect / 2;
+      camera.right = viewHeight * aspect / 2;
+      camera.top = viewHeight / 2;
+      camera.bottom = -viewHeight / 2;
+      camera.updateProjectionMatrix();
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(width, height, false);
+      requestFrame();
+    }
+
+    listen(container, 'pointerenter', enter, { passive: true });
+    listen(container, 'pointermove', move, { passive: true });
+    listen(container, 'pointerleave', leave, { passive: true });
+    listen(container, 'pointercancel', reset, { passive: true });
+    listen(layersButton, 'click', toggleLayers);
+    listen(pauseButton, 'click', () => { userPaused = !userPaused; updatePause(); });
+    listen(container, 'keydown', event => { if (event.key === 'Escape') reset(); });
+    listen(container, 'focusout', event => { if (!container.contains(event.relatedTarget) && !hovered) reset(); });
+    if (!gsap) listen(preference, 'change', () => { pointer.targetX = pointer.targetY = 0; updatePause(); });
+    listen(document, 'visibilitychange', sync);
+    listen(window, 'resize', resize, { passive: true });
+    listen(window, 'scroll', () => { bounds = container.getBoundingClientRect(); }, { passive: true });
+    listen(window, 'blur', reset);
+
+    // Picking shares the named parts used by the explosion hierarchy.
+    const raycaster = new THREE.Raycaster();
+    listen(canvas, 'click', event => {
+      const rect = canvas.getBoundingClientRect();
+      raycaster.setFromCamera(new THREE.Vector2((event.clientX - rect.left) / rect.width * 2 - 1, 1 - (event.clientY - rect.top) / rect.height * 2), camera);
+      if (raycaster.intersectObjects(model.parts, true).length) toggleLayers();
+    });
+    const resizeObserver = 'ResizeObserver' in window ? new ResizeObserver(resize) : null;
+    resizeObserver?.observe(container);
+    const intersectionObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      sync();
+    }, { threshold: .01 }) : null;
+    intersectionObserver?.observe(container);
+
+    dispose = () => {
+      if (disposed) return;
+      disposed = true;
+      suspend();
+      removers.forEach(remove => remove());
+      resizeObserver?.disconnect();
+      intersectionObserver?.disconnect();
+      releaseResources();
     };
+    listen(canvas, 'webglcontextlost', event => { event.preventDefault(); dispose(); showFallback(); });
+    listen(window, 'pagehide', event => {
+      if (event.persisted) suspend();
+      else { dispose(); renderer.forceContextLoss(); }
+    });
+    listen(window, 'pageshow', sync);
+
+    if (gsap) {
+      motionMedia = gsap.matchMedia();
+      motionMedia.add({
+        reduceMotion: '(prefers-reduced-motion: reduce)',
+        allowMotion: '(prefers-reduced-motion: no-preference)'
+      }, () => {
+        pointer.targetX = pointer.targetY = 0;
+        updatePause();
+        return () => layerTimeline.pause();
+      });
+    }
+
     resize();
+    pose(0);
+    renderer.render(scene, camera); // Reveal only after a successful first frame, layers exposed.
     container.classList.add('is-loaded');
+    container.dataset.logoState = 'ready';
+    container.dataset.logoExpanded = 'true';
+    canvas.removeAttribute('aria-hidden');
+    fallback.setAttribute('aria-hidden', 'true');
     controls.hidden = false;
     updatePause();
-    window.addEventListener('pagehide', event => { if (!event.persisted) cleanup(); });
+    container.dispatchEvent(new CustomEvent('logo:ready', { detail: { model, renderer, scene, camera, dispose, animation: layerTimeline } }));
   }
 
-  init().catch(() => {
-    cleanup();
-    renderer?.dispose();
-    container.classList.remove('is-loaded');
-    controls.hidden = true;
-    // Network/GPU failures intentionally leave the readable CSS sculpture in place.
+  init().catch(error => {
+    dispose();
+    gl?.getExtension('WEBGL_lose_context')?.loseContext();
+    showFallback();
+    console.warn('Logo 3D indisponível; exibindo a versão estática.', error);
   });
 })();

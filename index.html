@@ -28,6 +28,8 @@
   </script>
   <script defer src="js/main.js">
   </script>
+  <script defer src="js/logo-model.js">
+  </script>
   <script defer src="js/scene.js">
   </script>
 </head>
@@ -180,61 +182,22 @@
           </div>
         </div>
 
-        <div class="hero-visual" id="hero-visual">
-          <div class="visual-grid" aria-hidden="true">
-          </div>
-          <div class="scene-label">
-            <span class="small-spark" aria-hidden="true">✳</span> Sua ideia ganha dimensão.
-          </div>
-          <div class="scene-wrap" id="scene-wrap" role="img"
-            aria-label="Composição tridimensional de placas de impressão em azul-marinho, laranja e acrílico">
-            <div class="scene-fallback" aria-hidden="true">
-              <div class="fallback-orbit">
-              </div>
-              <div class="fallback-sheet sheet-back">
-              </div>
-              <div class="fallback-sheet sheet-middle">
-              </div>
-              <div class="fallback-sheet sheet-front">
-                <span class="print-symbol">n<span>a</span>
-                </span>
-                <span>Sua marca.<br>Em outra<br>dimensão.</span>
-                <small>Ideias que se tornam presença.</small>
-                <div class="print-swatches">
-                  <i>
-                  </i>
-                  <i>
-                  </i>
-                  <i>
-                  </i>
-                  <i>
-                  </i>
-                </div>
-              </div>
-              <div class="fallback-sphere">
-              </div>
-            </div>
-          </div>
-          <div class="visual-note">
-            <span class="note-icon">
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-layers" />
-              </svg>
-            </span>
-            <span>
-              <strong>Do conceito ao acabamento.</strong>
-              <small>Cuidado em cada camada.</small>
-            </span>
+        <div class="hero-visual" id="hero-visual" role="group" aria-label="Logo Nossa Arte em camadas">
+          <canvas id="hero-logo-canvas" role="img" aria-hidden="true"
+            aria-label="Logo tridimensional Nossa Arte: anéis azul-marinho e âmbar, núcleo dourado e monograma em relevo">
+          </canvas>
+          <div class="logo-fallback" role="img" aria-label="Logo Nossa Arte azul-marinho e dourado">
+            <span class="logo-placeholder" aria-hidden="true">na</span>
+            <img src="img/logo.png" alt="" width="416" height="416" fetchpriority="high" decoding="async">
           </div>
           <div class="scene-controls" hidden>
-            <span>
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-cursor" />
-              </svg> Explore com o cursor</span>
-            <button id="motion-toggle" class="icon-button" aria-label="Pausar animação 3D" aria-pressed="false">
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-pause" />
-              </svg>
+            <button id="layers-toggle" class="layers-toggle" type="button" aria-pressed="true"
+              aria-controls="hero-logo-canvas">
+              <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+              <span>Remontar logo</span>
+            </button>
+            <button id="motion-toggle" class="icon-button" type="button" aria-label="Pausar animação 3D" aria-pressed="false">
+              <svg class="icon" aria-hidden="true"><use href="#i-pause" /></svg>
             </button>
           </div>
         </div>

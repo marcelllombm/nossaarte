@@ -1,0 +1,14 @@
+{
+  "admitted": true,
+  "reasons": [],
+  "provenance": {
+    "viewpoint": "reference",
+    "sourcePath": "/Users/macmini2/git/nossaarte/img/logo.png",
+    "width": 416,
+    "height": 416,
+    "foregroundCoverage": 0.7882,
+    "largestComponentFraction": 1.0,
+    "pHash": 12611116533394156208,
+    "duplicateOfHash": null
+  }
+}

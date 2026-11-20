@@ -1,0 +1,41 @@
+STATUS pass=lighting-pass completed=5 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.9811,
+    "aspectRatioDelta": 0.0,
+    "scaleDelta": 0.0089,
+    "bilateralSymmetryError": 0.0087,
+    "colorDelta": {
+      "checked": 5,
+      "maxDeltaE": 12.32,
+      "perComponent": [
+        {
+          "componentId": null,
+          "deltaE": 12.32
+        },
+        {
+          "componentId": null,
+          "deltaE": 12.32
+        },
+        {
+          "componentId": null,
+          "deltaE": 3.82
+        },
+        {
+          "componentId": null,
+          "deltaE": 7.16
+        },
+        {
+          "componentId": null,
+          "deltaE": 12.32
+        }
+      ],
+      "gated": true
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "50d5d02ac22f15d3",
+  "passId": "lighting-pass"
+}

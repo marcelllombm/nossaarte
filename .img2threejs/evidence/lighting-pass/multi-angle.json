@@ -1,0 +1,20 @@
+{
+  "referenceAreaFraction": 0.7741944803994083,
+  "angles": [
+    {
+      "path": ".img2threejs/evidence/lighting-pass/oblique.png",
+      "areaFraction": 0.672499075443787,
+      "ratio": 0.8686435933989655,
+      "degenerate": false
+    },
+    {
+      "path": ".img2threejs/evidence/lighting-pass/oblique-left.png",
+      "areaFraction": 0.6725510817307693,
+      "ratio": 0.8687107681054494,
+      "degenerate": false
+    }
+  ],
+  "degenerate": false,
+  "collapseRatio": 0.15,
+  "note": "deterministic; zero token; a flat-plane-faking-a-volume collapses in silhouette area when orbited"
+}

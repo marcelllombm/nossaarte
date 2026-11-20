@@ -1,0 +1,6779 @@
+{
+  "targetName": "Nossa Arte Logo",
+  "targetId": "nossa-arte-logo",
+  "schemaVersion": "2.1",
+  "terminologyProfile": {
+    "domain": "real-time procedural Three.js asset",
+    "geometryTerms": [
+      "silhouette",
+      "topology",
+      "primitive",
+      "bevel",
+      "chamfer",
+      "taper",
+      "bend",
+      "boolean cut",
+      "edge loop",
+      "surface normal",
+      "displacement"
+    ],
+    "materialTerms": [
+      "albedo",
+      "baseColor",
+      "roughness",
+      "metalness",
+      "normal map",
+      "bump map",
+      "ambient occlusion",
+      "cavity dirt",
+      "edge wear",
+      "clearcoat"
+    ],
+    "lightingTerms": [
+      "key light",
+      "fill light",
+      "rim light",
+      "HDRI/environment reflection",
+      "contact shadow"
+    ],
+    "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters."
+  },
+  "sourceImage": "img/logo.png",
+  "referenceCamera": {
+    "solved": true,
+    "fovDegrees": 40.0,
+    "aspect": 1.0,
+    "orientation": {
+      "yaw": 0.0,
+      "pitch": 0.0,
+      "roll": 0.0
+    },
+    "positionHint": [
+      0,
+      0,
+      12
+    ],
+    "note": "Front orthographic matches graphic with 4.2-unit review viewport.",
+    "projection": "orthographic",
+    "orthoHeight": 4.2
+  },
+  "suitability": "pass",
+  "scores": {
+    "object_isolation": 3,
+    "silhouette_readability": 3,
+    "depth_inference": 2,
+    "primitive_decomposition": 3,
+    "material_procedurality": 3,
+    "occlusion_risk": 3,
+    "interaction_fit": 3
+  },
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "four-layer circular emblem",
+      "primaryDomain": "object",
+      "formLanguage": [
+        "hard-surface",
+        "calligraphic extruded profile"
+      ],
+      "structureKind": [
+        "layered shell"
+      ],
+      "motionPotential": [
+        "whole-object transform",
+        "detachable"
+      ],
+      "materialFamilies": [
+        "coated dielectric"
+      ],
+      "notes": "Simple planar four-part assembly. Fine calligraphic outline is identity-critical; no repeated hardware or organic hierarchy."
+    },
+    "complexity": {
+      "tier": "simple",
+      "scores": {
+        "silhouetteComplexity": 1,
+        "componentCount": 1,
+        "hierarchyDepth": 0,
+        "repetitionDensity": 0,
+        "materialLayerCount": 1,
+        "localDetailDensity": 1,
+        "occlusionRisk": 0,
+        "actionReadinessNeed": 1
+      },
+      "estimatedCounts": {
+        "macroComponents": 4,
+        "mesoComponents": 0,
+        "microFeatureGroups": 10,
+        "materialLayers": 3,
+        "repetitionSystems": 0
+      },
+      "reasoning": [
+        "Four flat independent solids, shallow hierarchy; detail lives in the contour and finish, without repeated systems."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "simple",
+      "minimumComponentLevels": [
+        "macro"
+      ],
+      "needsRepetitionSystems": false,
+      "needsMaterialLocalOverrides": false,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Four named solids with local bevel and contour features; do not invent extra assemblies."
+    },
+    "unknownsToResolveBeforeImplementation": [],
+    "detailInventory": {
+      "scanMethod": "component-zones",
+      "targetMinDetails": 10,
+      "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+      "details": [
+        {
+          "id": "rim-profile",
+          "kind": "bevel",
+          "description": "19px navy band and small inferred chamfer",
+          "mapsTo": {
+            "ref": "rim-profile"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "amber-profile",
+          "kind": "bevel",
+          "description": "amber inset annulus",
+          "mapsTo": {
+            "ref": "amber-profile"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "gold-profile",
+          "kind": "bevel",
+          "description": "circular gold disk seated inside amber",
+          "mapsTo": {
+            "ref": "gold-profile"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "gold-gradient",
+          "kind": "decal",
+          "description": "warm gold gradient",
+          "mapsTo": {
+            "ref": "gold-gradient"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "gold-gloss",
+          "kind": "gloss",
+          "description": "broad upper curved satin highlight",
+          "mapsTo": {
+            "ref": "gold-gloss"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "left-serif",
+          "kind": "linework",
+          "description": "short upper left serif (120,108)",
+          "mapsTo": {
+            "ref": "left-serif"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "italic-stem",
+          "kind": "linework",
+          "description": "inclined stem descending to (108,256)",
+          "mapsTo": {
+            "ref": "italic-stem"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "inner-arch",
+          "kind": "linework",
+          "description": "open curved negative space at (222,133)",
+          "mapsTo": {
+            "ref": "inner-arch"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "crossbar",
+          "kind": "linework",
+          "description": "right crossbar ending at (308,186)",
+          "mapsTo": {
+            "ref": "crossbar"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "lower-hook",
+          "kind": "linework",
+          "description": "lower terminal curves back to (269,268)",
+          "mapsTo": {
+            "ref": "lower-hook"
+          },
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": false,
+      "styleHeads": 0.0,
+      "proportions": {
+        "headUnit": 0.0,
+        "torso": 0.0,
+        "legs": 0.0,
+        "shoulderWidth": 0.0,
+        "hipWidth": 0.0
+      },
+      "pose": {
+        "type": "unassessed",
+        "jointAngles": {}
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.0,
+        "eyeSpacing": 0.0,
+        "noseBase": 0.0,
+        "mouthLine": 0.0,
+        "hairline": 0.0
+      },
+      "features": [],
+      "confidence": 0.0,
+      "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
+    },
+    "sourceImage": "img/logo.png"
+  },
+  "qualityContract": {
+    "qualityBar": "simple",
+    "definitionOfDone": [
+      "Recognizable calligraphic logo in four independent closed solids, initially exploded with active layer control, separated on hover in 550ms, responsive transparent canvas, keyboard/touch and reduced-motion support, static fallback."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 4,
+      "mesoComponents": 0,
+      "microFeatureGroups": 10,
+      "materialLayers": 3,
+      "repetitionSystems": 0,
+      "reviewViewpoints": 4
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "silhouette and negative-space delta",
+      "component hierarchy depth delta",
+      "repetition density and distribution delta",
+      "material albedo/roughness/normal response delta",
+      "local feature placement and scale delta"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "Adjacent components must overlap by at least 0.02 world units at shared seams (source: grimoire/build/geometry_patterns.md).",
+      "Raised or recessed relief and fasteners must be geometry, instanced micro-parts, or displacement; a map alone is an approximation (source: grimoire/build/geometry_patterns.md)."
+    ],
+    "mustNotDo": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "Adjacent components must overlap by at least 0.02 world units at shared seams (source: grimoire/build/geometry_patterns.md).",
+      "Raised or recessed relief and fasteners must be geometry, instanced micro-parts, or displacement; a map alone is an approximation (source: grimoire/build/geometry_patterns.md)."
+    ]
+  },
+  "qualityTargets": {
+    "targetFidelity": 0.85,
+    "mustMatch": [
+      "circular nested navy/amber/gold silhouette",
+      "calligraphic monogram profile",
+      "four separate closed solids"
+    ],
+    "niceToHave": [
+      "soft specular highlight"
+    ],
+    "fpsTarget": 60,
+    "reviewViewpoints": [
+      "front",
+      "right",
+      "rear",
+      "left",
+      "oblique-hover"
+    ]
+  },
+  "selfCorrectLoop": {
+    "enabled": true,
+    "visualAcceptance": {
+      "reviewer": "ai-vision",
+      "threshold": 0.7,
+      "comparisonArtifactRequired": true,
+      "layerScoresRequired": true,
+      "codePixelDiffIsAcceptanceAuthority": false,
+      "scoringRule": "AI vision must inspect a side-by-side reference/render sheet and score the current pass from 0 to 1. Pixel-diff code may assist diagnostics but cannot approve a pass.",
+      "requiredLayerScores": [
+        "silhouetteProportion",
+        "componentStructure",
+        "formDetail",
+        "materialSurface",
+        "lightingCamera"
+      ],
+      "featureReviewPolicy": {
+        "enabled": true,
+        "reviewUnit": "semantic-subsystem",
+        "maxCriticalFeaturesPerPass": 5,
+        "maxImportantFeaturesPerPass": 3,
+        "criticalDefaultThreshold": 0.8,
+        "importantAverageThreshold": 0.65,
+        "adaptiveEscalation": true,
+        "singleImagePairOnly": true,
+        "selectionRule": "Choose only the most visually salient, identity-defining, user-prioritized, or high-risk semantic systems. Group repeated parts instead of reviewing every mesh. AI vision scores every selected feature from the same full reference/render pair."
+      }
+    },
+    "reviewAfterPasses": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "allowedActions": [
+      "continue",
+      "refine-spec",
+      "refine-code",
+      "request-input",
+      "stop"
+    ],
+    "specRefineTriggers": [
+      "missing component",
+      "wrong primitive family",
+      "wrong proportions",
+      "material layer under-specified",
+      "local feature not traceable to viewEvidence",
+      "reference ambiguity discovered during implementation"
+    ],
+    "codeRefineTriggers": [
+      "spec is adequate but generated geometry/material does not match",
+      "browser render differs from reference",
+      "performance budget exceeded",
+      "lighting hides geometry or material response"
+    ],
+    "stopCriteria": [
+      "target fidelity reached or user accepts current approximation",
+      "remaining gaps require new reference images or manual art"
+    ],
+    "screenshotPolicy": {
+      "requiredForPasses": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass"
+      ],
+      "preferredCapture": "in-app-browser-screenshot",
+      "fallbackCapture": "user-supplied-screenshot-path",
+      "minimumEvidence": "Each visual pass needs a reference image, rendered screenshot, side-by-side comparison sheet, AI vision score, layer scores, and critique before choosing continue.",
+      "reviewPairRule": "Compare the same camera/viewpoint whenever possible; do not judge a front reference against a random render angle.",
+      "acceptanceAuthority": "AI vision review of the comparison sheet. Code-generated pixel similarity is not sufficient evidence."
+    }
+  },
+  "featureReviewTargets": [
+    {
+      "id": "concentric-emblem",
+      "name": "Circular navy / amber / gold nested silhouette",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass",
+        "optimization-pass"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "calligraphic-monogram",
+      "name": "Inclined stem, arch, crossbar and lower hook",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass",
+        "optimization-pass"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "monogram"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    }
+  ],
+  "sculptPipeline": {
+    "passGateMode": "locked-sequential",
+    "passOrder": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "currentPass": "complete",
+    "completedPasses": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "lastCompletedPass": "optimization-pass",
+    "blockedReason": "all build passes completed",
+    "nextRequiredEvidence": []
+  },
+  "lookDevTargets": {
+    "qualityPriority": "illustrated-logo-relief",
+    "materialPass": {
+      "albedoPaletteRequired": true,
+      "roughnessVariationRequired": false,
+      "normalOrBumpRequired": false,
+      "localOverridesRequired": true,
+      "minimumTextureResolution": 512,
+      "preferredTextureResolution": 512,
+      "independentMapChannels": [
+        "albedo",
+        "roughness",
+        "height",
+        "normal",
+        "ambient-occlusion"
+      ],
+      "requiredSurfaceFrequencyBands": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "geometryReliefRequiredWhenSilhouetteAffected": true,
+      "referencePbrExtraction": {
+        "requiredWhenSourceImagePresent": false,
+        "targetThreshold": 0.7,
+        "stopOnLowConfidence": true,
+        "script": "forge/stage1_intake/extract_pbr_evidence.py",
+        "acceptedLimitation": "Source is a flat logo illustration, no physical PBR information. User requests an inferred satin/gloss material."
+      },
+      "mustAvoid": [
+        "single flat albedo per material",
+        "uniform roughness",
+        "albedo texture reused as roughness/height/normal/AO",
+        "single-frequency random noise",
+        "plastic-looking smooth bark, stone, cloth, foliage, or aged material",
+        "local color/detail described only in prose without material masks",
+        "claiming exact PBR recovery when confidence is below the target threshold"
+      ],
+      "limitation": "No recovered photographic PBR maps: source is vector-style graphic. Strict validator supports textureless declaration, but pass orchestrator applies photo-only map checks to reference-fidelity priority regardless of that declaration. Use the actual illustrated-logo-relief target; preserve identity thresholds and visual gates."
+    },
+    "lightingPass": {
+      "requiredTerms": [
+        "key light",
+        "fill light",
+        "rim or environment light",
+        "exposure",
+        "tone mapping",
+        "background",
+        "contact shadow"
+      ],
+      "mustAvoid": [
+        "ambient-only lighting",
+        "flat value range",
+        "missing contact shadow",
+        "reference lighting copied without separating material readability"
+      ]
+    },
+    "screenshotReview": [
+      "Compare albedo palette and local color zones.",
+      "Compare roughness/normal/bump response under light.",
+      "Compare cavity dirt, edge wear, stains, moss, scratches, or other local masks.",
+      "Compare key/fill/rim structure, exposure, tone mapping, background, and contact shadows.",
+      "Capture a neutral-light render to verify material readability without reference lighting.",
+      "Capture a grazing-light close-up to expose flat normals, uniform roughness, tiling, and plastic highlights.",
+      "Capture a reference-matched render from the same camera framing as the source."
+    ]
+  },
+  "actionReadiness": {
+    "contract": "Every macro/meso component should be generated as a stable named Object3D pivot node with a mesh child, action metadata, optional sockets, collider proxy, and destruction metadata.",
+    "defaultRigType": "action-ready-static-rig",
+    "rootMotionNode": "root",
+    "requiredComponentFields": [
+      "id",
+      "parent",
+      "transform",
+      "attachment for child appendages, connectors, limbs, tubes, handles, legs, horns, wings, branches, or cables",
+      "actionProfile.animationRole",
+      "actionProfile.pivot",
+      "actionProfile.collider",
+      "actionProfile.destruction"
+    ],
+    "transformChannels": [
+      "translate",
+      "rotate",
+      "scale",
+      "bend",
+      "twist",
+      "detach",
+      "visibility",
+      "material-state"
+    ],
+    "authoringRules": [
+      "Do not collapse independently movable parts into one mesh.",
+      "Put transforms on component pivot groups, not only on raw meshes.",
+      "For attached child parts, put the pivot at the semantic root/socket and build visible geometry from localStart to localEnd.",
+      "Represent hinge, socket, detachable, and breakable intent even when no animation is implemented yet.",
+      "Use simplified collider proxies for runtime physics instead of visual mesh colliders by default."
+    ],
+    "destructionPolicy": {
+      "defaultBreakable": false,
+      "fractureGroupNaming": "Use stable semantic names such as body-shell, left-hinge, glass-panel, branch-segment.",
+      "debrisStrategy": "Prefer detachable component groups and a small number of procedural fragments over random mesh explosion."
+    }
+  },
+  "assumptions": [
+    "Stylized extruded interpretation of flat graphic, not physical reverse engineering.",
+    "Navy/amber boundaries and monogram are real geometry, gradient is procedural albedo.",
+    "No PBR extraction: illustration has no recoverable physical roughness; gloss explicitly requested by user."
+  ],
+  "coordinateFrame": {
+    "front": "+Z",
+    "up": "+Y",
+    "scaleReference": "416 image pixels = 4.16 units; circular center (208,208)"
+  },
+  "silhouette": {
+    "boundingShape": "4.16-unit circular badge",
+    "aspectRatios": [
+      1
+    ],
+    "symmetry": "radial rim, asymmetric monogram",
+    "dominantCurves": [
+      "circular annuli",
+      "calligraphic cubic curves"
+    ],
+    "negativeSpaces": [
+      "monogram arch and open lower hook"
+    ],
+    "landmarks": [
+      [
+        120,
+        108
+      ],
+      [
+        197,
+        101
+      ],
+      [
+        308,
+        186
+      ],
+      [
+        108,
+        256
+      ],
+      [
+        223,
+        301
+      ]
+    ]
+  },
+  "viewEvidence": [
+    {
+      "id": "full-object",
+      "view": "primary",
+      "imageRegion": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0,
+        "units": "normalized"
+      },
+      "observations": [
+        "Complete navy circle, inset amber band, yellow gradient disc and single navy calligraphic mark."
+      ],
+      "confidence": 1
+    }
+  ],
+  "componentTree": [
+    {
+      "id": "root",
+      "name": "root",
+      "level": "macro",
+      "role": "container",
+      "importance": 1.0,
+      "confidence": 0.5,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Invisible unit-scale transform container; the four children own all visible solids.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.022,
+          "segments": 3
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": null,
+      "attachment": null,
+      "dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 1.0,
+        "units": "relative",
+        "confidence": 0.5
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Replace with sphere/capsule/compound proxy when the object shape demands it."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "root",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "navy",
+      "materialLayers": [
+        "navy"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [],
+      "surfaceDetail": {
+        "macroRoughness": 0.32,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "extruded bevel surface normals",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "Clean satin surface; gold includes the broad curved highlight color region. No fictitious microtexture."
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "blockout",
+      "invisibleRoot": true,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(8, 0, 94, 1)",
+        "secondaryAlbedo": "rgba(8, 0, 94, 1)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.7,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    },
+    {
+      "id": "outer-ring",
+      "name": "outer-ring",
+      "level": "macro",
+      "role": "layer",
+      "importance": 1.0,
+      "confidence": 0.95,
+      "primitive": "extrude",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Closed planar profile with inferred extrusion and edge bevel, matching requested logo relief.",
+      "geometryDescriptor": {
+        "topologyIntent": "Closed extruded annulus",
+        "edgeTreatment": {
+          "type": "chamfer",
+          "bevelRadius": 0.022,
+          "segments": 3
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile2D": {
+          "points": [
+            [
+              2.06,
+              0.0
+            ],
+            [
+              2.0575186397826553,
+              0.10107940911448111
+            ],
+            [
+              2.050080536944726,
+              0.20191530907889485
+            ],
+            [
+              2.037703610527449,
+              0.3022647773780452
+            ],
+            [
+              2.020417677630655,
+              0.4018860633532242
+            ],
+            [
+              1.9982643815807606,
+              0.5005391706007236
+            ],
+            [
+              1.9712970916083503,
+              0.5979864351441924
+            ],
+            [
+              1.9395807742770228,
+              0.6939930979879734
+            ],
+            [
+              1.9031918369732508,
+              0.788327870672085
+            ],
+            [
+              1.8622179438342934,
+              0.8807634924663811
+            ],
+            [
+              1.8167578045576114,
+              0.9710772778615552
+            ],
+            [
+              1.7669209366005607,
+              1.0590516530380367
+            ],
+            [
+              1.7128274013432432,
+              1.1444746800203804
+            ],
+            [
+              1.6546075148501287,
+              1.2271405672544127
+            ],
+            [
+              1.5924015339272382,
+              1.3068501653771096
+            ],
+            [
+              1.526359318231216,
+              1.3834114469848577
+            ],
+            [
+              1.456639969244288,
+              1.4566399692442877
+            ],
+            [
+              1.3834114469848577,
+              1.5263593182312158
+            ],
+            [
+              1.3068501653771096,
+              1.5924015339272382
+            ],
+            [
+              1.227140567254413,
+              1.6546075148501285
+            ],
+            [
+              1.1444746800203807,
+              1.7128274013432432
+            ],
+            [
+              1.0590516530380367,
+              1.7669209366005607
+            ],
+            [
+              0.9710772778615555,
+              1.8167578045576112
+            ],
+            [
+              0.8807634924663813,
+              1.8622179438342934
+            ],
+            [
+              0.7883278706720851,
+              1.9031918369732508
+            ],
+            [
+              0.6939930979879734,
+              1.9395807742770228
+            ],
+            [
+              0.5979864351441924,
+              1.9712970916083503
+            ],
+            [
+              0.5005391706007238,
+              1.9982643815807606
+            ],
+            [
+              0.40188606335322435,
+              2.020417677630655
+            ],
+            [
+              0.3022647773780452,
+              2.037703610527449
+            ],
+            [
+              0.20191530907889518,
+              2.0500805369447255
+            ],
+            [
+              0.10107940911448134,
+              2.0575186397826553
+            ],
+            [
+              1.2613862031217737e-16,
+              2.06
+            ],
+            [
+              -0.1010794091144811,
+              2.0575186397826553
+            ],
+            [
+              -0.20191530907889493,
+              2.050080536944726
+            ],
+            [
+              -0.30226477737804497,
+              2.037703610527449
+            ],
+            [
+              -0.4018860633532241,
+              2.020417677630655
+            ],
+            [
+              -0.5005391706007236,
+              1.9982643815807606
+            ],
+            [
+              -0.597986435144192,
+              1.9712970916083505
+            ],
+            [
+              -0.693993097987973,
+              1.9395807742770228
+            ],
+            [
+              -0.7883278706720849,
+              1.9031918369732508
+            ],
+            [
+              -0.8807634924663806,
+              1.8622179438342936
+            ],
+            [
+              -0.9710772778615553,
+              1.8167578045576114
+            ],
+            [
+              -1.0590516530380367,
+              1.7669209366005607
+            ],
+            [
+              -1.14447468002038,
+              1.7128274013432434
+            ],
+            [
+              -1.2271405672544127,
+              1.6546075148501287
+            ],
+            [
+              -1.3068501653771094,
+              1.5924015339272384
+            ],
+            [
+              -1.383411446984858,
+              1.5263593182312158
+            ],
+            [
+              -1.4566399692442877,
+              1.456639969244288
+            ],
+            [
+              -1.5263593182312154,
+              1.3834114469848582
+            ],
+            [
+              -1.5924015339272382,
+              1.3068501653771096
+            ],
+            [
+              -1.6546075148501285,
+              1.227140567254413
+            ],
+            [
+              -1.7128274013432434,
+              1.1444746800203804
+            ],
+            [
+              -1.7669209366005605,
+              1.059051653038037
+            ],
+            [
+              -1.8167578045576112,
+              0.9710772778615556
+            ],
+            [
+              -1.8622179438342934,
+              0.880763492466381
+            ],
+            [
+              -1.9031918369732508,
+              0.7883278706720852
+            ],
+            [
+              -1.9395807742770226,
+              0.6939930979879739
+            ],
+            [
+              -1.9712970916083503,
+              0.5979864351441926
+            ],
+            [
+              -1.9982643815807606,
+              0.500539170600724
+            ],
+            [
+              -2.020417677630655,
+              0.40188606335322496
+            ],
+            [
+              -2.037703610527449,
+              0.3022647773780453
+            ],
+            [
+              -2.0500805369447255,
+              0.2019153090788953
+            ],
+            [
+              -2.0575186397826553,
+              0.10107940911448102
+            ],
+            [
+              -2.06,
+              2.5227724062435474e-16
+            ],
+            [
+              -2.0575186397826553,
+              -0.10107940911448052
+            ],
+            [
+              -2.050080536944726,
+              -0.20191530907889482
+            ],
+            [
+              -2.037703610527449,
+              -0.30226477737804486
+            ],
+            [
+              -2.020417677630655,
+              -0.4018860633532244
+            ],
+            [
+              -1.9982643815807606,
+              -0.5005391706007235
+            ],
+            [
+              -1.9712970916083505,
+              -0.5979864351441919
+            ],
+            [
+              -1.9395807742770228,
+              -0.6939930979879734
+            ],
+            [
+              -1.903191836973251,
+              -0.7883278706720848
+            ],
+            [
+              -1.8622179438342936,
+              -0.8807634924663805
+            ],
+            [
+              -1.8167578045576114,
+              -0.9710772778615552
+            ],
+            [
+              -1.766920936600561,
+              -1.0590516530380365
+            ],
+            [
+              -1.7128274013432436,
+              -1.14447468002038
+            ],
+            [
+              -1.6546075148501287,
+              -1.2271405672544125
+            ],
+            [
+              -1.5924015339272384,
+              -1.3068501653771092
+            ],
+            [
+              -1.5263593182312158,
+              -1.383411446984858
+            ],
+            [
+              -1.4566399692442882,
+              -1.4566399692442877
+            ],
+            [
+              -1.3834114469848584,
+              -1.5263593182312154
+            ],
+            [
+              -1.3068501653771105,
+              -1.5924015339272375
+            ],
+            [
+              -1.2271405672544122,
+              -1.654607514850129
+            ],
+            [
+              -1.1444746800203804,
+              -1.7128274013432432
+            ],
+            [
+              -1.059051653038037,
+              -1.7669209366005605
+            ],
+            [
+              -0.9710772778615557,
+              -1.8167578045576112
+            ],
+            [
+              -0.880763492466382,
+              -1.862217943834293
+            ],
+            [
+              -0.7883278706720861,
+              -1.9031918369732503
+            ],
+            [
+              -0.693993097987973,
+              -1.9395807742770228
+            ],
+            [
+              -0.5979864351441927,
+              -1.9712970916083503
+            ],
+            [
+              -0.5005391706007241,
+              -1.9982643815807606
+            ],
+            [
+              -0.4018860633532251,
+              -2.0204176776306544
+            ],
+            [
+              -0.30226477737804636,
+              -2.0377036105274486
+            ],
+            [
+              -0.20191530907889454,
+              -2.050080536944726
+            ],
+            [
+              -0.10107940911448114,
+              -2.0575186397826553
+            ],
+            [
+              -3.784158609365321e-16,
+              -2.06
+            ],
+            [
+              0.10107940911448038,
+              -2.0575186397826553
+            ],
+            [
+              0.2019153090788938,
+              -2.050080536944726
+            ],
+            [
+              0.30226477737804563,
+              -2.0377036105274486
+            ],
+            [
+              0.4018860633532243,
+              -2.020417677630655
+            ],
+            [
+              0.5005391706007234,
+              -1.9982643815807606
+            ],
+            [
+              0.5979864351441918,
+              -1.9712970916083505
+            ],
+            [
+              0.6939930979879724,
+              -1.9395807742770232
+            ],
+            [
+              0.7883278706720854,
+              -1.9031918369732506
+            ],
+            [
+              0.8807634924663812,
+              -1.8622179438342934
+            ],
+            [
+              0.9710772778615551,
+              -1.8167578045576114
+            ],
+            [
+              1.0590516530380365,
+              -1.766920936600561
+            ],
+            [
+              1.1444746800203798,
+              -1.7128274013432436
+            ],
+            [
+              1.2271405672544118,
+              -1.6546075148501294
+            ],
+            [
+              1.30685016537711,
+              -1.592401533927238
+            ],
+            [
+              1.383411446984858,
+              -1.5263593182312158
+            ],
+            [
+              1.4566399692442875,
+              -1.4566399692442882
+            ],
+            [
+              1.5263593182312152,
+              -1.3834114469848584
+            ],
+            [
+              1.5924015339272375,
+              -1.3068501653771107
+            ],
+            [
+              1.654607514850129,
+              -1.2271405672544125
+            ],
+            [
+              1.7128274013432432,
+              -1.1444746800203804
+            ],
+            [
+              1.7669209366005605,
+              -1.0590516530380372
+            ],
+            [
+              1.816757804557611,
+              -0.9710772778615558
+            ],
+            [
+              1.862217943834293,
+              -0.8807634924663821
+            ],
+            [
+              1.9031918369732503,
+              -0.7883278706720862
+            ],
+            [
+              1.9395807742770228,
+              -0.6939930979879733
+            ],
+            [
+              1.9712970916083503,
+              -0.5979864351441928
+            ],
+            [
+              1.9982643815807606,
+              -0.5005391706007242
+            ],
+            [
+              2.0204176776306544,
+              -0.4018860633532252
+            ],
+            [
+              2.0377036105274486,
+              -0.3022647773780465
+            ],
+            [
+              2.050080536944726,
+              -0.20191530907889466
+            ],
+            [
+              2.0575186397826553,
+              -0.10107940911448127
+            ]
+          ],
+          "holes": [
+            [
+              [
+                1.9,
+                0.0
+              ],
+              [
+                1.8977113667898275,
+                0.09322858122209422
+              ],
+              [
+                1.890850980677174,
+                0.18623256662616514
+              ],
+              [
+                1.8794353689330838,
+                0.2787879014651873
+              ],
+              [
+                1.8634920327661377,
+                0.3706716118306437
+              ],
+              [
+                1.8430593810696334,
+                0.46166234181620136
+              ],
+              [
+                1.8181866378911966,
+                0.5515408867834785
+              ],
+              [
+                1.7889337238477394,
+                0.6400907214452181
+              ],
+              [
+                1.7553711117714448,
+                0.7270985214936706
+              ],
+              [
+                1.7175796569345423,
+                0.8123546775175359
+              ],
+              [
+                1.6756504022618746,
+                0.8956537999693954
+              ],
+              [
+                1.629684359000517,
+                0.9767952139671211
+              ],
+              [
+                1.5797922633748358,
+                1.0555834427372441
+              ],
+              [
+                1.5260943098132254,
+                1.1318286785356233
+              ],
+              [
+                1.4687198613892003,
+                1.2053472399109264
+              ],
+              [
+                1.4078071381744224,
+                1.2759620142093349
+              ],
+              [
+                1.3435028842544403,
+                1.34350288425444
+              ],
+              [
+                1.2759620142093349,
+                1.4078071381744222
+              ],
+              [
+                1.2053472399109264,
+                1.4687198613892003
+              ],
+              [
+                1.1318286785356235,
+                1.5260943098132251
+              ],
+              [
+                1.0555834427372444,
+                1.5797922633748358
+              ],
+              [
+                0.9767952139671211,
+                1.629684359000517
+              ],
+              [
+                0.8956537999693958,
+                1.6756504022618743
+              ],
+              [
+                0.8123546775175361,
+                1.7175796569345423
+              ],
+              [
+                0.7270985214936706,
+                1.7553711117714448
+              ],
+              [
+                0.6400907214452181,
+                1.7889337238477394
+              ],
+              [
+                0.5515408867834785,
+                1.8181866378911966
+              ],
+              [
+                0.4616623418162015,
+                1.8430593810696334
+              ],
+              [
+                0.3706716118306438,
+                1.8634920327661377
+              ],
+              [
+                0.2787879014651873,
+                1.8794353689330838
+              ],
+              [
+                0.18623256662616544,
+                1.8908509806771738
+              ],
+              [
+                0.09322858122209443,
+                1.8977113667898275
+              ],
+              [
+                1.1634144591899854e-16,
+                1.9
+              ],
+              [
+                -0.09322858122209421,
+                1.8977113667898275
+              ],
+              [
+                -0.18623256662616522,
+                1.890850980677174
+              ],
+              [
+                -0.2787879014651871,
+                1.8794353689330838
+              ],
+              [
+                -0.37067161183064357,
+                1.8634920327661377
+              ],
+              [
+                -0.46166234181620136,
+                1.8430593810696334
+              ],
+              [
+                -0.5515408867834781,
+                1.8181866378911968
+              ],
+              [
+                -0.6400907214452178,
+                1.7889337238477394
+              ],
+              [
+                -0.7270985214936705,
+                1.7553711117714448
+              ],
+              [
+                -0.8123546775175355,
+                1.7175796569345425
+              ],
+              [
+                -0.8956537999693955,
+                1.6756504022618746
+              ],
+              [
+                -0.9767952139671211,
+                1.629684359000517
+              ],
+              [
+                -1.0555834427372437,
+                1.579792263374836
+              ],
+              [
+                -1.1318286785356233,
+                1.5260943098132254
+              ],
+              [
+                -1.2053472399109262,
+                1.4687198613892005
+              ],
+              [
+                -1.275962014209335,
+                1.4078071381744222
+              ],
+              [
+                -1.34350288425444,
+                1.3435028842544403
+              ],
+              [
+                -1.4078071381744217,
+                1.275962014209335
+              ],
+              [
+                -1.4687198613892003,
+                1.2053472399109264
+              ],
+              [
+                -1.5260943098132251,
+                1.1318286785356235
+              ],
+              [
+                -1.579792263374836,
+                1.0555834427372441
+              ],
+              [
+                -1.6296843590005168,
+                0.9767952139671213
+              ],
+              [
+                -1.6756504022618743,
+                0.8956537999693959
+              ],
+              [
+                -1.7175796569345423,
+                0.8123546775175359
+              ],
+              [
+                -1.7553711117714448,
+                0.7270985214936707
+              ],
+              [
+                -1.7889337238477392,
+                0.6400907214452186
+              ],
+              [
+                -1.8181866378911966,
+                0.5515408867834785
+              ],
+              [
+                -1.8430593810696334,
+                0.4616623418162017
+              ],
+              [
+                -1.8634920327661377,
+                0.37067161183064434
+              ],
+              [
+                -1.8794353689330838,
+                0.2787879014651874
+              ],
+              [
+                -1.8908509806771738,
+                0.18623256662616555
+              ],
+              [
+                -1.8977113667898275,
+                0.09322858122209413
+              ],
+              [
+                -1.9,
+                2.326828918379971e-16
+              ],
+              [
+                -1.8977113667898275,
+                -0.09322858122209367
+              ],
+              [
+                -1.890850980677174,
+                -0.1862325666261651
+              ],
+              [
+                -1.8794353689330838,
+                -0.278787901465187
+              ],
+              [
+                -1.8634920327661377,
+                -0.37067161183064384
+              ],
+              [
+                -1.8430593810696334,
+                -0.46166234181620125
+              ],
+              [
+                -1.8181866378911968,
+                -0.551540886783478
+              ],
+              [
+                -1.7889337238477394,
+                -0.6400907214452181
+              ],
+              [
+                -1.755371111771445,
+                -0.7270985214936704
+              ],
+              [
+                -1.7175796569345425,
+                -0.8123546775175354
+              ],
+              [
+                -1.6756504022618746,
+                -0.8956537999693954
+              ],
+              [
+                -1.6296843590005172,
+                -0.9767952139671209
+              ],
+              [
+                -1.5797922633748362,
+                -1.0555834427372437
+              ],
+              [
+                -1.5260943098132254,
+                -1.131828678535623
+              ],
+              [
+                -1.4687198613892005,
+                -1.205347239910926
+              ],
+              [
+                -1.4078071381744222,
+                -1.275962014209335
+              ],
+              [
+                -1.3435028842544405,
+                -1.34350288425444
+              ],
+              [
+                -1.2759620142093353,
+                -1.4078071381744217
+              ],
+              [
+                -1.205347239910927,
+                -1.4687198613891996
+              ],
+              [
+                -1.1318286785356229,
+                -1.5260943098132256
+              ],
+              [
+                -1.0555834427372441,
+                -1.5797922633748358
+              ],
+              [
+                -0.9767952139671213,
+                -1.6296843590005168
+              ],
+              [
+                -0.895653799969396,
+                -1.6756504022618743
+              ],
+              [
+                -0.8123546775175366,
+                -1.7175796569345418
+              ],
+              [
+                -0.7270985214936716,
+                -1.7553711117714443
+              ],
+              [
+                -0.6400907214452178,
+                -1.7889337238477394
+              ],
+              [
+                -0.5515408867834786,
+                -1.8181866378911966
+              ],
+              [
+                -0.4616623418162018,
+                -1.8430593810696334
+              ],
+              [
+                -0.37067161183064445,
+                -1.8634920327661375
+              ],
+              [
+                -0.27878790146518834,
+                -1.8794353689330836
+              ],
+              [
+                -0.18623256662616486,
+                -1.890850980677174
+              ],
+              [
+                -0.09322858122209425,
+                -1.8977113667898275
+              ],
+              [
+                -3.490243377569956e-16,
+                -1.9
+              ],
+              [
+                0.09322858122209356,
+                -1.8977113667898275
+              ],
+              [
+                0.18623256662616416,
+                -1.890850980677174
+              ],
+              [
+                0.27878790146518767,
+                -1.8794353689330836
+              ],
+              [
+                0.37067161183064373,
+                -1.8634920327661377
+              ],
+              [
+                0.46166234181620114,
+                -1.8430593810696334
+              ],
+              [
+                0.5515408867834779,
+                -1.8181866378911968
+              ],
+              [
+                0.6400907214452172,
+                -1.7889337238477396
+              ],
+              [
+                0.7270985214936709,
+                -1.7553711117714446
+              ],
+              [
+                0.812354677517536,
+                -1.7175796569345423
+              ],
+              [
+                0.8956537999693954,
+                -1.6756504022618746
+              ],
+              [
+                0.9767952139671209,
+                -1.6296843590005172
+              ],
+              [
+                1.0555834427372435,
+                -1.5797922633748362
+              ],
+              [
+                1.1318286785356224,
+                -1.526094309813226
+              ],
+              [
+                1.2053472399109266,
+                -1.4687198613892
+              ],
+              [
+                1.275962014209335,
+                -1.4078071381744222
+              ],
+              [
+                1.3435028842544399,
+                -1.3435028842544405
+              ],
+              [
+                1.4078071381744217,
+                -1.2759620142093353
+              ],
+              [
+                1.4687198613891996,
+                -1.2053472399109273
+              ],
+              [
+                1.5260943098132256,
+                -1.131828678535623
+              ],
+              [
+                1.5797922633748358,
+                -1.0555834427372441
+              ],
+              [
+                1.6296843590005168,
+                -0.9767952139671215
+              ],
+              [
+                1.6756504022618741,
+                -0.8956537999693961
+              ],
+              [
+                1.7175796569345418,
+                -0.8123546775175368
+              ],
+              [
+                1.7553711117714443,
+                -0.7270985214936717
+              ],
+              [
+                1.7889337238477394,
+                -0.640090721445218
+              ],
+              [
+                1.8181866378911966,
+                -0.5515408867834787
+              ],
+              [
+                1.8430593810696334,
+                -0.4616623418162019
+              ],
+              [
+                1.8634920327661375,
+                -0.37067161183064457
+              ],
+              [
+                1.8794353689330836,
+                -0.2787879014651885
+              ],
+              [
+                1.890850980677174,
+                -0.18623256662616494
+              ],
+              [
+                1.8977113667898275,
+                -0.09322858122209438
+              ]
+            ]
+          ],
+          "depth": 0.27
+        }
+      },
+      "parent": "root",
+      "attachment": null,
+      "dimensions": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "units": "relative",
+        "confidence": 0.95
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          -0.2
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "detachable-layer",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [
+          {
+            "id": "outer-ring-center",
+            "position": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Replace with sphere/capsule/compound proxy when the object shape demands it."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "outer-ring",
+          "seamRefs": [],
+          "detachableFragments": [
+            "outer-ring"
+          ],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "navy"
+        }
+      },
+      "material": "navy",
+      "materialLayers": [
+        "navy"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [
+        "nested radial contact; gold front meets monogram back"
+      ],
+      "localFeatures": [
+        {
+          "id": "rim-profile",
+          "type": "bevel",
+          "description": "19px navy band and small inferred chamfer",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.32,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "extruded bevel surface normals",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "Clean satin surface; gold includes the broad curved highlight color region. No fictitious microtexture."
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "hero",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(8, 0, 94, 1)",
+        "secondaryAlbedo": "rgba(8, 0, 94, 1)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.7,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    },
+    {
+      "id": "amber-ring",
+      "name": "amber-ring",
+      "level": "macro",
+      "role": "layer",
+      "importance": 1.0,
+      "confidence": 0.95,
+      "primitive": "extrude",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Closed planar profile with inferred extrusion and edge bevel, matching requested logo relief.",
+      "geometryDescriptor": {
+        "topologyIntent": "Closed extruded annulus",
+        "edgeTreatment": {
+          "type": "chamfer",
+          "bevelRadius": 0.022,
+          "segments": 3
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile2D": {
+          "points": [
+            [
+              1.88,
+              0.0
+            ],
+            [
+              1.877735457665724,
+              0.09224722773554586
+            ],
+            [
+              1.8709472861437302,
+              0.18427222381957392
+            ],
+            [
+              1.8596518387337881,
+              0.27585329197608005
+            ],
+            [
+              1.8438763271580731,
+              0.3667698053903211
+            ],
+            [
+              1.8236587560057427,
+              0.45680273821813605
+            ],
+            [
+              1.7990478311765525,
+              0.5457351932383891
+            ],
+            [
+              1.770102842544079,
+              0.6333529243773737
+            ],
+            [
+              1.7368935211212189,
+              0.7194448528463687
+            ],
+            [
+              1.6994998710720735,
+              0.8038035756489302
+            ],
+            [
+              1.6580119769749073,
+              0.8862258652328755
+            ],
+            [
+              1.6125297868005115,
+              0.9665131590832566
+            ],
+            [
+              1.563162871128785,
+              1.044472038076852
+            ],
+            [
+              1.5100301591836125,
+              1.1199146924457746
+            ],
+            [
+              1.4532596523219454,
+              1.1926593742276534
+            ],
+            [
+              1.3929881156673232,
+              1.2625308351123943
+            ],
+            [
+              1.3293607486307093,
+              1.329360748630709
+            ],
+            [
+              1.2625308351123943,
+              1.392988115667323
+            ],
+            [
+              1.1926593742276534,
+              1.4532596523219454
+            ],
+            [
+              1.1199146924457748,
+              1.5100301591836123
+            ],
+            [
+              1.0444720380768522,
+              1.563162871128785
+            ],
+            [
+              0.9665131590832566,
+              1.6125297868005115
+            ],
+            [
+              0.8862258652328758,
+              1.658011976974907
+            ],
+            [
+              0.8038035756489305,
+              1.6994998710720735
+            ],
+            [
+              0.7194448528463688,
+              1.7368935211212189
+            ],
+            [
+              0.6333529243773737,
+              1.770102842544079
+            ],
+            [
+              0.5457351932383891,
+              1.7990478311765525
+            ],
+            [
+              0.4568027382181363,
+              1.8236587560057427
+            ],
+            [
+              0.3667698053903212,
+              1.8438763271580731
+            ],
+            [
+              0.27585329197608005,
+              1.8596518387337881
+            ],
+            [
+              0.18427222381957423,
+              1.87094728614373
+            ],
+            [
+              0.09224722773554607,
+              1.877735457665724
+            ],
+            [
+              1.151167991198512e-16,
+              1.88
+            ],
+            [
+              -0.09224722773554585,
+              1.877735457665724
+            ],
+            [
+              -0.184272223819574,
+              1.8709472861437302
+            ],
+            [
+              -0.2758532919760799,
+              1.8596518387337881
+            ],
+            [
+              -0.366769805390321,
+              1.8438763271580731
+            ],
+            [
+              -0.45680273821813605,
+              1.8236587560057427
+            ],
+            [
+              -0.5457351932383888,
+              1.7990478311765528
+            ],
+            [
+              -0.6333529243773734,
+              1.770102842544079
+            ],
+            [
+              -0.7194448528463686,
+              1.7368935211212189
+            ],
+            [
+              -0.8038035756489299,
+              1.6994998710720737
+            ],
+            [
+              -0.8862258652328756,
+              1.6580119769749073
+            ],
+            [
+              -0.9665131590832566,
+              1.6125297868005115
+            ],
+            [
+              -1.0444720380768515,
+              1.5631628711287853
+            ],
+            [
+              -1.1199146924457746,
+              1.5100301591836125
+            ],
+            [
+              -1.1926593742276532,
+              1.4532596523219456
+            ],
+            [
+              -1.2625308351123945,
+              1.392988115667323
+            ],
+            [
+              -1.329360748630709,
+              1.3293607486307093
+            ],
+            [
+              -1.3929881156673227,
+              1.2625308351123947
+            ],
+            [
+              -1.4532596523219454,
+              1.1926593742276534
+            ],
+            [
+              -1.5100301591836123,
+              1.1199146924457748
+            ],
+            [
+              -1.5631628711287853,
+              1.044472038076852
+            ],
+            [
+              -1.6125297868005113,
+              0.9665131590832569
+            ],
+            [
+              -1.658011976974907,
+              0.8862258652328759
+            ],
+            [
+              -1.6994998710720735,
+              0.8038035756489301
+            ],
+            [
+              -1.7368935211212189,
+              0.7194448528463689
+            ],
+            [
+              -1.7701028425440788,
+              0.6333529243773742
+            ],
+            [
+              -1.7990478311765525,
+              0.5457351932383893
+            ],
+            [
+              -1.8236587560057427,
+              0.45680273821813644
+            ],
+            [
+              -1.8438763271580731,
+              0.3667698053903218
+            ],
+            [
+              -1.8596518387337881,
+              0.27585329197608016
+            ],
+            [
+              -1.87094728614373,
+              0.18427222381957434
+            ],
+            [
+              -1.877735457665724,
+              0.09224722773554578
+            ],
+            [
+              -1.88,
+              2.302335982397024e-16
+            ],
+            [
+              -1.877735457665724,
+              -0.09224722773554532
+            ],
+            [
+              -1.8709472861437302,
+              -0.1842722238195739
+            ],
+            [
+              -1.8596518387337881,
+              -0.2758532919760798
+            ],
+            [
+              -1.8438763271580731,
+              -0.3667698053903213
+            ],
+            [
+              -1.8236587560057427,
+              -0.45680273821813594
+            ],
+            [
+              -1.7990478311765528,
+              -0.5457351932383887
+            ],
+            [
+              -1.770102842544079,
+              -0.6333529243773737
+            ],
+            [
+              -1.736893521121219,
+              -0.7194448528463685
+            ],
+            [
+              -1.6994998710720737,
+              -0.8038035756489298
+            ],
+            [
+              -1.6580119769749073,
+              -0.8862258652328755
+            ],
+            [
+              -1.6125297868005117,
+              -0.9665131590832564
+            ],
+            [
+              -1.5631628711287853,
+              -1.0444720380768515
+            ],
+            [
+              -1.5100301591836125,
+              -1.1199146924457744
+            ],
+            [
+              -1.4532596523219456,
+              -1.192659374227653
+            ],
+            [
+              -1.392988115667323,
+              -1.2625308351123945
+            ],
+            [
+              -1.3293607486307095,
+              -1.329360748630709
+            ],
+            [
+              -1.262530835112395,
+              -1.3929881156673227
+            ],
+            [
+              -1.1926593742276541,
+              -1.4532596523219448
+            ],
+            [
+              -1.1199146924457741,
+              -1.5100301591836127
+            ],
+            [
+              -1.044472038076852,
+              -1.563162871128785
+            ],
+            [
+              -0.9665131590832569,
+              -1.6125297868005113
+            ],
+            [
+              -0.886225865232876,
+              -1.658011976974907
+            ],
+            [
+              -0.803803575648931,
+              -1.699499871072073
+            ],
+            [
+              -0.7194448528463698,
+              -1.7368935211212186
+            ],
+            [
+              -0.6333529243773734,
+              -1.770102842544079
+            ],
+            [
+              -0.5457351932383894,
+              -1.7990478311765525
+            ],
+            [
+              -0.4568027382181365,
+              -1.8236587560057427
+            ],
+            [
+              -0.3667698053903219,
+              -1.843876327158073
+            ],
+            [
+              -0.2758532919760811,
+              -1.859651838733788
+            ],
+            [
+              -0.18427222381957364,
+              -1.8709472861437302
+            ],
+            [
+              -0.09224722773554589,
+              -1.877735457665724
+            ],
+            [
+              -3.453503973595536e-16,
+              -1.88
+            ],
+            [
+              0.0922472277355452,
+              -1.877735457665724
+            ],
+            [
+              0.18427222381957295,
+              -1.8709472861437302
+            ],
+            [
+              0.27585329197608044,
+              -1.859651838733788
+            ],
+            [
+              0.36676980539032117,
+              -1.8438763271580731
+            ],
+            [
+              0.45680273821813583,
+              -1.8236587560057427
+            ],
+            [
+              0.5457351932383886,
+              -1.7990478311765528
+            ],
+            [
+              0.6333529243773728,
+              -1.7701028425440792
+            ],
+            [
+              0.7194448528463692,
+              -1.7368935211212189
+            ],
+            [
+              0.8038035756489303,
+              -1.6994998710720735
+            ],
+            [
+              0.8862258652328754,
+              -1.6580119769749073
+            ],
+            [
+              0.9665131590832564,
+              -1.6125297868005117
+            ],
+            [
+              1.0444720380768515,
+              -1.5631628711287853
+            ],
+            [
+              1.119914692445774,
+              -1.510030159183613
+            ],
+            [
+              1.1926593742276537,
+              -1.4532596523219452
+            ],
+            [
+              1.2625308351123945,
+              -1.392988115667323
+            ],
+            [
+              1.3293607486307089,
+              -1.3293607486307095
+            ],
+            [
+              1.3929881156673225,
+              -1.262530835112395
+            ],
+            [
+              1.4532596523219448,
+              -1.1926593742276543
+            ],
+            [
+              1.5100301591836127,
+              -1.1199146924457744
+            ],
+            [
+              1.563162871128785,
+              -1.044472038076852
+            ],
+            [
+              1.6125297868005113,
+              -0.9665131590832571
+            ],
+            [
+              1.6580119769749069,
+              -0.8862258652328762
+            ],
+            [
+              1.699499871072073,
+              -0.8038035756489311
+            ],
+            [
+              1.7368935211212186,
+              -0.7194448528463699
+            ],
+            [
+              1.770102842544079,
+              -0.6333529243773736
+            ],
+            [
+              1.7990478311765525,
+              -0.5457351932383895
+            ],
+            [
+              1.8236587560057427,
+              -0.4568027382181366
+            ],
+            [
+              1.843876327158073,
+              -0.36676980539032195
+            ],
+            [
+              1.859651838733788,
+              -0.27585329197608127
+            ],
+            [
+              1.8709472861437302,
+              -0.18427222381957375
+            ],
+            [
+              1.877735457665724,
+              -0.092247227735546
+            ]
+          ],
+          "holes": [
+            [
+              [
+                1.77,
+                0.055
+              ],
+              [
+                1.7678679574831553,
+                0.14184978355952987
+              ],
+              [
+                1.7614769662097887,
+                0.22849033838332225
+              ],
+              [
+                1.7508424226376624,
+                0.3147129397859903
+              ],
+              [
+                1.7359899463137178,
+                0.400309869968547
+              ],
+              [
+                1.7169553181543429,
+                0.48507491842877704
+              ],
+              [
+                1.6937843942460096,
+                0.5688038787403984
+              ],
+              [
+                1.666532995373947,
+                0.6512950405042296
+              ],
+              [
+                1.6352667725449777,
+                0.732349675286209
+              ],
+              [
+                1.6000610488284948,
+                0.8117725153715993
+              ],
+              [
+                1.5610006378965884,
+                0.8893722241820159
+              ],
+              [
+                1.5181796397004816,
+                0.9649618572220025
+              ],
+              [
+                1.471701213775505,
+                1.038359312444696
+              ],
+              [
+                1.4216773307207415,
+                1.109387768951607
+              ],
+              [
+                1.3682285024520444,
+                1.1778761129696524
+              ],
+              [
+                1.3114834918782778,
+                1.2436593500792223
+              ],
+              [
+                1.2515790027001892,
+                1.306579002700189
+              ],
+              [
+                1.1886593500792224,
+                1.3664834918782776
+              ],
+              [
+                1.1228761129696525,
+                1.4232285024520444
+              ],
+              [
+                1.0543877689516072,
+                1.4766773307207413
+              ],
+              [
+                0.9833593124446961,
+                1.526701213775505
+              ],
+              [
+                0.9099618572220024,
+                1.5731796397004816
+              ],
+              [
+                0.8343722241820162,
+                1.616000637896588
+              ],
+              [
+                0.7567725153715995,
+                1.6550610488284947
+              ],
+              [
+                0.677349675286209,
+                1.6902667725449776
+              ],
+              [
+                0.5962950405042295,
+                1.7215329953739469
+              ],
+              [
+                0.5138038787403983,
+                1.7487843942460095
+              ],
+              [
+                0.43007491842877726,
+                1.7719553181543428
+              ],
+              [
+                0.3453098699685471,
+                1.7909899463137178
+              ],
+              [
+                0.2597129397859903,
+                1.8058424226376624
+              ],
+              [
+                0.17349033838332256,
+                1.8164769662097884
+              ],
+              [
+                0.08684978355953009,
+                1.8228679574831552
+              ],
+              [
+                1.0838124172454077e-16,
+                1.825
+              ],
+              [
+                -0.08684978355952988,
+                1.8228679574831552
+              ],
+              [
+                -0.17349033838332234,
+                1.8164769662097886
+              ],
+              [
+                -0.2597129397859901,
+                1.8058424226376624
+              ],
+              [
+                -0.3453098699685469,
+                1.7909899463137178
+              ],
+              [
+                -0.43007491842877704,
+                1.7719553181543428
+              ],
+              [
+                -0.513803878740398,
+                1.7487843942460097
+              ],
+              [
+                -0.5962950405042293,
+                1.7215329953739469
+              ],
+              [
+                -0.6773496752862088,
+                1.6902667725449776
+              ],
+              [
+                -0.756772515371599,
+                1.655061048828495
+              ],
+              [
+                -0.834372224182016,
+                1.6160006378965883
+              ],
+              [
+                -0.9099618572220024,
+                1.5731796397004816
+              ],
+              [
+                -0.9833593124446954,
+                1.5267012137755052
+              ],
+              [
+                -1.054387768951607,
+                1.4766773307207415
+              ],
+              [
+                -1.1228761129696523,
+                1.4232285024520446
+              ],
+              [
+                -1.1886593500792226,
+                1.3664834918782776
+              ],
+              [
+                -1.251579002700189,
+                1.3065790027001891
+              ],
+              [
+                -1.3114834918782772,
+                1.2436593500792228
+              ],
+              [
+                -1.3682285024520444,
+                1.1778761129696524
+              ],
+              [
+                -1.4216773307207413,
+                1.1093877689516072
+              ],
+              [
+                -1.4717012137755052,
+                1.038359312444696
+              ],
+              [
+                -1.5181796397004814,
+                0.9649618572220026
+              ],
+              [
+                -1.5610006378965882,
+                0.8893722241820162
+              ],
+              [
+                -1.6000610488284948,
+                0.8117725153715992
+              ],
+              [
+                -1.6352667725449777,
+                0.7323496752862092
+              ],
+              [
+                -1.6665329953739467,
+                0.65129504050423
+              ],
+              [
+                -1.6937843942460096,
+                0.5688038787403985
+              ],
+              [
+                -1.7169553181543429,
+                0.48507491842877737
+              ],
+              [
+                -1.7359899463137178,
+                0.4003098699685476
+              ],
+              [
+                -1.7508424226376624,
+                0.3147129397859904
+              ],
+              [
+                -1.7614769662097884,
+                0.22849033838332267
+              ],
+              [
+                -1.7678679574831553,
+                0.1418497835595298
+              ],
+              [
+                -1.77,
+                0.055000000000000215
+              ],
+              [
+                -1.7678679574831553,
+                -0.03184978355952937
+              ],
+              [
+                -1.7614769662097887,
+                -0.11849033838332226
+              ],
+              [
+                -1.7508424226376624,
+                -0.20471293978599003
+              ],
+              [
+                -1.7359899463137178,
+                -0.2903098699685472
+              ],
+              [
+                -1.7169553181543429,
+                -0.37507491842877694
+              ],
+              [
+                -1.6937843942460098,
+                -0.4588038787403979
+              ],
+              [
+                -1.666532995373947,
+                -0.5412950405042295
+              ],
+              [
+                -1.6352667725449777,
+                -0.6223496752862087
+              ],
+              [
+                -1.600061048828495,
+                -0.7017725153715988
+              ],
+              [
+                -1.5610006378965884,
+                -0.7793722241820158
+              ],
+              [
+                -1.5181796397004819,
+                -0.8549618572220021
+              ],
+              [
+                -1.4717012137755054,
+                -0.9283593124446954
+              ],
+              [
+                -1.4216773307207415,
+                -0.9993877689516067
+              ],
+              [
+                -1.3682285024520446,
+                -1.0678761129696521
+              ],
+              [
+                -1.3114834918782776,
+                -1.1336593500792227
+              ],
+              [
+                -1.2515790027001894,
+                -1.196579002700189
+              ],
+              [
+                -1.188659350079223,
+                -1.2564834918782772
+              ],
+              [
+                -1.1228761129696532,
+                -1.313228502452044
+              ],
+              [
+                -1.0543877689516066,
+                -1.3666773307207418
+              ],
+              [
+                -0.9833593124446959,
+                -1.416701213775505
+              ],
+              [
+                -0.9099618572220025,
+                -1.4631796397004815
+              ],
+              [
+                -0.8343722241820163,
+                -1.5060006378965882
+              ],
+              [
+                -0.7567725153716,
+                -1.5450610488284944
+              ],
+              [
+                -0.6773496752862099,
+                -1.5802667725449773
+              ],
+              [
+                -0.5962950405042293,
+                -1.611532995373947
+              ],
+              [
+                -0.5138038787403986,
+                -1.6387843942460096
+              ],
+              [
+                -0.4300749184287775,
+                -1.661955318154343
+              ],
+              [
+                -0.34530986996854773,
+                -1.6809899463137177
+              ],
+              [
+                -0.2597129397859913,
+                -1.6958424226376623
+              ],
+              [
+                -0.173490338383322,
+                -1.7064769662097887
+              ],
+              [
+                -0.08684978355952991,
+                -1.7128679574831553
+              ],
+              [
+                -3.2514372517362223e-16,
+                -1.715
+              ],
+              [
+                0.08684978355952926,
+                -1.7128679574831553
+              ],
+              [
+                0.17349033838332137,
+                -1.7064769662097887
+              ],
+              [
+                0.25971293978599064,
+                -1.6958424226376623
+              ],
+              [
+                0.3453098699685471,
+                -1.680989946313718
+              ],
+              [
+                0.4300749184287769,
+                -1.661955318154343
+              ],
+              [
+                0.5138038787403978,
+                -1.6387843942460099
+              ],
+              [
+                0.5962950405042287,
+                -1.611532995373947
+              ],
+              [
+                0.6773496752862093,
+                -1.5802667725449775
+              ],
+              [
+                0.7567725153715994,
+                -1.5450610488284948
+              ],
+              [
+                0.8343722241820157,
+                -1.5060006378965884
+              ],
+              [
+                0.9099618572220022,
+                -1.463179639700482
+              ],
+              [
+                0.9833593124446953,
+                -1.4167012137755055
+              ],
+              [
+                1.0543877689516064,
+                -1.3666773307207423
+              ],
+              [
+                1.1228761129696527,
+                -1.3132285024520443
+              ],
+              [
+                1.1886593500792226,
+                -1.2564834918782777
+              ],
+              [
+                1.2515790027001887,
+                -1.1965790027001895
+              ],
+              [
+                1.311483491878277,
+                -1.1336593500792231
+              ],
+              [
+                1.368228502452044,
+                -1.0678761129696535
+              ],
+              [
+                1.4216773307207418,
+                -0.9993877689516067
+              ],
+              [
+                1.471701213775505,
+                -0.9283593124446958
+              ],
+              [
+                1.5181796397004814,
+                -0.8549618572220027
+              ],
+              [
+                1.5610006378965882,
+                -0.7793722241820163
+              ],
+              [
+                1.6000610488284943,
+                -0.7017725153716
+              ],
+              [
+                1.6352667725449772,
+                -0.62234967528621
+              ],
+              [
+                1.666532995373947,
+                -0.5412950405042294
+              ],
+              [
+                1.6937843942460096,
+                -0.4588038787403987
+              ],
+              [
+                1.7169553181543429,
+                -0.3750749184287776
+              ],
+              [
+                1.7359899463137176,
+                -0.29030986996854785
+              ],
+              [
+                1.7508424226376622,
+                -0.20471293978599142
+              ],
+              [
+                1.7614769662097887,
+                -0.1184903383833221
+              ],
+              [
+                1.7678679574831553,
+                -0.03184978355953002
+              ]
+            ]
+          ],
+          "depth": 0.24
+        }
+      },
+      "parent": "root",
+      "attachment": null,
+      "dimensions": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "units": "relative",
+        "confidence": 0.95
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          -0.1
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "detachable-layer",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [
+          {
+            "id": "amber-ring-center",
+            "position": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Replace with sphere/capsule/compound proxy when the object shape demands it."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "amber-ring",
+          "seamRefs": [],
+          "detachableFragments": [
+            "amber-ring"
+          ],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "amber"
+        }
+      },
+      "material": "amber",
+      "materialLayers": [
+        "amber"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [
+        "nested radial contact; gold front meets monogram back"
+      ],
+      "localFeatures": [
+        {
+          "id": "amber-profile",
+          "type": "bevel",
+          "description": "amber inset annulus",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.3,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "extruded bevel surface normals",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "Clean satin surface; gold includes the broad curved highlight color region. No fictitious microtexture."
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "hero",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(255, 137, 0, 1)",
+        "secondaryAlbedo": "rgba(255, 137, 0, 1)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.7,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    },
+    {
+      "id": "gold-core",
+      "name": "gold-core",
+      "level": "macro",
+      "role": "layer",
+      "importance": 1.0,
+      "confidence": 0.95,
+      "primitive": "extrude",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Closed planar profile with inferred extrusion and edge bevel, matching requested logo relief.",
+      "geometryDescriptor": {
+        "topologyIntent": "Closed extruded profile",
+        "edgeTreatment": {
+          "type": "chamfer",
+          "bevelRadius": 0.022,
+          "segments": 3
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile2D": {
+          "points": [
+            [
+              1.75,
+              0.0
+            ],
+            [
+              1.7478920483590517,
+              0.08586843007298153
+            ],
+            [
+              1.7415732716763446,
+              0.17152999557673104
+            ],
+            [
+              1.7310588924383667,
+              0.2567783302968831
+            ],
+            [
+              1.7163742407056533,
+              0.34140806352822445
+            ],
+            [
+              1.697554693090452,
+              0.4252153148307118
+            ],
+            [
+              1.6746455875313655,
+              0.507998185195309
+            ],
+            [
+              1.6477021140702863,
+              0.589557243436385
+            ],
+            [
+              1.6167891818947517,
+              0.6696960066389072
+            ],
+            [
+              1.581981262966026,
+              0.7482214135029936
+            ],
+            [
+              1.5433622126096214,
+              0.8249442894454959
+            ],
+            [
+              1.5010250675004762,
+              0.8996798023381379
+            ],
+            [
+              1.4550718215294542,
+              0.9722479077843038
+            ],
+            [
+              1.4056131800911287,
+              1.0424737828617583
+            ],
+            [
+              1.3527682933847898,
+              1.1101882472863795
+            ],
+            [
+              1.2966644693711786,
+              1.175228170982282
+            ],
+            [
+              1.2374368670764582,
+              1.237436867076458
+            ],
+            [
+              1.175228170982282,
+              1.2966644693711784
+            ],
+            [
+              1.1101882472863795,
+              1.3527682933847898
+            ],
+            [
+              1.0424737828617585,
+              1.4056131800911285
+            ],
+            [
+              0.972247907784304,
+              1.4550718215294542
+            ],
+            [
+              0.8996798023381379,
+              1.5010250675004762
+            ],
+            [
+              0.8249442894454961,
+              1.5433622126096211
+            ],
+            [
+              0.7482214135029939,
+              1.581981262966026
+            ],
+            [
+              0.6696960066389073,
+              1.6167891818947517
+            ],
+            [
+              0.589557243436385,
+              1.6477021140702863
+            ],
+            [
+              0.507998185195309,
+              1.6746455875313655
+            ],
+            [
+              0.42521531483071195,
+              1.697554693090452
+            ],
+            [
+              0.34140806352822456,
+              1.7163742407056533
+            ],
+            [
+              0.2567783302968831,
+              1.7310588924383667
+            ],
+            [
+              0.17152999557673135,
+              1.7415732716763443
+            ],
+            [
+              0.08586843007298173,
+              1.7478920483590517
+            ],
+            [
+              1.071565949253934e-16,
+              1.75
+            ],
+            [
+              -0.08586843007298152,
+              1.7478920483590517
+            ],
+            [
+              -0.17152999557673113,
+              1.7415732716763446
+            ],
+            [
+              -0.25677833029688285,
+              1.7310588924383667
+            ],
+            [
+              -0.34140806352822434,
+              1.7163742407056533
+            ],
+            [
+              -0.4252153148307118,
+              1.697554693090452
+            ],
+            [
+              -0.5079981851953088,
+              1.6746455875313657
+            ],
+            [
+              -0.5895572434363849,
+              1.6477021140702863
+            ],
+            [
+              -0.669696006638907,
+              1.6167891818947517
+            ],
+            [
+              -0.7482214135029932,
+              1.5819812629660261
+            ],
+            [
+              -0.8249442894454959,
+              1.5433622126096214
+            ],
+            [
+              -0.8996798023381379,
+              1.5010250675004762
+            ],
+            [
+              -0.9722479077843034,
+              1.4550718215294545
+            ],
+            [
+              -1.0424737828617583,
+              1.4056131800911287
+            ],
+            [
+              -1.1101882472863793,
+              1.35276829338479
+            ],
+            [
+              -1.1752281709822823,
+              1.2966644693711784
+            ],
+            [
+              -1.237436867076458,
+              1.2374368670764582
+            ],
+            [
+              -1.296664469371178,
+              1.1752281709822825
+            ],
+            [
+              -1.3527682933847898,
+              1.1101882472863795
+            ],
+            [
+              -1.4056131800911285,
+              1.0424737828617585
+            ],
+            [
+              -1.4550718215294545,
+              0.9722479077843038
+            ],
+            [
+              -1.501025067500476,
+              0.899679802338138
+            ],
+            [
+              -1.5433622126096211,
+              0.8249442894454962
+            ],
+            [
+              -1.581981262966026,
+              0.7482214135029935
+            ],
+            [
+              -1.6167891818947517,
+              0.6696960066389073
+            ],
+            [
+              -1.6477021140702863,
+              0.5895572434363856
+            ],
+            [
+              -1.6746455875313655,
+              0.5079981851953091
+            ],
+            [
+              -1.697554693090452,
+              0.4252153148307121
+            ],
+            [
+              -1.7163742407056533,
+              0.34140806352822506
+            ],
+            [
+              -1.7310588924383667,
+              0.25677833029688313
+            ],
+            [
+              -1.7415732716763443,
+              0.17152999557673143
+            ],
+            [
+              -1.7478920483590517,
+              0.08586843007298144
+            ],
+            [
+              -1.75,
+              2.143131898507868e-16
+            ],
+            [
+              -1.7478920483590517,
+              -0.08586843007298102
+            ],
+            [
+              -1.7415732716763446,
+              -0.17152999557673104
+            ],
+            [
+              -1.7310588924383667,
+              -0.2567783302968828
+            ],
+            [
+              -1.7163742407056533,
+              -0.3414080635282246
+            ],
+            [
+              -1.697554693090452,
+              -0.4252153148307117
+            ],
+            [
+              -1.6746455875313657,
+              -0.5079981851953087
+            ],
+            [
+              -1.6477021140702863,
+              -0.589557243436385
+            ],
+            [
+              -1.616789181894752,
+              -0.6696960066389069
+            ],
+            [
+              -1.5819812629660261,
+              -0.7482214135029932
+            ],
+            [
+              -1.5433622126096214,
+              -0.8249442894454959
+            ],
+            [
+              -1.5010250675004764,
+              -0.8996798023381377
+            ],
+            [
+              -1.4550718215294545,
+              -0.9722479077843034
+            ],
+            [
+              -1.4056131800911287,
+              -1.0424737828617583
+            ],
+            [
+              -1.35276829338479,
+              -1.1101882472863793
+            ],
+            [
+              -1.2966644693711784,
+              -1.1752281709822823
+            ],
+            [
+              -1.2374368670764584,
+              -1.237436867076458
+            ],
+            [
+              -1.1752281709822827,
+              -1.296664469371178
+            ],
+            [
+              -1.1101882472863802,
+              -1.352768293384789
+            ],
+            [
+              -1.042473782861758,
+              -1.405613180091129
+            ],
+            [
+              -0.9722479077843038,
+              -1.4550718215294542
+            ],
+            [
+              -0.899679802338138,
+              -1.501025067500476
+            ],
+            [
+              -0.8249442894454964,
+              -1.5433622126096211
+            ],
+            [
+              -0.7482214135029943,
+              -1.5819812629660255
+            ],
+            [
+              -0.669696006638908,
+              -1.6167891818947515
+            ],
+            [
+              -0.5895572434363849,
+              -1.6477021140702863
+            ],
+            [
+              -0.5079981851953093,
+              -1.6746455875313655
+            ],
+            [
+              -0.42521531483071223,
+              -1.697554693090452
+            ],
+            [
+              -0.34140806352822517,
+              -1.716374240705653
+            ],
+            [
+              -0.256778330296884,
+              -1.7310588924383665
+            ],
+            [
+              -0.1715299955767308,
+              -1.7415732716763446
+            ],
+            [
+              -0.08586843007298155,
+              -1.7478920483590517
+            ],
+            [
+              -3.214697847761802e-16,
+              -1.75
+            ],
+            [
+              0.08586843007298091,
+              -1.7478920483590517
+            ],
+            [
+              0.17152999557673015,
+              -1.7415732716763446
+            ],
+            [
+              0.2567783302968834,
+              -1.7310588924383665
+            ],
+            [
+              0.3414080635282245,
+              -1.7163742407056533
+            ],
+            [
+              0.42521531483071157,
+              -1.697554693090452
+            ],
+            [
+              0.5079981851953086,
+              -1.6746455875313657
+            ],
+            [
+              0.5895572434363843,
+              -1.6477021140702865
+            ],
+            [
+              0.6696960066389075,
+              -1.6167891818947515
+            ],
+            [
+              0.7482214135029938,
+              -1.581981262966026
+            ],
+            [
+              0.8249442894454958,
+              -1.5433622126096214
+            ],
+            [
+              0.8996798023381377,
+              -1.5010250675004764
+            ],
+            [
+              0.9722479077843033,
+              -1.4550718215294545
+            ],
+            [
+              1.0424737828617576,
+              -1.4056131800911293
+            ],
+            [
+              1.1101882472863798,
+              -1.3527682933847895
+            ],
+            [
+              1.1752281709822823,
+              -1.2966644693711784
+            ],
+            [
+              1.237436867076458,
+              -1.2374368670764584
+            ],
+            [
+              1.2966644693711777,
+              -1.1752281709822827
+            ],
+            [
+              1.352768293384789,
+              -1.1101882472863804
+            ],
+            [
+              1.405613180091129,
+              -1.0424737828617583
+            ],
+            [
+              1.4550718215294542,
+              -0.9722479077843038
+            ],
+            [
+              1.501025067500476,
+              -0.8996798023381383
+            ],
+            [
+              1.543362212609621,
+              -0.8249442894454965
+            ],
+            [
+              1.5819812629660255,
+              -0.7482214135029944
+            ],
+            [
+              1.6167891818947515,
+              -0.6696960066389082
+            ],
+            [
+              1.6477021140702863,
+              -0.5895572434363849
+            ],
+            [
+              1.6746455875313655,
+              -0.5079981851953094
+            ],
+            [
+              1.697554693090452,
+              -0.4252153148307123
+            ],
+            [
+              1.716374240705653,
+              -0.3414080635282253
+            ],
+            [
+              1.7310588924383665,
+              -0.2567783302968842
+            ],
+            [
+              1.7415732716763446,
+              -0.17152999557673088
+            ],
+            [
+              1.7478920483590517,
+              -0.08586843007298166
+            ]
+          ],
+          "holes": [],
+          "depth": 0.18
+        }
+      },
+      "parent": "root",
+      "attachment": null,
+      "dimensions": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "units": "relative",
+        "confidence": 0.95
+      },
+      "transform": {
+        "position": [
+          0,
+          0.055,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "detachable-layer",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [
+          {
+            "id": "gold-core-center",
+            "position": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Replace with sphere/capsule/compound proxy when the object shape demands it."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "gold-core",
+          "seamRefs": [],
+          "detachableFragments": [
+            "gold-core"
+          ],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "gold"
+        }
+      },
+      "material": "gold",
+      "materialLayers": [
+        "gold"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [
+        "nested radial contact; gold front meets monogram back"
+      ],
+      "localFeatures": [
+        {
+          "id": "gold-profile",
+          "type": "bevel",
+          "description": "circular gold disk seated inside amber",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "id": "gold-gradient",
+          "type": "decal",
+          "description": "warm gold gradient",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "id": "gold-gloss",
+          "type": "gloss",
+          "description": "broad upper curved satin highlight",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.27,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "extruded bevel surface normals",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "Clean satin surface; gold includes the broad curved highlight color region. No fictitious microtexture."
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "hero",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(255, 207, 0, 1)",
+        "secondaryAlbedo": "rgba(255, 207, 0, 1)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.7,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    },
+    {
+      "id": "monogram",
+      "name": "monogram",
+      "level": "macro",
+      "role": "layer",
+      "importance": 1.0,
+      "confidence": 0.95,
+      "primitive": "extrude",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Closed planar profile with inferred extrusion and edge bevel, matching requested logo relief.",
+      "geometryDescriptor": {
+        "topologyIntent": "Closed extruded profile",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile2D": {
+          "points": [
+            [
+              -0.88,
+              1.0
+            ],
+            [
+              -0.88,
+              0.93
+            ],
+            [
+              -0.812633101851852,
+              0.939357638888889
+            ],
+            [
+              -0.7552314814814812,
+              0.942361111111111
+            ],
+            [
+              -0.70734375,
+              0.93890625
+            ],
+            [
+              -0.6685185185185182,
+              0.9288888888888888
+            ],
+            [
+              -0.6383043981481487,
+              0.9122048611111114
+            ],
+            [
+              -0.61625,
+              0.88875
+            ],
+            [
+              -0.6019039351851854,
+              0.8584201388888889
+            ],
+            [
+              -0.5948148148148149,
+              0.8211111111111111
+            ],
+            [
+              -0.59453125,
+              0.77671875
+            ],
+            [
+              -0.6006018518518517,
+              0.7251388888888889
+            ],
+            [
+              -0.6125752314814815,
+              0.6662673611111112
+            ],
+            [
+              -0.63,
+              0.6
+            ],
+            [
+              -0.6582870370370373,
+              0.5002604166666665
+            ],
+            [
+              -0.6879629629629628,
+              0.40125
+            ],
+            [
+              -0.71875,
+              0.30328125
+            ],
+            [
+              -0.7503703703703701,
+              0.20666666666666686
+            ],
+            [
+              -0.7825462962962965,
+              0.11171875000000028
+            ],
+            [
+              -0.815,
+              0.01875
+            ],
+            [
+              -0.8474537037037038,
+              -0.07192708333333371
+            ],
+            [
+              -0.8796296296296297,
+              -0.16
+            ],
+            [
+              -0.91125,
+              -0.24515625
+            ],
+            [
+              -0.942037037037037,
+              -0.32708333333333345
+            ],
+            [
+              -0.9717129629629631,
+              -0.40546875
+            ],
+            [
+              -1.0,
+              -0.48
+            ],
+            [
+              -0.56,
+              -0.38
+            ],
+            [
+              -0.5359143518518519,
+              -0.3000925925925921
+            ],
+            [
+              -0.5039814814814815,
+              -0.2115740740740742
+            ],
+            [
+              -0.4646875,
+              -0.11625
+            ],
+            [
+              -0.4185185185185182,
+              -0.015925925925926093
+            ],
+            [
+              -0.36596064814814866,
+              0.08759259259259324
+            ],
+            [
+              -0.3075,
+              0.1925
+            ],
+            [
+              -0.24362268518518504,
+              0.2969907407407405
+            ],
+            [
+              -0.17481481481481495,
+              0.39925925925925926
+            ],
+            [
+              -0.1015625,
+              0.4975
+            ],
+            [
+              -0.02435185185185162,
+              0.5899074074074077
+            ],
+            [
+              0.056331018518518475,
+              0.6746759259259258
+            ],
+            [
+              0.14,
+              0.75
+            ],
+            [
+              0.17659143518518505,
+              0.7786111111111115
+            ],
+            [
+              0.21106481481481523,
+              0.7997222222222223
+            ],
+            [
+              0.24296875,
+              0.81375
+            ],
+            [
+              0.2718518518518522,
+              0.8211111111111109
+            ],
+            [
+              0.29726273148148125,
+              0.8222222222222225
+            ],
+            [
+              0.31875,
+              0.8175
+            ],
+            [
+              0.33586226851851875,
+              0.8073611111111112
+            ],
+            [
+              0.3481481481481478,
+              0.7922222222222223
+            ],
+            [
+              0.35515625,
+              0.7725
+            ],
+            [
+              0.35643518518518535,
+              0.7486111111111109
+            ],
+            [
+              0.35153356481481496,
+              0.7209722222222222
+            ],
+            [
+              0.34,
+              0.69
+            ],
+            [
+              0.15,
+              0.2
+            ],
+            [
+              0.089878472222222,
+              0.17800925925925953
+            ],
+            [
+              0.029861111111111144,
+              0.15240740740740705
+            ],
+            [
+              -0.02953125,
+              0.12375
+            ],
+            [
+              -0.08777777777777772,
+              0.09259259259259238
+            ],
+            [
+              -0.14435763888888942,
+              0.05949074074074133
+            ],
+            [
+              -0.19875,
+              0.025
+            ],
+            [
+              -0.25043402777777773,
+              -0.010324074074073906
+            ],
+            [
+              -0.29888888888888915,
+              -0.04592592592592552
+            ],
+            [
+              -0.34359375,
+              -0.08125
+            ],
+            [
+              -0.3840277777777777,
+              -0.11574074074074076
+            ],
+            [
+              -0.4196701388888889,
+              -0.14884259259259267
+            ],
+            [
+              -0.45,
+              -0.18
+            ],
+            [
+              -0.4053993055555557,
+              -0.160625
+            ],
+            [
+              -0.3615277777777777,
+              -0.1425000000000003
+            ],
+            [
+              -0.31828125,
+              -0.125625
+            ],
+            [
+              -0.27555555555555544,
+              -0.11000000000000028
+            ],
+            [
+              -0.2332465277777783,
+              -0.09562499999999943
+            ],
+            [
+              -0.19125,
+              -0.0825
+            ],
+            [
+              -0.14946180555555544,
+              -0.070625
+            ],
+            [
+              -0.10777777777777771,
+              -0.05999999999999971
+            ],
+            [
+              -0.06609375,
+              -0.050625
+            ],
+            [
+              -0.024305555555555428,
+              -0.0425
+            ],
+            [
+              0.017690972222222285,
+              -0.035625
+            ],
+            [
+              0.06,
+              -0.03
+            ],
+            [
+              -0.13,
+              -0.62
+            ],
+            [
+              -0.14702546296296304,
+              -0.6927488425925924
+            ],
+            [
+              -0.15370370370370354,
+              -0.7561574074074077
+            ],
+            [
+              -0.1509375,
+              -0.81046875
+            ],
+            [
+              -0.13962962962962963,
+              -0.8559259259259261
+            ],
+            [
+              -0.12068287037037095,
+              -0.8927719907407402
+            ],
+            [
+              -0.095,
+              -0.92125
+            ],
+            [
+              -0.06348379629629619,
+              -0.9416030092592598
+            ],
+            [
+              -0.027037037037036953,
+              -0.9540740740740739
+            ],
+            [
+              0.0134375,
+              -0.95890625
+            ],
+            [
+              0.057037037037036956,
+              -0.9563425925925924
+            ],
+            [
+              0.10285879629629618,
+              -0.9466261574074076
+            ],
+            [
+              0.15,
+              -0.93
+            ],
+            [
+              0.19667245370370354,
+              -0.9133854166666668
+            ],
+            [
+              0.24171296296296332,
+              -0.8937500000000012
+            ],
+            [
+              0.28515625,
+              -0.87140625
+            ],
+            [
+              0.32703703703703724,
+              -0.8466666666666669
+            ],
+            [
+              0.3673900462962959,
+              -0.8198437499999994
+            ],
+            [
+              0.40625,
+              -0.79125
+            ],
+            [
+              0.44365162037037037,
+              -0.7611979166666663
+            ],
+            [
+              0.47962962962962935,
+              -0.73
+            ],
+            [
+              0.51421875,
+              -0.69796875
+            ],
+            [
+              0.5474537037037038,
+              -0.6654166666666669
+            ],
+            [
+              0.5793692129629631,
+              -0.63265625
+            ],
+            [
+              0.61,
+              -0.6
+            ],
+            [
+              0.55,
+              -0.54
+            ],
+            [
+              0.5057465277777772,
+              -0.58140625
+            ],
+            [
+              0.46347222222222256,
+              -0.6154166666666668
+            ],
+            [
+              0.42390625,
+              -0.64171875
+            ],
+            [
+              0.387777777777778,
+              -0.66
+            ],
+            [
+              0.3558159722222217,
+              -0.6699479166666663
+            ],
+            [
+              0.32875,
+              -0.67125
+            ],
+            [
+              0.3073090277777777,
+              -0.66359375
+            ],
+            [
+              0.2922222222222217,
+              -0.6466666666666668
+            ],
+            [
+              0.28421875,
+              -0.62015625
+            ],
+            [
+              0.284027777777778,
+              -0.58375
+            ],
+            [
+              0.2923784722222223,
+              -0.5371354166666669
+            ],
+            [
+              0.31,
+              -0.48
+            ],
+            [
+              0.46,
+              -0.03
+            ],
+            [
+              0.4974942129629625,
+              -0.03289930555555486
+            ],
+            [
+              0.5349537037037038,
+              -0.036527777777777715
+            ],
+            [
+              0.57234375,
+              -0.04078125
+            ],
+            [
+              0.6096296296296293,
+              -0.04555555555555571
+            ],
+            [
+              0.6467766203703701,
+              -0.05074652777777743
+            ],
+            [
+              0.68375,
+              -0.05625
+            ],
+            [
+              0.7205150462962961,
+              -0.06196180555555543
+            ],
+            [
+              0.757037037037037,
+              -0.06777777777777771
+            ],
+            [
+              0.79328125,
+              -0.07359375
+            ],
+            [
+              0.8292129629629631,
+              -0.07930555555555543
+            ],
+            [
+              0.8647974537037038,
+              -0.08480902777777771
+            ],
+            [
+              0.9,
+              -0.09
+            ],
+            [
+              1.0,
+              0.22
+            ],
+            [
+              0.9648032407407402,
+              0.2266956018518522
+            ],
+            [
+              0.9292592592592598,
+              0.2318981481481481
+            ],
+            [
+              0.8934375,
+              0.23578125
+            ],
+            [
+              0.8574074074074082,
+              0.23851851851851846
+            ],
+            [
+              0.821238425925925,
+              0.24028356481481525
+            ],
+            [
+              0.785,
+              0.24125
+            ],
+            [
+              0.748761574074074,
+              0.24159143518518533
+            ],
+            [
+              0.7125925925925923,
+              0.24148148148148152
+            ],
+            [
+              0.6765625,
+              0.24109375
+            ],
+            [
+              0.6407407407407407,
+              0.24060185185185162
+            ],
+            [
+              0.6051967592592592,
+              0.2401793981481481
+            ],
+            [
+              0.57,
+              0.24
+            ],
+            [
+              0.75,
+              0.73
+            ],
+            [
+              0.7764872685185179,
+              0.8434432870370372
+            ],
+            [
+              0.7777314814814815,
+              0.9342129629629629
+            ],
+            [
+              0.75640625,
+              1.00296875
+            ],
+            [
+              0.7151851851851854,
+              1.0503703703703702
+            ],
+            [
+              0.6567418981481472,
+              1.0770775462962965
+            ],
+            [
+              0.58375,
+              1.08375
+            ],
+            [
+              0.4988831018518522,
+              1.0710474537037036
+            ],
+            [
+              0.4048148148148147,
+              1.0396296296296297
+            ],
+            [
+              0.30421875,
+              0.99015625
+            ],
+            [
+              0.19976851851851848,
+              0.923287037037037
+            ],
+            [
+              0.09413773148148152,
+              0.839681712962963
+            ],
+            [
+              -0.01,
+              0.74
+            ],
+            [
+              -0.03748263888888914,
+              0.7118981481481483
+            ],
+            [
+              -0.06486111111111058,
+              0.6826851851851851
+            ],
+            [
+              -0.09203125,
+              0.6525
+            ],
+            [
+              -0.11888888888888886,
+              0.6214814814814815
+            ],
+            [
+              -0.14532986111111143,
+              0.5897685185185191
+            ],
+            [
+              -0.17125,
+              0.5575
+            ],
+            [
+              -0.19654513888888886,
+              0.5248148148148146
+            ],
+            [
+              -0.22111111111111115,
+              0.4918518518518522
+            ],
+            [
+              -0.24484375,
+              0.45875
+            ],
+            [
+              -0.26763888888888887,
+              0.4256481481481481
+            ],
+            [
+              -0.28939236111111116,
+              0.39268518518518536
+            ],
+            [
+              -0.31,
+              0.36
+            ],
+            [
+              -0.35,
+              0.37
+            ],
+            [
+              -0.11,
+              1.07
+            ],
+            [
+              -0.17,
+              1.11
+            ],
+            [
+              -0.35,
+              1.04
+            ],
+            [
+              -0.3990046296296296,
+              1.0420775462962966
+            ],
+            [
+              -0.44620370370370355,
+              1.0432870370370368
+            ],
+            [
+              -0.491875,
+              1.04359375
+            ],
+            [
+              -0.5362962962962962,
+              1.0429629629629629
+            ],
+            [
+              -0.5797453703703707,
+              1.0413599537037037
+            ],
+            [
+              -0.6225,
+              1.03875
+            ],
+            [
+              -0.664837962962963,
+              1.0350983796296296
+            ],
+            [
+              -0.7070370370370372,
+              1.0303703703703704
+            ],
+            [
+              -0.749375,
+              1.02453125
+            ],
+            [
+              -0.7921296296296296,
+              1.0175462962962962
+            ],
+            [
+              -0.8355787037037037,
+              1.009380787037037
+            ],
+            [
+              -0.88,
+              1.0
+            ]
+          ],
+          "holes": [],
+          "depth": 0.15
+        }
+      },
+      "parent": "root",
+      "attachment": null,
+      "dimensions": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "units": "relative",
+        "confidence": 0.95
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0.2
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "detachable-layer",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [
+          {
+            "id": "monogram-center",
+            "position": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Replace with sphere/capsule/compound proxy when the object shape demands it."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "monogram",
+          "seamRefs": [],
+          "detachableFragments": [
+            "monogram"
+          ],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "navy"
+        }
+      },
+      "material": "navy",
+      "materialLayers": [
+        "navy"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [
+        "nested radial contact; gold front meets monogram back"
+      ],
+      "localFeatures": [
+        {
+          "id": "left-serif",
+          "type": "linework",
+          "description": "short upper left serif (120,108)",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "id": "italic-stem",
+          "type": "linework",
+          "description": "inclined stem descending to (108,256)",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "id": "inner-arch",
+          "type": "linework",
+          "description": "open curved negative space at (222,133)",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "id": "crossbar",
+          "type": "linework",
+          "description": "right crossbar ending at (308,186)",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "id": "lower-hook",
+          "type": "linework",
+          "description": "lower terminal curves back to (269,268)",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.95
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.32,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "extruded bevel surface normals",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "Clean satin surface; gold includes the broad curved highlight color region. No fictitious microtexture."
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "hero",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(8, 0, 94, 1)",
+        "secondaryAlbedo": "rgba(8, 0, 94, 1)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.7,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "navy",
+      "name": "navy",
+      "type": "physical",
+      "shaderModel": "MeshPhysicalMaterial",
+      "baseColor": "#08005e",
+      "color": "#08005e",
+      "albedo": {
+        "dominant": "#08005e",
+        "secondary": [
+          "#08005e"
+        ],
+        "samplingNotes": "Visible flat graphic regions; gold procedural gradient."
+      },
+      "colorVariation": {
+        "palette": [
+          "#08005e"
+        ],
+        "pattern": "solid",
+        "amplitude": 0
+      },
+      "roughness": {
+        "base": 0.32,
+        "localResponse": "clean satin enamel"
+      },
+      "metalness": {
+        "base": 0.05,
+        "variation": 0
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "navy-bevel-response",
+          "region": "chamfer",
+          "roughness": 0.32,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "No noise or photographic PBR maps: reference is flat vector-style art. Physical response is inferred from requested gloss."
+      ],
+      "notes": "Clean illustrated enamel, no photographic surface noise.",
+      "clearcoat": 0.4,
+      "clearcoatRoughness": 0.24,
+      "textureless": {
+        "declared": true,
+        "evidence": [
+          "img/logo.png: flat vector-style color and smooth gradient, no grain, pores, scratches or photographic surface detail."
+        ]
+      }
+    },
+    {
+      "id": "amber",
+      "name": "amber",
+      "type": "physical",
+      "shaderModel": "MeshPhysicalMaterial",
+      "baseColor": "#ff8900",
+      "color": "#ff8900",
+      "albedo": {
+        "dominant": "#ff8900",
+        "secondary": [
+          "#ff8900"
+        ],
+        "samplingNotes": "Visible flat graphic regions; gold procedural gradient."
+      },
+      "colorVariation": {
+        "palette": [
+          "#ff8900"
+        ],
+        "pattern": "solid",
+        "amplitude": 0
+      },
+      "roughness": {
+        "base": 0.3,
+        "localResponse": "clean satin enamel"
+      },
+      "metalness": {
+        "base": 0.08,
+        "variation": 0
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "amber-bevel-response",
+          "region": "chamfer",
+          "roughness": 0.3,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "No noise or photographic PBR maps: reference is flat vector-style art. Physical response is inferred from requested gloss."
+      ],
+      "notes": "Clean illustrated enamel, no photographic surface noise.",
+      "clearcoat": 0.5,
+      "clearcoatRoughness": 0.24,
+      "textureless": {
+        "declared": true,
+        "evidence": [
+          "img/logo.png: flat vector-style color and smooth gradient, no grain, pores, scratches or photographic surface detail."
+        ]
+      }
+    },
+    {
+      "id": "gold",
+      "name": "gold",
+      "type": "physical",
+      "shaderModel": "MeshPhysicalMaterial",
+      "baseColor": "#ffcf00",
+      "color": "#ffcf00",
+      "albedo": {
+        "dominant": "#ffcf00",
+        "secondary": [
+          "#ffcf00"
+        ],
+        "samplingNotes": "Visible flat graphic regions; gold procedural gradient."
+      },
+      "colorVariation": {
+        "palette": [
+          "#ffcf00"
+        ],
+        "pattern": "gold-gradient",
+        "amplitude": 0.2
+      },
+      "roughness": {
+        "base": 0.27,
+        "localResponse": "clean satin enamel"
+      },
+      "metalness": {
+        "base": 0.16,
+        "variation": 0
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "gold-bevel-response",
+          "region": "chamfer",
+          "roughness": 0.27,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "No noise or photographic PBR maps: reference is flat vector-style art. Physical response is inferred from requested gloss."
+      ],
+      "notes": "Clean illustrated enamel, no photographic surface noise.",
+      "clearcoat": 0.65,
+      "clearcoatRoughness": 0.24,
+      "textureless": {
+        "declared": true,
+        "evidence": [
+          "img/logo.png: flat vector-style color and smooth gradient, no grain, pores, scratches or photographic surface detail."
+        ]
+      }
+    }
+  ],
+  "repetitionSystems": [],
+  "buildPasses": [
+    {
+      "id": "blockout",
+      "goal": "Match macro silhouette and proportions.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Silhouette reads correctly without materials.",
+        "Quality contract has named all required macro feature groups before code generation.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "structural-pass",
+      "goal": "Build the component hierarchy implied by the pre-spec complexity assessment.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Macro, meso, and repeated structures meet qualityContract.minimumSpecDepth.",
+        "Parent-child relations, joints, seams, sockets, and contact points are explicit.",
+        "Every attached child appendage/connector has parentSocket, localStart/localEnd, contactType, embedDepth or overlap, and gapTolerance.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "form-refinement",
+      "goal": "Refine shape, deformation, bevels, tapers, curves, asymmetry, and visible local geometry.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Important visible forms are represented in component geometryDescriptor, deformations, localFeatures, or repetitionSystems.",
+        "Endpoint-based child parts are rooted at their attachment sockets and do not visibly float away from parents.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "material-pass",
+      "goal": "Match material color, roughness, bump, and local variation.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Reference-derived albedo palette records dominant, secondary, and accent colors per visible material.",
+        "Each important material defines roughness variation and at least one normal/bump/displacement response.",
+        "Local material overrides, dirt/wear/stains/moss/chips/scratches or equivalent masks are tied to evidenceRefs.",
+        "Thin, transparent, reflective, wet, or fibrous materials document alpha/transmission/clearcoat/metalness/fiber response when relevant.",
+        "Generated preview uses procedural albedo/roughness/bump texture or vertex color variation instead of one flat color.",
+        "Generated preview uses independent PBR maps at 1024px or higher for the quality-first tier.",
+        "If source pixels are available, referencePbr extraction passed at confidence >= 0.7 or the pass is stopped/requesting better references.",
+        "Macro, meso, and micro surface frequency bands are visible at the intended review distance without obvious tiling.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "surface-pass",
+      "goal": "Add procedural surface locality such as normal/bump/displacement, AO, dirt, stains, chips, grain, moss, scratches, and wear.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Every required material feature group has local overrides or surfaceDetail tied to evidenceRefs.",
+        "A grazing-angle close-up proves that normal/height detail breaks highlights naturally and does not read as smooth plastic.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "lighting-pass",
+      "goal": "Make material and form readable under neutral turntable lighting plus optional reference lighting.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "lightingFromPhoto identifies key light direction/color/intensity, fill light, rim or environment light, and ambient color.",
+        "Exposure, tone mapping, background color/gradient, shadow softness, and contact shadow behavior are specified.",
+        "Lighting does not hide geometry/material gaps and screenshots can be compared fairly to the reference.",
+        "Neutral, grazing, and reference-matched lighting checks distinguish material errors from lighting errors.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "interaction-pass",
+      "goal": "Make the model ready for future animation, transformation, physics, or destruction.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Macro and movable meso components have stable pivot nodes.",
+        "Sockets, collider proxies, and destruction metadata are present for future runtime actions.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "optimization-pass",
+      "goal": "Protect runtime performance after visual fidelity is accepted.",
+      "componentRefs": [
+        "outer-ring",
+        "amber-ring",
+        "gold-core",
+        "monogram"
+      ],
+      "acceptance": [
+        "Triangle count, draw calls, instancing, LOD strategy, and FPS target are documented or verified.",
+        "Repeated detail is instanced or simplified where possible without breaking silhouette/material believability."
+      ]
+    }
+  ],
+  "visualEvidence": [
+    {
+      "timestamp": "2026-11-20T04:12:54.657813+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.95,
+        "formDetail": 0.9,
+        "materialSurface": 0.65,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four profiles and calligraphic serif, arch, crossbar and hook match. Gradient and bevel deferred. Shallow side thickness is appropriate for an emblem."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four profiles and calligraphic serif, arch, crossbar and hook match. Gradient and bevel deferred. Shallow side thickness is appropriate for an emblem."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/blockout/front.png",
+      "comparisonImage": ".img2threejs/evidence/blockout/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T04:13:35.743415+00:00",
+      "passId": "structural-pass",
+      "estimatedFidelity": 0.91,
+      "aiVisionScore": 0.91,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.95,
+        "formDetail": 0.9,
+        "materialSurface": 0.65,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.91,
+          "visible": true,
+          "notes": "Four independently named pivot groups retain nested ring silhouette and monogram; oblique views show closed volumes. Gold/monogram contact is tightened in the form pass."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.91,
+          "visible": true,
+          "notes": "Four independently named pivot groups retain nested ring silhouette and monogram; oblique views show closed volumes. Gold/monogram contact is tightened in the form pass."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/structural-pass/front.png",
+      "comparisonImage": ".img2threejs/evidence/structural-pass/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T04:15:15.568003+00:00",
+      "passId": "form-refinement",
+      "estimatedFidelity": 0.92,
+      "aiVisionScore": 0.92,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.97,
+        "componentStructure": 0.96,
+        "formDetail": 0.92,
+        "materialSurface": 0.65,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.92,
+          "visible": true,
+          "notes": "Continuous circular chamfers; gold center raised 0.055 units to match asymmetric amber width, monogram back meets core at z=0.198. Calligraphic negative spaces remain open."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.92,
+          "visible": true,
+          "notes": "Continuous circular chamfers; gold center raised 0.055 units to match asymmetric amber width, monogram back meets core at z=0.198. Calligraphic negative spaces remain open."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/form-refinement/front.png",
+      "comparisonImage": ".img2threejs/evidence/form-refinement/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T04:16:29.161172+00:00",
+      "passId": "material-pass",
+      "estimatedFidelity": 0.88,
+      "aiVisionScore": 0.88,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.96,
+        "formDetail": 0.92,
+        "materialSurface": 0.85,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Navy enamel, amber band and gold gradient retain graphic identity. Real bevels catch light; oblique view shows extruded monogram. Broad top gloss boundary follows in surface pass."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Navy enamel, amber band and gold gradient retain graphic identity. Real bevels catch light; oblique view shows extruded monogram. Broad top gloss boundary follows in surface pass."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/material-pass/front.png",
+      "comparisonImage": ".img2threejs/evidence/material-pass/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T04:22:21.267664+00:00",
+      "passId": "surface-pass",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.96,
+        "formDetail": 0.92,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Gold gradient and curved upper sheen now reflect the source; navy profile and amber border remain distinct. Highlight is intentionally softer than the original flat artwork."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Gold gradient and curved upper sheen now reflect the source; navy profile and amber border remain distinct. Highlight is intentionally softer than the original flat artwork."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/surface-pass/front.png",
+      "comparisonImage": ".img2threejs/evidence/surface-pass/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T04:23:38.471712+00:00",
+      "passId": "lighting-pass",
+      "estimatedFidelity": 0.88,
+      "aiVisionScore": 0.88,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.96,
+        "formDetail": 0.94,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Directional key reveals raised monogram with a contact shadow; fill keeps navy readable and rim separates side faces. Geometry remains legible from both oblique views; shadow intensity will be restrained for the hero scale."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Directional key reveals raised monogram with a contact shadow; fill keeps navy readable and rim separates side faces. Geometry remains legible from both oblique views; shadow intensity will be restrained for the hero scale."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/lighting-pass/front.png",
+      "comparisonImage": ".img2threejs/evidence/lighting-pass/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T05:09:20.592317+00:00",
+      "passId": "interaction-pass",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.97,
+        "formDetail": 0.92,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four separate layers remain recognizable; hover, reversal, touch, keyboard, reduced motion and fallbacks pass browser tests. Updated initial state is exploded as requested. Sharp monogram joins eliminate sampled self-intersections while retaining relief."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four separate layers remain recognizable; hover, reversal, touch, keyboard, reduced motion and fallbacks pass browser tests. Updated initial state is exploded as requested. Sharp monogram joins eliminate sampled self-intersections while retaining relief."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/interaction-pass/front.png",
+      "comparisonImage": ".img2threejs/evidence/interaction-pass/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    },
+    {
+      "timestamp": "2026-11-20T05:09:49.021906+00:00",
+      "passId": "optimization-pass",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.97,
+        "formDetail": 0.92,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Unchanged final render re-used with recorded provenance. 10952 triangles and four draw calls preserve the monogram and nested borders; DPR capped at two, offscreen and paused rendering stop. Geometry gate sampled 11358 vertices with no detected self-intersections and 18 undecided samples."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Unchanged final render re-used with recorded provenance. 10952 triangles and four draw calls preserve the monogram and nested borders; DPR capped at two, offscreen and paused rendering stop. Geometry gate sampled 11358 vertices with no detected self-intersections and 18 undecided samples."
+        }
+      ],
+      "referenceScreenshot": "img/logo.png",
+      "renderScreenshot": ".img2threejs/evidence/optimization-pass/front.png",
+      "comparisonImage": ".img2threejs/evidence/optimization-pass/comparison.png",
+      "cameraView": "",
+      "notes": "",
+      "aiVisionNotes": ""
+    }
+  ],
+  "reviewHistory": [
+    {
+      "timestamp": "2026-11-20T04:12:54.657813+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.95,
+        "formDetail": 0.9,
+        "materialSurface": 0.65,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four profiles and calligraphic serif, arch, crossbar and hook match. Gradient and bevel deferred. Shallow side thickness is appropriate for an emblem."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four profiles and calligraphic serif, arch, crossbar and hook match. Gradient and bevel deferred. Shallow side thickness is appropriate for an emblem."
+        }
+      ],
+      "action": "continue",
+      "summary": "Four profiles and calligraphic serif, arch, crossbar and hook match. Gradient and bevel deferred. Shallow side thickness is appropriate for an emblem.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "mapStrippedRender": ".img2threejs/evidence/blockout/front.png",
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/blockout/front.png",
+        "comparisonImage": ".img2threejs/evidence/blockout/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T04:13:35.743415+00:00",
+      "passId": "structural-pass",
+      "estimatedFidelity": 0.91,
+      "aiVisionScore": 0.91,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.95,
+        "formDetail": 0.9,
+        "materialSurface": 0.65,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.91,
+          "visible": true,
+          "notes": "Four independently named pivot groups retain nested ring silhouette and monogram; oblique views show closed volumes. Gold/monogram contact is tightened in the form pass."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.91,
+          "visible": true,
+          "notes": "Four independently named pivot groups retain nested ring silhouette and monogram; oblique views show closed volumes. Gold/monogram contact is tightened in the form pass."
+        }
+      ],
+      "action": "continue",
+      "summary": "Four independently named pivot groups retain nested ring silhouette and monogram; oblique views show closed volumes. Gold/monogram contact is tightened in the form pass.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/structural-pass/front.png",
+        "comparisonImage": ".img2threejs/evidence/structural-pass/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T04:15:15.568003+00:00",
+      "passId": "form-refinement",
+      "estimatedFidelity": 0.92,
+      "aiVisionScore": 0.92,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.97,
+        "componentStructure": 0.96,
+        "formDetail": 0.92,
+        "materialSurface": 0.65,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.92,
+          "visible": true,
+          "notes": "Continuous circular chamfers; gold center raised 0.055 units to match asymmetric amber width, monogram back meets core at z=0.198. Calligraphic negative spaces remain open."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.92,
+          "visible": true,
+          "notes": "Continuous circular chamfers; gold center raised 0.055 units to match asymmetric amber width, monogram back meets core at z=0.198. Calligraphic negative spaces remain open."
+        }
+      ],
+      "action": "continue",
+      "summary": "Continuous circular chamfers; gold center raised 0.055 units to match asymmetric amber width, monogram back meets core at z=0.198. Calligraphic negative spaces remain open.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/form-refinement/front.png",
+        "comparisonImage": ".img2threejs/evidence/form-refinement/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T04:16:29.161172+00:00",
+      "passId": "material-pass",
+      "estimatedFidelity": 0.88,
+      "aiVisionScore": 0.88,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.96,
+        "formDetail": 0.92,
+        "materialSurface": 0.85,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Navy enamel, amber band and gold gradient retain graphic identity. Real bevels catch light; oblique view shows extruded monogram. Broad top gloss boundary follows in surface pass."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Navy enamel, amber band and gold gradient retain graphic identity. Real bevels catch light; oblique view shows extruded monogram. Broad top gloss boundary follows in surface pass."
+        }
+      ],
+      "action": "continue",
+      "summary": "Navy enamel, amber band and gold gradient retain graphic identity. Real bevels catch light; oblique view shows extruded monogram. Broad top gloss boundary follows in surface pass.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/material-pass/front.png",
+        "comparisonImage": ".img2threejs/evidence/material-pass/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T04:22:21.267664+00:00",
+      "passId": "surface-pass",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.96,
+        "formDetail": 0.92,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Gold gradient and curved upper sheen now reflect the source; navy profile and amber border remain distinct. Highlight is intentionally softer than the original flat artwork."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Gold gradient and curved upper sheen now reflect the source; navy profile and amber border remain distinct. Highlight is intentionally softer than the original flat artwork."
+        }
+      ],
+      "action": "continue",
+      "summary": "Gold gradient and curved upper sheen now reflect the source; navy profile and amber border remain distinct. Highlight is intentionally softer than the original flat artwork.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/surface-pass/front.png",
+        "comparisonImage": ".img2threejs/evidence/surface-pass/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T04:23:38.471712+00:00",
+      "passId": "lighting-pass",
+      "estimatedFidelity": 0.88,
+      "aiVisionScore": 0.88,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.96,
+        "formDetail": 0.94,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.85
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Directional key reveals raised monogram with a contact shadow; fill keeps navy readable and rim separates side faces. Geometry remains legible from both oblique views; shadow intensity will be restrained for the hero scale."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Directional key reveals raised monogram with a contact shadow; fill keeps navy readable and rim separates side faces. Geometry remains legible from both oblique views; shadow intensity will be restrained for the hero scale."
+        }
+      ],
+      "action": "continue",
+      "summary": "Directional key reveals raised monogram with a contact shadow; fill keeps navy readable and rim separates side faces. Geometry remains legible from both oblique views; shadow intensity will be restrained for the hero scale.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/lighting-pass/front.png",
+        "comparisonImage": ".img2threejs/evidence/lighting-pass/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T05:08:00.716911+00:00",
+      "passId": "interaction-pass",
+      "estimatedFidelity": 0.85,
+      "aiVisionScore": null,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {},
+      "featureReviews": [],
+      "action": "refine-spec",
+      "summary": "Self-intersection gate detects 16 sampled points at sharp concave monogram corners. Remove its unnecessary micro-bevel while keeping the user-requested outer-ring bevel and full relief depth.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": []
+    },
+    {
+      "timestamp": "2026-11-20T05:09:20.592317+00:00",
+      "passId": "interaction-pass",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.97,
+        "formDetail": 0.92,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four separate layers remain recognizable; hover, reversal, touch, keyboard, reduced motion and fallbacks pass browser tests. Updated initial state is exploded as requested. Sharp monogram joins eliminate sampled self-intersections while retaining relief."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Four separate layers remain recognizable; hover, reversal, touch, keyboard, reduced motion and fallbacks pass browser tests. Updated initial state is exploded as requested. Sharp monogram joins eliminate sampled self-intersections while retaining relief."
+        }
+      ],
+      "action": "continue",
+      "summary": "Four separate layers remain recognizable; hover, reversal, touch, keyboard, reduced motion and fallbacks pass browser tests. Updated initial state is exploded as requested. Sharp monogram joins eliminate sampled self-intersections while retaining relief.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/interaction-pass/front.png",
+        "comparisonImage": ".img2threejs/evidence/interaction-pass/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-20T05:09:49.021906+00:00",
+      "passId": "optimization-pass",
+      "estimatedFidelity": 0.9,
+      "aiVisionScore": 0.9,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.96,
+        "componentStructure": 0.97,
+        "formDetail": 0.92,
+        "materialSurface": 0.9,
+        "lightingCamera": 0.88
+      },
+      "featureReviews": [
+        {
+          "id": "concentric-emblem",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Unchanged final render re-used with recorded provenance. 10952 triangles and four draw calls preserve the monogram and nested borders; DPR capped at two, offscreen and paused rendering stop. Geometry gate sampled 11358 vertices with no detected self-intersections and 18 undecided samples."
+        },
+        {
+          "id": "calligraphic-monogram",
+          "score": 0.9,
+          "visible": true,
+          "notes": "Unchanged final render re-used with recorded provenance. 10952 triangles and four draw calls preserve the monogram and nested borders; DPR capped at two, offscreen and paused rendering stop. Geometry gate sampled 11358 vertices with no detected self-intersections and 18 undecided samples."
+        }
+      ],
+      "action": "continue",
+      "summary": "Unchanged final render re-used with recorded provenance. 10952 triangles and four draw calls preserve the monogram and nested borders; DPR capped at two, offscreen and paused rendering stop. Geometry gate sampled 11358 vertices with no detected self-intersections and 18 undecided samples.",
+      "matched": [],
+      "mismatches": [],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "visualEvidence": {
+        "referenceScreenshot": "img/logo.png",
+        "renderScreenshot": ".img2threejs/evidence/optimization-pass/front.png",
+        "comparisonImage": ".img2threejs/evidence/optimization-pass/comparison.png",
+        "cameraView": "",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    }
+  ],
+  "lodPlan": [
+    {
+      "tier": "near",
+      "distance": 0,
+      "strategy": "full component tree and material layers"
+    },
+    {
+      "tier": "far",
+      "distance": 30,
+      "strategy": "merge static components and reduce local feature geometry"
+    }
+  ],
+  "performanceBudget": {
+    "qualityPriority": "reference-fidelity",
+    "targetTriangles": 20000,
+    "maxDrawCalls": 12,
+    "textureSize": 512,
+    "fpsTarget": 60,
+    "optimizationPolicy": "Reach accepted visual fidelity first, then optimize without removing reference-critical geometry or surface layers.",
+    "measuredTriangles": 10952,
+    "measuredDrawCalls": 4
+  },
+  "lightingFromPhoto": [
+    "Inferred key light (-3,5,7), warm white 0xfff8ec, intensity 2.6; ambient white 1.1.",
+    "Cool fill (4,-1,4), intensity 0.9; warm rim (-2,1,-4), intensity 1.6.",
+    "Transparent background, NoToneMapping, exposure 1. Shadow map 1024 PCFSoft; geometric contact shadow below the raised monogram."
+  ],
+  "proceduralStrategy": [
+    "Block out macro silhouette first.",
+    "Add component hierarchy and joints.",
+    "Create stable pivot groups, sockets, collider proxies, and destruction metadata before visual polish.",
+    "Refine forms with bevels, tapers, bends, and procedural noise.",
+    "Run reference PBR extraction for important source-image materials and stop when confidence is below the target threshold.",
+    "Add material variation before adding expensive micro-geometry."
+  ],
+  "animationAnchors": [
+    "root pivot node supports whole-object translation, rotation, scale, and visibility changes",
+    "component pivot groups support later local transforms without rebuilding geometry"
+  ],
+  "destructionAnchors": [
+    "actionProfile.destruction.fractureGroup marks detachable or breakable component sets",
+    "component seams and sockets define plausible break points instead of random explosions"
+  ],
+  "risks": [
+    "Physical thickness and hidden surfaces inferred. Front outline approximate from 416px source."
+  ],
+  "localSpecSearch": {
+    "collection": "core_3d",
+    "query": "Nossa Arte circular layered emblem extruded profile bevel coated plastic gradient",
+    "index": {
+      "status": "rebuilt",
+      "reason": "missing",
+      "fingerprint": "62f2831e1d52eeb6dbb94a87c44fa25b1f4926626a7b1f8c2bcadc63e04e9471"
+    },
+    "matches": [
+      {
+        "record_id": "core.coordinate-relative-units",
+        "file_path": "grimoire/glossary/3d_vocabulary.md",
+        "heading": "Geometry And Topology",
+        "key_path": null,
+        "score": 5.594547623161,
+        "snippets": [
+          "A bevel radius is sized in object-relative units."
+        ],
+        "source_refs": [
+          {
+            "path": "grimoire/glossary/3d_vocabulary.md",
+            "heading": "Geometry And Topology",
+            "key_path": null
+          },
+          {
+            "path": "grimoire/intake/image_analysis.md",
+            "heading": "Layer 2 \u2014 Overall form & silhouette",
+            "key_path": null
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "grimoire/glossary/3d_vocabulary.md"
+          },
+          {
+            "kind": "notebooklm-research",
+            "ref": "notebooklm:4b03c2f9-8393-411f-b5b4-039ab9532843",
+            "note": "Validated generic schema vocabulary; numeric claims remain backed by local source_refs."
+          }
+        ]
+      },
+      {
+        "record_id": "core.shader-mapping-torusgeometry-rings-loops",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.rendering_shader_mapping[8]",
+        "score": 5.476477803457,
+        "snippets": [
+          "Maps to donut-shaped circular features. \u00c1nh x\u1ea1 t\u1edbi c\u00e1c chi ti\u1ebft h\u00ecnh v\u00f2ng tr\u00f2n ki\u1ec3u donut. Recognition cues: Circular loop feature \u2014 bayonet handle ring, finger loop on a Talon knife, trigger guard loop, carrying handle D\u1ea5u hi\u1ec7u nh\u1eadn di\u1ec7n: Chi ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.rendering_shader_mapping[8]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.shader-mapping-lathegeometry-turnedradially-symmetric-parts",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.rendering_shader_mapping[9]",
+        "score": 5.013493373581,
+        "snippets": [
+          "Maps to parts generated by revolving a 2D profile around an axis. \u00c1nh x\u1ea1 t\u1edbi c\u00e1c b\u1ed9 ph\u1eadn t\u1ea1o ra b\u1eb1ng c\u00e1ch xoay m\u1ed9t bi\u00ean d\u1ea1ng 2D quanh m\u1ed9t tr\u1ee5c. Recognition cues: Contoured, fully radially-symmetric part \u2014 turned wood/metal handle, some muzzle ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.rendering_shader_mapping[9]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      }
+    ]
+  },
+  "logoParameters": {
+    "referenceSize": 416,
+    "unitScale": 0.01,
+    "monogramCommands": [
+      [
+        "M",
+        120,
+        108
+      ],
+      [
+        "L",
+        120,
+        115
+      ],
+      [
+        "C",
+        149,
+        110,
+        153,
+        120,
+        145,
+        148
+      ],
+      [
+        "C",
+        134,
+        188,
+        119,
+        227,
+        108,
+        256
+      ],
+      [
+        "L",
+        152,
+        246
+      ],
+      [
+        "C",
+        160,
+        216,
+        188,
+        161,
+        222,
+        133
+      ],
+      [
+        "C",
+        237,
+        120,
+        248,
+        126,
+        242,
+        139
+      ],
+      [
+        "L",
+        223,
+        188
+      ],
+      [
+        "C",
+        199,
+        196,
+        174,
+        214,
+        163,
+        226
+      ],
+      [
+        "C",
+        181,
+        218,
+        197,
+        213,
+        214,
+        211
+      ],
+      [
+        "L",
+        195,
+        270
+      ],
+      [
+        "C",
+        186,
+        301,
+        204,
+        309,
+        223,
+        301
+      ],
+      [
+        "C",
+        242,
+        295,
+        257,
+        281,
+        269,
+        268
+      ],
+      [
+        "L",
+        263,
+        262
+      ],
+      [
+        "C",
+        245,
+        280,
+        230,
+        281,
+        239,
+        256
+      ],
+      [
+        "L",
+        254,
+        211
+      ],
+      [
+        "C",
+        269,
+        212,
+        284,
+        215,
+        298,
+        217
+      ],
+      [
+        "L",
+        308,
+        186
+      ],
+      [
+        "C",
+        294,
+        183,
+        279,
+        184,
+        265,
+        184
+      ],
+      [
+        "L",
+        283,
+        135
+      ],
+      [
+        "C",
+        299,
+        85,
+        248,
+        91,
+        207,
+        134
+      ],
+      [
+        "C",
+        196,
+        145,
+        185,
+        159,
+        177,
+        172
+      ],
+      [
+        "L",
+        173,
+        171
+      ],
+      [
+        "L",
+        197,
+        101
+      ],
+      [
+        "L",
+        191,
+        97
+      ],
+      [
+        "L",
+        173,
+        104
+      ],
+      [
+        "C",
+        153,
+        103,
+        138,
+        104,
+        120,
+        108
+      ]
+    ],
+    "transitionMs": 550,
+    "maxDPR": 2,
+    "idleRotationRadians": 0.035,
+    "explosion": {
+      "outer-ring": [
+        -0.22,
+        0.1,
+        -1.05
+      ],
+      "amber-ring": [
+        -0.08,
+        0.03,
+        -0.35
+      ],
+      "gold-core": [
+        0.1,
+        -0.03,
+        0.45
+      ],
+      "monogram": [
+        0.23,
+        -0.1,
+        1.3
+      ]
+    },
+    "gradient": [
+      [
+        0,
+        "#fff000"
+      ],
+      [
+        0.48,
+        "#ffb600"
+      ],
+      [
+        1,
+        "#ffe600"
+      ]
+    ],
+    "initialExpanded": true,
+    "initialStateReason": "User follow-up: start with Explorar camadas already active.",
+    "geometryRefinement": {
+      "outerRingRadius": 2.06,
+      "outerRingInnerRadius": 1.9,
+      "amberRadius": 1.88,
+      "amberInnerRadius": 1.77,
+      "amberHoleY": 0.055,
+      "goldRadius": 1.75,
+      "goldY": 0.055,
+      "monogramZ": 0.2,
+      "circleSegments": 128,
+      "monogramCurveSegments": 12,
+      "bevelSegments": 3,
+      "monogramBevel": false
+    },
+    "animation": {
+      "engine": "GSAP 3.12.5",
+      "durationMs": 550,
+      "layerStaggerMs": 30,
+      "ease": "power2.inOut",
+      "initialExpanded": true,
+      "reverseCurrentPlayhead": true,
+      "renderClock": "gsap.ticker",
+      "reducedMotion": "gsap.matchMedia with immediate state changes",
+      "fallback": "native interpolation when GSAP CDN is unavailable"
+    }
+  },
+  "tier1Results": [
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.9609,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0441,
+        "bilateralSymmetryError": 0.0082,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 0.45,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.03
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "blockout requires --map-stripped-render evidence"
+      ],
+      "maskWarnings": [],
+      "renderHash": "321b67432d800ade",
+      "passId": "blockout"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9609,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0441,
+        "bilateralSymmetryError": 0.0082,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 0.45,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.03
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "321b67432d800ade",
+      "passId": "blockout",
+      "mapStrippedRender": ".img2threejs/evidence/blockout/front.png"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9609,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0441,
+        "bilateralSymmetryError": 0.0082,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 0.45,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.03
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "321b67432d800ade",
+      "passId": "blockout",
+      "mapStrippedRender": ".img2threejs/evidence/blockout/front.png"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9609,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0441,
+        "bilateralSymmetryError": 0.0082,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 0.45,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.03
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.27
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "321b67432d800ade",
+      "passId": "structural-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9808,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0082,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 0.45,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 0.23
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.23
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.03
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.23
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "67f067f5c13524bd",
+      "passId": "form-refinement"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9813,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0083,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 0.45,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 0.21
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.21
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.03
+            },
+            {
+              "componentId": null,
+              "deltaE": 0.21
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "53d59a7d7b22c2be",
+      "passId": "form-refinement"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9813,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0083,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 9.16,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 6.74
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.24
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "f80925f3559c5aa5",
+      "passId": "material-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9813,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0083,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 9.16,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 6.74
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.24
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "f80925f3559c5aa5",
+      "passId": "material-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9813,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0083,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 9.16,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 6.83
+            },
+            {
+              "componentId": null,
+              "deltaE": 1.77
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "5ad051ce3eb5ac6f",
+      "passId": "surface-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9813,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0083,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 9.16,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 6.83
+            },
+            {
+              "componentId": null,
+              "deltaE": 1.77
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.16
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "5ad051ce3eb5ac6f",
+      "passId": "surface-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9811,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0087,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 12.32,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 12.32
+            },
+            {
+              "componentId": null,
+              "deltaE": 12.32
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.82
+            },
+            {
+              "componentId": null,
+              "deltaE": 7.16
+            },
+            {
+              "componentId": null,
+              "deltaE": 12.32
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "50d5d02ac22f15d3",
+      "passId": "lighting-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9811,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0087,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 12.29,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 12.29
+            },
+            {
+              "componentId": null,
+              "deltaE": 12.29
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.75
+            },
+            {
+              "componentId": null,
+              "deltaE": 7.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 12.29
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "c9f14d9883f14141",
+      "passId": "interaction-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9811,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0087,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 13.86,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 13.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 13.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.83
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.81
+            },
+            {
+              "componentId": null,
+              "deltaE": 13.86
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "3a57bda7950bdb45",
+      "passId": "interaction-pass"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.9811,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.0089,
+        "bilateralSymmetryError": 0.0087,
+        "colorDelta": {
+          "checked": 5,
+          "maxDeltaE": 13.86,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 13.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 13.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.83
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.81
+            },
+            {
+              "componentId": null,
+              "deltaE": 13.86
+            }
+          ],
+          "gated": true
+        }
+      },
+      "failures": [],
+      "maskWarnings": [],
+      "renderHash": "3a57bda7950bdb45",
+      "passId": "optimization-pass"
+    }
+  ],
+  "implementation": {
+    "factory": "js/logo-model.js",
+    "controller": "js/scene.js",
+    "factoryMode": "Hand-refined plain JavaScript adaptation of the staged procedural spec; existing project requires no build or TypeScript compiler.",
+    "interactionVerification": ".img2threejs/evidence/integration-gsap/results.json"
+  }
+}

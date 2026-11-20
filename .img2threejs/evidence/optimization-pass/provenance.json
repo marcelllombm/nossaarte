@@ -1,0 +1,7 @@
+{
+  "captureSource": ".img2threejs/evidence/interaction-pass",
+  "reason": "No geometry or material changed after the final integration capture. Optimization pass reviews that same final artifact against the measured runtime budget.",
+  "triangles": 10952,
+  "drawCalls": 4,
+  "maxDPR": 2
+}

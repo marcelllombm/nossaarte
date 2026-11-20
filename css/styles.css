@@ -513,243 +513,87 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
   margin-right: -35px;
 }
 
-.visual-grid {
-  position: absolute;
-  inset: 15px -8px 0 12px;
-  background-image: radial-gradient(#a2abc34d .7px,transparent .7px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse,#000 5%,transparent 69%);
-}
-
-.scene-label {
-  position: absolute;
-  top: 31px;
-  left: 65px;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: #737789;
-  letter-spacing: .2px;
-}
-
-.small-spark {
-  color: var(--orange);
-  font-size: 25px;
-  line-height: 1;
-}
-
-.scene-wrap {
+/* Canvas and fallback share one responsive, centered frame. */
+.hero-visual > canvas {
   position: absolute;
   inset: 0;
-}
-
-.scene-wrap canvas {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity .5s;
+  transition: opacity .35s ease;
+  touch-action: pan-y;
 }
-
-.scene-wrap.is-loaded canvas {
-  opacity: 1;
-}
-
-.scene-wrap.is-loaded .scene-fallback {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.scene-fallback {
+.hero-visual.is-loaded > canvas { opacity: 1; cursor: pointer; }
+.logo-fallback {
   position: absolute;
   inset: 0;
-  perspective: 1000px;
-  transition: opacity .5s,visibility .5s;
-}
-
-.fallback-sheet {
-  position: absolute;
-  left: 23%;
-  top: 19%;
-  width: 52%;
-  height: 63%;
-  border-radius: 9px;
-  transform: rotate(-13deg) rotateY(-23deg) rotateX(13deg);
-  box-shadow: 15px 22px 32px #0a114224;
-}
-
-.sheet-back {
-  background: var(--navy);
-  left: 34%;
-  top: 14%;
-}
-
-.sheet-middle {
-  background: #ff7214;
-  left: 28%;
-  top: 16%;
-}
-
-.sheet-front {
-  background: #fefeff;
-  padding: 27px;
-  color: var(--navy);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sheet-front>span:nth-child(2) {
-  font-family: var(--font-heading);
-  font-size: 33px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-}
-
-.print-symbol {
-  font-size: 40px;
-  font-weight: 800;
-  font-style: italic;
-  line-height: 1;
-}
-
-.print-symbol>span {
-  color: var(--orange);
-}
-
-.sheet-front small {
-  font-size: 8px;
-  letter-spacing: .2px;
-}
-
-.print-swatches {
-  display: flex;
-  gap: 5px;
-}
-
-.print-swatches i {
-  display: block;
-  width: 20px;
-  height: 5px;
-  background: var(--navy);
-}
-
-.print-swatches i:nth-child(2) {
-  background: var(--orange);
-}
-
-.print-swatches i:nth-child(3) {
-  background: var(--gold);
-}
-
-.print-swatches i:nth-child(4) {
-  background: #d5d9e5;
-}
-
-.fallback-orbit {
-  position: absolute;
-  left: 2%;
-  top: 27%;
-  width: 92%;
-  height: 43%;
-  border: 24px solid var(--orange);
-  border-radius: 50%;
-  transform: rotate(-35deg);
-  box-shadow: inset 7px 6px 10px #b85013,8px 14px 24px #ff66002b;
-}
-
-.fallback-sphere {
-  position: absolute;
-  left: 11%;
-  top: 17%;
-  width: 37px;
-  height: 37px;
-  background: radial-gradient(circle at 30% 20%,#ffe665,#fda400);
-  border-radius: 50%;
-  box-shadow: 0 7px 16px #bb84002b;
-}
-
-.visual-note {
-  position: absolute;
-  z-index: 3;
-  right: 11px;
-  bottom: 55px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 20px;
-  background: #ffffffed;
-  border: 1px solid #e4e7ef;
-  border-radius: 11px;
-  box-shadow: 0 12px 30px #0a11420a;
-  transform: rotate(-3deg);
-}
-
-.note-icon {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  background: #fff1e6;
-  color: #c45200;
-  border-radius: 8px;
+  pointer-events: none;
+  transition: opacity .35s ease, visibility .35s;
 }
-
-.note-icon .icon {
-  width: 22px;
-  height: 22px;
+.logo-fallback > img, .logo-placeholder {
+  grid-area: 1 / 1;
+  width: min(72%, 410px);
+  height: auto;
+  aspect-ratio: 1;
 }
-
-.visual-note strong,.visual-note small {
-  display: block;
+.logo-fallback > img { position: relative; border-radius: 50%; }
+.logo-placeholder {
+  display: grid;
+  place-items: center;
+  border: 16px solid #08005e;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 20%, #fff426, #ffc000 65%, #ff8900);
+  box-shadow: inset 0 0 0 8px #ff8900;
+  color: #08005e;
+  font: italic 800 clamp(70px, 10vw, 140px) Georgia, serif;
 }
-
-.visual-note strong {
-  font-size: 12px;
-  font-weight: 650;
-}
-
-.visual-note small {
-  font-size: 11px;
-  color: #74788a;
-  margin-top: 2px;
-}
-
-.scene-controls {
+.hero-visual.is-loaded .logo-fallback { opacity: 0; visibility: hidden; }
+.hero-visual > .scene-controls {
   position: absolute;
-  inset: auto 45px 1px auto;
+  z-index: 2;
+  left: 50%;
+  right: auto;
+  bottom: 12px;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: #72778a;
-  font-size: 11px;
+  justify-content: center;
+  gap: 10px;
+  width: max-content;
+  max-width: 100%;
 }
-
-.scene-controls>span {
-  display: flex;
+.layers-toggle {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 15px;
+  border: 1px solid #dfe3eb;
+  border-radius: 999px;
+  background: #ffffffd9;
+  color: var(--navy);
+  font: 500 12px var(--font-body);
+  cursor: pointer;
+  transition: border-color .2s, background-color .2s;
 }
-
-.scene-controls>span .icon {
-  width: 14px;
-  height: 14px;
+.layers-toggle:hover, .layers-toggle[aria-pressed="true"] {
+  border-color: #e8a65c;
+  background: #fff4e5;
 }
-
-.scene-controls .icon-button {
-  background: transparent;
+.layers-toggle .icon { width: 17px; height: 17px; }
+.hero-visual .scene-controls .icon-button {
+  width: 44px;
+  height: 44px;
+  background: #ffffffd9;
   border-color: #dfe3eb;
-  width: 35px;
-  height: 35px;
 }
-
-.scene-controls .icon-button .icon {
-  width: 13px;
-  height: 13px;
+.hero-visual .scene-controls .icon-button .icon { width: 15px; height: 15px; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual > canvas, .logo-fallback { transition: none; }
 }
 
 .expertise-strip {
@@ -1784,21 +1628,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
     padding-inline: 15px;
     min-height: 50px;
   }
-  .scene-label {
-    left: 38px;
-    top: 18px;
-  }
-  .visual-note {
-    right: 0;
-    bottom: 48px;
-    padding: 12px;
-  }
-  .visual-note strong {
-    font-size: 11px;
-  }
-  .scene-controls {
-    right: 20px;
-  }
   .expertise-strip .container>div {
     gap: 20px;
     font-size: 13px;
@@ -1929,43 +1758,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
     height: 470px;
     margin-left: -20px;
     margin-right: -23px;
-  }
-  .scene-label {
-    left: 40px;
-    top: 25px;
-    font-size: 10px;
-  }
-  .visual-note {
-    bottom: 49px;
-    right: 5px;
-    gap: 8px;
-    padding: 10px;
-  }
-  .visual-note small {
-    font-size: 9px;
-  }
-  .visual-note strong {
-    font-size: 10px;
-  }
-  .note-icon {
-    width: 30px;
-    height: 30px;
-  }
-  .note-icon .icon {
-    width: 19px;
-    height: 19px;
-  }
-  .scene-controls {
-    bottom: 0;
-    font-size: 9px;
-    right: 25px;
-    gap: 7px;
-  }
-  .fallback-sheet {
-    padding: 20px;
-  }
-  .sheet-front>span:nth-child(2) {
-    font-size: 27px;
   }
   .expertise-strip>.container {
     min-height: 74px;
@@ -2256,35 +2048,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
     height: 430px;
     max-width: 480px;
     margin: 12px 0 0;
-  }
-  .scene-label {
-    left: 20px;
-    top: 18px;
-    font-size: 11px;
-  }
-  .visual-note {
-    right: 10px;
-    bottom: 48px;
-    padding: 12px 15px;
-    gap: 11px;
-  }
-  .visual-note strong {
-    font-size: 11px;
-  }
-  .visual-note small {
-    font-size: 10px;
-  }
-  .scene-controls {
-    right: 20px;
-    bottom: 0;
-    font-size: 10px;
-  }
-  .scene-controls .icon-button {
-    width: 44px;
-    height: 44px;
-  }
-  .sheet-front>span:nth-child(2) {
-    font-size: 30px;
   }
   .expertise-strip>.container {
     padding-block: 20px;
@@ -2645,9 +2408,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
   }
   .hero-visual {
     height: 380px;
-  }
-  .scene-label {
-    font-size: 10px;
   }
   .expertise-strip .container>div {
     gap: 12px;

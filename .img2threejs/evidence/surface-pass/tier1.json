@@ -1,0 +1,41 @@
+STATUS pass=surface-pass completed=4 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.9813,
+    "aspectRatioDelta": 0.0,
+    "scaleDelta": 0.0089,
+    "bilateralSymmetryError": 0.0083,
+    "colorDelta": {
+      "checked": 5,
+      "maxDeltaE": 9.16,
+      "perComponent": [
+        {
+          "componentId": null,
+          "deltaE": 9.16
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.16
+        },
+        {
+          "componentId": null,
+          "deltaE": 6.83
+        },
+        {
+          "componentId": null,
+          "deltaE": 1.77
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.16
+        }
+      ],
+      "gated": true
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "5ad051ce3eb5ac6f",
+  "passId": "surface-pass"
+}

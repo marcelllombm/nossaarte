@@ -1,0 +1,41 @@
+STATUS pass=form-refinement completed=2 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.9813,
+    "aspectRatioDelta": 0.0,
+    "scaleDelta": 0.0089,
+    "bilateralSymmetryError": 0.0083,
+    "colorDelta": {
+      "checked": 5,
+      "maxDeltaE": 0.45,
+      "perComponent": [
+        {
+          "componentId": null,
+          "deltaE": 0.21
+        },
+        {
+          "componentId": null,
+          "deltaE": 0.21
+        },
+        {
+          "componentId": null,
+          "deltaE": 0.45
+        },
+        {
+          "componentId": null,
+          "deltaE": 0.03
+        },
+        {
+          "componentId": null,
+          "deltaE": 0.21
+        }
+      ],
+      "gated": false
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "53d59a7d7b22c2be",
+  "passId": "form-refinement"
+}

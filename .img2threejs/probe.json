@@ -1,0 +1,13 @@
+{
+  "path": "/Users/macmini2/git/nossaarte/img/logo.png",
+  "type": "png",
+  "bytes": 58145,
+  "width": 416,
+  "height": 416,
+  "aspectRatio": 1.0,
+  "technicalSuitability": "conditional",
+  "warnings": [
+    "low resolution; small geometry/material details may be unreliable"
+  ],
+  "note": "This is only technical image probing. Semantic object suitability still requires visual inspection."
+}

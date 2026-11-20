@@ -1,0 +1,41 @@
+STATUS pass=interaction-pass completed=6 blocked=none next=diagnose_render.py
+{
+  "passed": true,
+  "checks": {
+    "silhouetteIoU": 0.9811,
+    "aspectRatioDelta": 0.0,
+    "scaleDelta": 0.0089,
+    "bilateralSymmetryError": 0.0087,
+    "colorDelta": {
+      "checked": 5,
+      "maxDeltaE": 13.86,
+      "perComponent": [
+        {
+          "componentId": null,
+          "deltaE": 13.86
+        },
+        {
+          "componentId": null,
+          "deltaE": 13.86
+        },
+        {
+          "componentId": null,
+          "deltaE": 4.83
+        },
+        {
+          "componentId": null,
+          "deltaE": 3.81
+        },
+        {
+          "componentId": null,
+          "deltaE": 13.86
+        }
+      ],
+      "gated": true
+    }
+  },
+  "failures": [],
+  "maskWarnings": [],
+  "renderHash": "3a57bda7950bdb45",
+  "passId": "interaction-pass"
+}

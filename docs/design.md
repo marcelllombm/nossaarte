@@ -1,6 +1,6 @@
 # Direção visual — Nossa Arte
 
-O tema é a transformação de ideias em materiais físicos. A peça central é uma escultura de placas de impressão: papel, acrílico, ACM, camadas e cor. O restante da página privilegia legibilidade e espaço.
+O tema é a transformação de ideias em materiais físicos. A peça central é o logo Nossa Arte em quatro camadas 3D: bordas azul-marinho e âmbar, núcleo dourado e monograma extrudado. No hover, as camadas se separam em profundidade; ao sair, o logo se remonta. O restante da página privilegia legibilidade e espaço.
 
 - Base: branco `#FFFFFF` e gelo `#F8FAFC`.
 - Estrutura e títulos: azul-marinho `#0A1142` e `#070E35`.

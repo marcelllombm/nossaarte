@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><title>Logo review</title>
+<style>body{margin:0;background:white}canvas{display:block}</style>
+<script src="../js/logo-model.js"></script>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js';
+const renderer = new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});
+renderer.setSize(416,416); renderer.setPixelRatio(1); renderer.setClearColor(0xffffff,1);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-2.10,2.10,2.10,-2.10,.1,100);
+camera.position.set(0,0,12); camera.lookAt(0,0,0);
+const model = NossaArteLogo.create(THREE); scene.add(model.root);
+NossaArteLogo.light(THREE,scene);
+document.body.append(renderer.domElement);
+window.review={THREE,renderer,scene,camera,model,render:()=>renderer.render(scene,camera)};
+review.render(); window.ready=true;
+</script></html>
