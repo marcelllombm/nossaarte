@@ -17,10 +17,10 @@
   ];
 
   const LAYERS = [
-    { id: 'outer-ring', color: 0x08005e, radius: 2.06, inner: 1.90, depth: .27, z: -.20, offset: [-.22,.10,-1.05], tilt: [-.035,-.04,-.025] },
-    { id: 'amber-ring', color: 0xff8900, radius: 1.88, inner: 1.77, holeY: .055, depth: .24, z: -.10, offset: [-.08,.03,-.35], tilt: [.02,.025,.018] },
-    { id: 'gold-core', color: 0xffcf00, radius: 1.75, inner: 0, y: .055, depth: .18, z: 0, offset: [.10,-.03,.45], tilt: [-.015,-.025,-.01] },
-    { id: 'monogram', color: 0x08005e, depth: .15, z: .20, offset: [.23,-.10,1.30], tilt: [.025,.04,.035] }
+    { id: 'outer-ring', color: 0x08005e, radius: 2.06, inner: 1.90, depth: .27, z: -.20, offset: [.22,.10,-1.05], tilt: [-.035,.04,.025] },
+    { id: 'amber-ring', color: 0xff8900, radius: 1.88, inner: 1.77, holeY: .055, depth: .24, z: -.10, offset: [.08,.03,-.35], tilt: [.02,-.025,-.018] },
+    { id: 'gold-core', color: 0xffcf00, radius: 1.75, inner: 0, y: .055, depth: .18, z: 0, offset: [-.10,-.03,.45], tilt: [-.015,.025,.01] },
+    { id: 'monogram', color: 0x08005e, depth: .15, z: .20, offset: [-.23,-.10,1.30], tilt: [.025,-.04,-.035] }
   ];
 
   function createShape(THREE, layer) {

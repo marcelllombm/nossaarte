@@ -121,11 +121,11 @@
       const follow = still ? 1 : 1 - Math.exp(-9 * delta);
       pointer.x += ((still ? 0 : pointer.targetX) - pointer.x) * follow;
       pointer.y += ((still ? 0 : pointer.targetY) - pointer.y) * follow;
-      // The oblique angle reveals depth while preserving the mark's front readability.
+      // Open from right to left without mirroring the readable front of the mark.
       model.root.rotation.set(
         -.035 - amount * .12 - pointer.y * .05 + (still ? 0 : Math.sin(elapsed * .55) * .02),
-        .045 + amount * .48 + pointer.x * .08 + (still ? 0 : Math.sin(elapsed * .42) * .035),
-        still ? 0 : Math.sin(elapsed * .32) * .008
+        -.045 - amount * .48 + pointer.x * .08 - (still ? 0 : Math.sin(elapsed * .42) * .035),
+        still ? 0 : -Math.sin(elapsed * .32) * .008
       );
       model.root.position.y = still ? 0 : Math.sin(elapsed * .65) * .035;
       model.setExplode(layerMotion, pointer.x, pointer.y);
