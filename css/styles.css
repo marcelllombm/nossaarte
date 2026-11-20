@@ -306,7 +306,7 @@ textarea:focus-visible {
   background: #ffffffec;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid #e7e9efb0;
+  border-bottom: 3px solid var(--orange-hover);
   transition: box-shadow .25s;
 }
 
